@@ -30,7 +30,7 @@ theme:
     text: 'Roboto'
     code: 'Roboto Mono'
   logo: 'assets/images/logo.png'
-  favicon: 'assets/images/favicon.ico'
+  favicon: 'assets/images/logo.png'
   feature:
     tabs: false
 
@@ -55,6 +55,8 @@ extra:
       link: 'https://twitter.com/sbamin'
   search:
     tokenizer: '[\s\-\.]+'
+  twittercard:
+    user: roelverhaak
 
 # Google Analytics
 google_analytics:
