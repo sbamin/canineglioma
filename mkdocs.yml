@@ -1,0 +1,87 @@
+## Site details
+site_name: 'Canine Glioma Project'
+site_description: 'Canine Glioma Project - Summary and Extended Methods'
+site_author: 'Samir B. Amin'
+site_url: 'https://canineglioma.verhaaklab.com'
+# site_suburl: '/cgp/canine/methods'
+nav:
+    - Home: index.md
+    - About: about.md
+    # - Methods:
+    #   - Somatic SNVs: methods/somatic_snv.md
+    #   - Merge SNV MAFs: methods/merge_mafs.md
+    #   - Somatic Copy Number: methods/scna.md
+    #   - Mutational Timing: methods/mutational_timing.md
+    #   - RNA-seq: methods/rnaseq.md
+    - Contact: https://jax.org/verhaak-lab
+
+## Copyright
+copyright: 'Copyright &copy; 2017 - 2019 <a href="https://verhaaklab.com">Verhaak Lab at the Jackson Laboratory for Genomic Medicine</a>'
+
+## Configuration
+theme:
+  name: null
+  custom_dir: 'mkdocs-material/material'
+  language: 'en'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo: 'assets/images/logo.png'
+  favicon: 'assets/images/favicon.ico'
+  feature:
+    tabs: false
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css
+  - 'assets/css/extra.css'
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js
+  - 'assets/js/extra.js'
+
+extra:
+  disqus: 'sbamin'
+  social:
+    - type: 'envelope'
+      link: 'https://jax.org/verhaak-lab'
+    - type: 'twitter'
+      link: 'https://twitter.com/roelverhaak'
+    - type: 'github'
+      link: 'https://github.com/sbamin'
+    - type: 'twitter'
+      link: 'https://twitter.com/sbamin'
+  search:
+    tokenizer: '[\s\-\.]+'
+
+# Google Analytics
+google_analytics:
+  - 'UA-307297-9'
+  - 'auto'
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: true
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - meta
+  - footnotes
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.betterem:
+      smart_enable: all
