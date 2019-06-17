@@ -1,8 +1,8 @@
 # Comparative molecular life history of spontaneous canine and human gliomas
 
-Work under pee-review
+Work under peer-review
 
-Preprint link will be updated once as it goes live!
+Preprint link will be updated once it goes live!
 
 ## Summary
 

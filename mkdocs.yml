@@ -43,7 +43,7 @@ extra_javascript:
   - 'assets/js/extra.js'
 
 extra:
-  disqus: 'sbamin'
+  disqus: 'verhaaklab'
   social:
     - type: 'envelope'
       link: 'https://jax.org/verhaak-lab'

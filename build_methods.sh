@@ -15,6 +15,9 @@ fi
 
 ## build docs
 cd "$DOCDIR" && \
-mkdocs build --clean && echo -e "\nINFO: Built updated docs for intranet\n"
+mkdocs build --clean && echo -e "\nINFO: Built updated docs\n" && \
+mkdocs gh-deply --clean -m "published using commit: {sha} and mkdocs {version}"
 
+## Build hook
+## curl -X POST -d {} https://api.netlify.com/build_hooks/5d07f350ff604c5a3dcd9b8e
 ## END ##
