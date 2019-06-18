@@ -60,11 +60,12 @@ extra:
 
 # Google Analytics
 google_analytics:
-  - 'UA-307297-9'
+  - 'UA-64053990-2'
   - 'auto'
 
 markdown_extensions:
   - admonition
+  - fontawesome_markdown
   - codehilite:
       guess_lang: false
       linenums: true
