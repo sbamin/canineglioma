@@ -10,10 +10,10 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="Sporadic gliomas in companion dogs provide a window on the interaction between tumorigenic mechanisms and host environment. We compared the molecular profiles of canine gliomas with those of human pediatric and adult gliomas to characterize evolutionarily conserved mammalian mutational processes in gliomagenesis. Employing whole genome-, exome-, transcriptome- and methylation-sequencing of 81 canine gliomas, we found alterations shared between canine and human gliomas such as the receptor tyrosine kinases, p53 and cell cycle pathways, and IDH1 R132. Canine gliomas showed high similarity with human pediatric gliomas per robust aneuploidy, mutational rates, relative timing of mutations, and DNA methylation patterns. Our cross-species comparative genomic analysis provides unique insights into glioma etiology and the chronology of glioma-causing somatic alterations.">
+        <meta name="description" content="Canine Glioma Project - Summary and Extended Methods">
       
       
-        <link rel="canonical" href="https://canineglioma.verhaaklab.com/">
+        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S11_aneuploidy/">
       
       
         <meta name="author" content="Samir B. Amin">
@@ -37,18 +37,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-\.]+">
       
-      <link rel="shortcut icon" href="assets/images/logo.png">
+      <link rel="shortcut icon" href="../../assets/images/logo.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
     
       
-        <title>Canine Glioma Project</title>
+        <title>Aneuploidy Metrics</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/application.4031d38b.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/application-palette.224b79ff.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -57,7 +57,7 @@
       
     
     
-      <script src="assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
     
     
       
@@ -66,12 +66,12 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     
-      <link rel="stylesheet" href="assets/css/extra.css">
+      <link rel="stylesheet" href="../../assets/css/extra.css">
     
     
       
@@ -89,14 +89,15 @@
     
 
   
-    <meta name="keywords" content="adult glioma, pediatric glioma, canine glioma, comparative genomics, comparative oncology, life history, mutagenesis, computational biology">
-  
 
   
-
-  <meta property="og:url" content="https://canineglioma.verhaaklab.com/">
+    <meta name="robots" content="noindex">
+    <meta name="robots" content="nofollow">
   
-    <meta property="og:title" content="Canine Glioma Project">
+
+  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S11_aneuploidy/">
+  
+    <meta property="og:title" content="Aneuploidy Metrics">
   
   <meta property="og:description" content="Canine Glioma Project - Summary and Extended Methods">
   <meta property="og:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
@@ -109,7 +110,7 @@
   <meta name="twitter:site" content="@roelverhaak">
   <meta name="twitter:creator" content="@roelverhaak">
   
-    <meta property="twitter:title" content="Canine Glioma Project">
+    <meta property="twitter:title" content="Aneuploidy Metrics">
   
   <meta name="twitter:description" content="Canine Glioma Project - Summary and Extended Methods">
   <meta name="twitter:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
@@ -132,7 +133,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#comparative-molecular-life-history-of-spontaneous-canine-and-human-gliomas" tabindex="1" class="md-skip">
+      <a href="#clustering-based-on-shared-syntenic-regions" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -143,7 +144,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://canineglioma.verhaaklab.com" title="Canine Glioma Project" class="md-header-nav__button md-logo">
           
-            <img src="assets/images/logo.png" width="24" height="24">
+            <img src="../../assets/images/logo.png" width="24" height="24">
           
         </a>
       </div>
@@ -158,7 +159,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Home
+                Aneuploidy Metrics
               
             </span>
           
@@ -213,7 +214,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://canineglioma.verhaaklab.com" title="Canine Glioma Project" class="md-nav__button md-logo">
       
-        <img src="assets/images/logo.png" width="48" height="48">
+        <img src="../../assets/images/logo.png" width="48" height="48">
       
     </a>
     Canine Glioma Project
@@ -225,56 +226,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Home
-      </label>
-    
-    <a href="." title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
       Home
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#preprint" title="Preprint" class="md-nav__link">
-    Preprint
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" title="Summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -282,10 +238,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Methods
@@ -303,7 +261,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S01_samples/" title="Samples" class="md-nav__link">
+    <a href="../S01_samples/" title="Samples" class="md-nav__link">
       Samples
     </a>
   </li>
@@ -315,7 +273,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S02_data_sources/" title="Data Sources" class="md-nav__link">
+    <a href="../S02_data_sources/" title="Data Sources" class="md-nav__link">
       Data Sources
     </a>
   </li>
@@ -327,7 +285,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S03_sample_prep/" title="Sample Preparations" class="md-nav__link">
+    <a href="../S03_sample_prep/" title="Sample Preparations" class="md-nav__link">
       Sample Preparations
     </a>
   </li>
@@ -339,7 +297,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S04_alignments_fprint/" title="Alignments" class="md-nav__link">
+    <a href="../S04_alignments_fprint/" title="Alignments" class="md-nav__link">
       Alignments
     </a>
   </li>
@@ -351,7 +309,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S05_somatic_variants/" title="Somatic SNVs and Indels" class="md-nav__link">
+    <a href="../S05_somatic_variants/" title="Somatic SNVs and Indels" class="md-nav__link">
       Somatic SNVs and Indels
     </a>
   </li>
@@ -363,7 +321,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S06_smgs/" title="Significantly Mutated Genes" class="md-nav__link">
+    <a href="../S06_smgs/" title="Significantly Mutated Genes" class="md-nav__link">
       Significantly Mutated Genes
     </a>
   </li>
@@ -375,7 +333,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S07_hallmarks/" title="Cancer Hallmarks" class="md-nav__link">
+    <a href="../S07_hallmarks/" title="Cancer Hallmarks" class="md-nav__link">
       Cancer Hallmarks
     </a>
   </li>
@@ -387,7 +345,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S08_telomere_length/" title="Telomere Length Estimation" class="md-nav__link">
+    <a href="../S08_telomere_length/" title="Telomere Length Estimation" class="md-nav__link">
       Telomere Length Estimation
     </a>
   </li>
@@ -399,7 +357,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S09_mutation_rate/" title="Somatic Mutation Rate" class="md-nav__link">
+    <a href="../S09_mutation_rate/" title="Somatic Mutation Rate" class="md-nav__link">
       Somatic Mutation Rate
     </a>
   </li>
@@ -411,7 +369,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S10_SCNA/" title="Somatic Copy Number Aberrations" class="md-nav__link">
+    <a href="../S10_SCNA/" title="Somatic Copy Number Aberrations" class="md-nav__link">
       Somatic Copy Number Aberrations
     </a>
   </li>
@@ -421,11 +379,51 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="methods/S11_aneuploidy/" title="Aneuploidy Metrics" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Aneuploidy Metrics
+      </label>
+    
+    <a href="./" title="Aneuploidy Metrics" class="md-nav__link md-nav__link--active">
       Aneuploidy Metrics
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clustering-based-on-shared-syntenic-regions" title="Clustering based on shared syntenic regions" class="md-nav__link">
+    Clustering based on shared syntenic regions
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -435,7 +433,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S12_mut_sigs/" title="Mutational Signatures" class="md-nav__link">
+    <a href="../S12_mut_sigs/" title="Mutational Signatures" class="md-nav__link">
       Mutational Signatures
     </a>
   </li>
@@ -447,7 +445,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S13_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
+    <a href="../S13_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
       Molecular Timing of Somatic Drivers
     </a>
   </li>
@@ -459,7 +457,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S14_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
+    <a href="../S14_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
       Class Prediction using methylation classifier
     </a>
   </li>
@@ -471,7 +469,7 @@
 
 
   <li class="md-nav__item">
-    <a href="methods/S15_expression_immune/" title="Expression-based analysis of tumor microenvironment" class="md-nav__link">
+    <a href="../S15_expression_immune/" title="Expression-based analysis of tumor microenvironment" class="md-nav__link">
       Expression-based analysis of tumor microenvironment
     </a>
   </li>
@@ -508,29 +506,26 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preprint" title="Preprint" class="md-nav__link">
-    Preprint
+  <a href="#clustering-based-on-shared-syntenic-regions" title="Clustering based on shared syntenic regions" class="md-nav__link">
+    Clustering based on shared syntenic regions
   </a>
   
 </li>
+      
+      
+      
+      
       
         <li class="md-nav__item">
-  <a href="#summary" title="Summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-      
-      
-      
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
       
     </ul>
   
@@ -545,14 +540,11 @@
               
                 
                 
-                <h1 id="comparative-molecular-life-history-of-spontaneous-canine-and-human-gliomas">Comparative molecular life history of spontaneous canine and human gliomas<a class="headerlink" href="#comparative-molecular-life-history-of-spontaneous-canine-and-human-gliomas" title="Permanent link">&para;</a></h1>
-<p>Work under peer-review</p>
-<h2 id="preprint">Preprint<a class="headerlink" href="#preprint" title="Permanent link">&para;</a></h2>
-<p><strong>Comparative molecular life history of spontaneous canine and human gliomas</strong><br />
-Samirkumar B Amin, Kevin J Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-Ledesma, Emre Kocavakuk, Kevin C Johnson, Floris P Barthel, Frederick S Varn, Cynthia Kassab, Xiaoyang Ling, Hoon Kim, Mary Barter, Chew Yee Ngan, Margaret Chapman, Jennifer W Koehler, Andrew D Miller, C Ryan Miller, Brian F Porter, Daniel R Rissi, Christina Mazcko, Amy K LeBlanc, Peter J Dickinson, Rebecca Packer, Amanda R Taylor, John H Rossmeisl Jr., Amy B Heimberger, Jonathan M Levine, Roel GW Verhaak</p>
-<p>bioRxiv 673822; doi: <a href="https://doi.org/10.1101/673822">https://doi.org/10.1101/673822</a> <a href="https://www.biorxiv.org/content/early/2019/06/17/673822.full.pdf"<i class="fa fa-file-pdf-o fa-2x"></i></a></p>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>Sporadic gliomas in companion dogs provide a window on the interaction between tumorigenic mechanisms and host environment. We compared the molecular profiles of canine gliomas with those of human pediatric and adult gliomas to characterize evolutionarily conserved mammalian mutational processes in gliomagenesis. Employing whole genome-, exome-, transcriptome- and methylation-sequencing of 81 canine gliomas, we found alterations shared between canine and human gliomas such as the receptor tyrosine kinases, p53 and cell cycle pathways, and IDH1 R132. Canine gliomas showed high similarity with human pediatric gliomas per robust aneuploidy, mutational rates, relative timing of mutations, and DNA methylation patterns. Our cross-species comparative genomic analysis provides unique insights into glioma etiology and the chronology of glioma-causing somatic alterations.</p>
+                  <h1>Aneuploidy Metrics</h1>
+                
+                <p>The simplest metric of aneuploidy was computed by taking the size of all non-neutral segments divided by the size of all segments. The resulting aneuploidy value indicates the proportion of the segmented genome that is non-diploid. In parallel, an arm-level aneuploidy score modeled after a previously described method was computed (Taylor et al., 2018). Briefly, adjacent segments with identical arm-level calls (-1, 0 or 1) were merged into a single segment with a single call. For each merged/reduced segment, the proportion of the chromosome arm it spans was calculated. Segments spanning greater than 80% of the arm length resulted in a call of either -1 (loss), 0 (neutral) or +1 (gain) to the entire arm, or NA if no contiguous segment spanned at least 80% of the arm's length. For each sample the number of arms with a non-neutral event was finally counted. The resulting aneuploidy score is a positive integer with a minimum value of 0 (no chromosomal arm-level events detected) and a maximum value of 38 (total number of autosomal chromosome arms – given all of canine chromosomes are either acrocentric or telocentric).</p>
+<h2 id="clustering-based-on-shared-syntenic-regions">Clustering based on shared syntenic regions<a class="headerlink" href="#clustering-based-on-shared-syntenic-regions" title="Permanent link">&para;</a></h2>
+<p>Shared syntenic regions between CanFam3.1 and hg19 reference genome were downloaded from Ensembl BioMart (version 94) database using orthologous mapped Ensembl gene ids. Arm-level synteny was based on arm-level aneuploidy scores of shared syntenic regions in the respective, canine and human genomes. Hierarchical clustering of syntenic arms was then carried out for each of canine, human pediatric and adult cohort (Figure 2C).</p>
                 
                   
                 
@@ -560,6 +552,22 @@ Samirkumar B Amin, Kevin J Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-Le
               
                 
 
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://canineglioma.verhaaklab.com/methods/S11_aneuploidy/";
+      this.page.identifier =
+        "/methods/S11_aneuploidy/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//verhaaklab.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
 
               
             </article>
@@ -573,14 +581,28 @@ Samirkumar B Amin, Kevin J Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-Le
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
+          <a href="../S10_SCNA/" title="Somatic Copy Number Aberrations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Somatic Copy Number Aberrations
+              </span>
+            </div>
+          </a>
         
-          <a href="methods/S01_samples/" title="Samples" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+        
+          <a href="../S12_mut_sigs/" title="Mutational Signatures" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Samples
+                Mutational Signatures
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -607,7 +629,7 @@ Samirkumar B Amin, Kevin J Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-Le
       </div>
       
   <div class="md-footer-social">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://jax.org/verhaak-lab" class="md-footer-social__link fa fa-envelope"></a>
     
@@ -625,15 +647,15 @@ Samirkumar B Amin, Kevin J Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-Le
       
     </div>
     
-      <script src="assets/javascripts/application.ffb616e8.js"></script>
+      <script src="../../assets/javascripts/application.ffb616e8.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
       
-        <script src="assets/js/extra.js"></script>
+        <script src="../../assets/js/extra.js"></script>
       
-        <script src="search/main.js"></script>
+        <script src="../../search/main.js"></script>
       
     
   </body>
