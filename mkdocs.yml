@@ -6,13 +6,22 @@ site_url: 'https://canineglioma.verhaaklab.com'
 # site_suburl: '/cgp/canine/methods'
 nav:
     - Home: index.md
-    - About: about.md
-    # - Methods:
-    #   - Somatic SNVs: methods/somatic_snv.md
-    #   - Merge SNV MAFs: methods/merge_mafs.md
-    #   - Somatic Copy Number: methods/scna.md
-    #   - Mutational Timing: methods/mutational_timing.md
-    #   - RNA-seq: methods/rnaseq.md
+    - Methods:
+      - Samples: methods/S01_samples.md
+      - Data Sources: methods/S02_data_sources.md
+      - Sample Preparations: methods/S03_sample_prep.md
+      - Alignments: methods/S04_alignments_fprint.md
+      - Somatic SNVs and Indels: methods/S05_somatic_variants.md
+      - Significantly Mutated Genes: methods/S06_smgs.md
+      - Cancer Hallmarks: methods/S07_hallmarks.md
+      - Telomere Length Estimation: methods/S08_telomere_length.md
+      - Somatic Mutation Rate: methods/S09_mutation_rate.md
+      - Somatic Copy Number Aberrations: methods/S10_SCNA.md
+      - Aneuploidy Metrics: methods/S11_aneuploidy.md
+      - Mutational Signatures: methods/S12_mut_sigs.md
+      - Molecular Timing of Somatic Drivers: methods/S13_mut_timing.md
+      - Class Prediction using methylation classifier: methods/S14_class_predict_methy.md
+      - Expression-based analysis of tumor microenvironment: methods/S15_expression_immune.md
     - Contact: https://jax.org/verhaak-lab
 
 ## Copyright
@@ -25,7 +34,7 @@ theme:
   language: 'en'
   palette:
     primary: 'indigo'
-    accent: 'indigo'
+    accent: 'blue'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
