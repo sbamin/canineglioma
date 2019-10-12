@@ -38,8 +38,8 @@ var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 var days_1strev = Math.floor(distance_1strev / (1000 * 60 * 60 * 24));
 
 // Output the result in an element with id="demo"
-document.getElementById("demo").innerHTML = "Work under peer-review: " + days + " days since the initial submission.";
-document.getElementById("demo_1strev").innerHTML = "Work under first revision: " + days_1strev + " days since the first editorial response.";
+document.getElementById("demo").innerHTML = days + " days since the initial submission.";
+document.getElementById("demo_1strev").innerHTML = days_1strev + " days since the first editorial response.";
     
 // If the count down is over, write some text 
 if (distance_1strev < 0) {
