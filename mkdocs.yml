@@ -18,11 +18,12 @@ nav:
       - Somatic Mutation Rate: methods/S09_mutation_rate.md
       - Somatic Copy Number Aberrations: methods/S10_SCNA.md
       - Aneuploidy Metrics: methods/S11_aneuploidy.md
-      - Mutational Signatures: methods/S12_mut_sigs.md
-      - Molecular Timing of Somatic Drivers: methods/S13_mut_timing.md
-      - Class Prediction using methylation classifier: methods/S14_class_predict_methy.md
-      - Expression-based analysis of tumor microenvironment: methods/S15_expression_immune.md
-    - Contact: https://jax.org/verhaak-lab
+      - Intratumor Heterogeneity: methods/S12_ith.md
+      - Mutational Signatures: methods/S13_mut_sigs.md
+      - Molecular Timing of Somatic Drivers: methods/S14_mut_timing.md
+      - Class Prediction using methylation classifier: methods/S15_class_predict_methy.md
+      - Immune Microenvironment Analysis: methods/S16_expression_immune.md
+    - Contact: https://verhaaklab.com/contact
 
 ## Copyright
 copyright: 'Copyright &copy; 2017 - 2019 <a href="https://verhaaklab.com">Verhaak Lab at the Jackson Laboratory for Genomic Medicine</a>'
@@ -55,7 +56,7 @@ extra:
   disqus: 'verhaaklab'
   social:
     - type: 'envelope'
-      link: 'https://jax.org/verhaak-lab'
+      link: 'https://verhaaklab.com/contact'
     - type: 'twitter'
       link: 'https://twitter.com/roelverhaak'
     - type: 'github'

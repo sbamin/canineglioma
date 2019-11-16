@@ -7,4 +7,4 @@ The simplest metric of aneuploidy was computed by taking the size of all non-neu
 
 ## Clustering based on shared syntenic regions
 
-Shared syntenic regions between CanFam3.1 and hg19 reference genome were downloaded from Ensembl BioMart (version 94) database using orthologous mapped Ensembl gene ids. Arm-level synteny was based on arm-level aneuploidy scores of shared syntenic regions in the respective, canine and human genomes. Hierarchical clustering of syntenic arms was then carried out for each of canine, human pediatric and adult cohort (Figure 2C).
+Shared syntenic regions between CanFam3.1 and hg19 reference genome were downloaded from Ensembl BioMart (version 94) database using orthologous mapped Ensembl gene ids. Arm-level synteny was based on arm-level aneuploidy scores of shared syntenic regions in the respective, canine and human genomes. Hierarchical clustering of proportion of patients per molecular subtype having syntenic arm-level aneuploidy was then carried out for each of canine, human pediatric and adult cohort (Figure 2C).
