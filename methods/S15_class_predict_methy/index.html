@@ -13,7 +13,7 @@
         <meta name="description" content="Canine Glioma Project - Summary and Extended Methods">
       
       
-        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S15_expression_immune/">
+        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S15_class_predict_methy/">
       
       
         <meta name="author" content="Samir B. Amin">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Immune Microenvironment Analysis</title>
+        <title>Class Prediction using Methylation Profiles</title>
       
     
     
@@ -95,9 +95,9 @@
     <meta name="robots" content="nofollow">
   
 
-  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S15_expression_immune/">
+  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S15_class_predict_methy/">
   
-    <meta property="og:title" content="Immune Microenvironment Analysis">
+    <meta property="og:title" content="Class Prediction using Methylation Profiles">
   
   <meta property="og:description" content="Canine Glioma Project - Summary and Extended Methods">
   <meta property="og:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
@@ -110,7 +110,7 @@
   <meta name="twitter:site" content="@roelverhaak">
   <meta name="twitter:creator" content="@roelverhaak">
   
-    <meta property="twitter:title" content="Immune Microenvironment Analysis">
+    <meta property="twitter:title" content="Class Prediction using Methylation Profiles">
   
   <meta name="twitter:description" content="Canine Glioma Project - Summary and Extended Methods">
   <meta name="twitter:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
@@ -155,7 +155,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Immune Microenvironment Analysis
+                Class Prediction using Methylation Profiles
               
             </span>
           
@@ -389,7 +389,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../S12_mut_sigs/" title="Mutational Signatures" class="md-nav__link">
+    <a href="../S12_ith/" title="Intratumor Heterogeneity" class="md-nav__link">
+      Intratumor Heterogeneity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S13_mut_sigs/" title="Mutational Signatures" class="md-nav__link">
       Mutational Signatures
     </a>
   </li>
@@ -401,20 +413,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S13_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
+    <a href="../S14_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
       Molecular Timing of Somatic Drivers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../S14_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
-      Class Prediction using methylation classifier
     </a>
   </li>
 
@@ -431,10 +431,22 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="Expression-based analysis of tumor microenvironment" class="md-nav__link md-nav__link--active">
-      Expression-based analysis of tumor microenvironment
+    <a href="./" title="Class Prediction using methylation classifier" class="md-nav__link md-nav__link--active">
+      Class Prediction using methylation classifier
     </a>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S16_expression_immune/" title="Immune Microenvironment Analysis" class="md-nav__link">
+      Immune Microenvironment Analysis
+    </a>
   </li>
 
         
@@ -449,7 +461,7 @@
 
 
   <li class="md-nav__item">
-    <a href="https://jax.org/verhaak-lab" title="Contact" class="md-nav__link">
+    <a href="https://verhaaklab.com/contact" title="Contact" class="md-nav__link">
       Contact
     </a>
   </li>
@@ -468,9 +480,9 @@
               
                 
                 
-                  <h1>Expression-based analysis of tumor microenvironment</h1>
+                  <h1>Class Prediction using methylation classifier</h1>
                 
-                <p>Processed RNA-seq expression matrices from canine (n=40; 25 HGG, 14 LGG, 1 unknown grade), adult (n=703; 529 LGG, 174 GBM), and pediatric glioma (n=92; 42 LGG, 50 HGG) were each run as separate jobs into the CIBERSORT webserver (<a href="https://cibersort.stanford.edu">https://cibersort.stanford.edu</a>) and processed in relative mode using the following parameters: Signature Genes: LM22 CIBERSORT default, Permutations run: 100, Quantile normalization disabled (Newman et al., 2015). The resulting cellular fraction tables were then collapsed from 22 cell types into 11 based on lineage, using groupings from a prior publication (Gentles et al., 2015).</p>
+                <p>To compare the methylation patterns of human and canine glioma, the LIBLINEAR library was used to fit an L2-regularized logistic regression classifier. Model training and validation was performed on the human glioma samples and normal controls in the GSE109381 dataset (Capper et al., 2018), with the methylation status of CpGs located in regions of the human genome orthologous to canine CpG islands used to predict DNA methylation-based subtypes of glioma. The methylation categories designated as regression outcome variables were derived from the World Health Organization classification of gliomas: IDH-wildtype adult glioma, IDH-mutant, 1p/19q-intact adult glioma, IDH-mutant, 1p/19q-codeleted adult glioma, adult normal control, pediatric glioma, and pediatric normal control. After model fitting, the logistic regression classifier was applied to the canine samples, using the -values of CpGs orthologous to the selected 11,495 Illumina 450K probes as input data. For classifier CpG sites in the canine samples with no methylation observations, <span class="arithmatex">\(\beta\)</span>-values were predicted using the DNA module of the DeepCpG algorithm, a deep learning algorithm that predicts methylation state based on local DNA sequence context (Angermueller et al., 2017). The logistic regression classifier outputs the probability that a sample matches a given methylation category. Category probabilities were calculated for the canine samples, and these probabilities were compared with sample age, anatomical location, tumor grade, tumor purity, and mutation rate (Figure 4).</p>
                 
                   
                 
@@ -483,9 +495,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://canineglioma.verhaaklab.com/methods/S15_expression_immune/";
+      this.page.url = "https://canineglioma.verhaaklab.com/methods/S15_class_predict_methy/";
       this.page.identifier =
-        "/methods/S15_expression_immune/";
+        "/methods/S15_class_predict_methy/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -507,7 +519,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../S14_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../S14_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -516,11 +528,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Class Prediction using methylation classifier
+                Molecular Timing of Somatic Drivers
               </span>
             </div>
           </a>
         
+        
+          <a href="../S16_expression_immune/" title="Immune Microenvironment Analysis" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Immune Microenvironment Analysis
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
@@ -543,7 +569,7 @@
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://jax.org/verhaak-lab" class="md-footer-social__link fa fa-envelope"></a>
+      <a href="https://verhaaklab.com/contact" class="md-footer-social__link fa fa-envelope"></a>
     
       <a href="https://twitter.com/roelverhaak" class="md-footer-social__link fa fa-twitter"></a>
     

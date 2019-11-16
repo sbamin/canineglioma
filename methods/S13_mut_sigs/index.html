@@ -13,7 +13,7 @@
         <meta name="description" content="Canine Glioma Project - Summary and Extended Methods">
       
       
-        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S12_mut_sigs/">
+        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S13_mut_sigs/">
       
       
         <meta name="author" content="Samir B. Amin">
@@ -95,7 +95,7 @@
     <meta name="robots" content="nofollow">
   
 
-  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S12_mut_sigs/">
+  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S13_mut_sigs/">
   
     <meta property="og:title" content="Mutational Signatures">
   
@@ -391,6 +391,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../S12_ith/" title="Intratumor Heterogeneity" class="md-nav__link">
+      Intratumor Heterogeneity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -452,7 +464,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../S13_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
+    <a href="../S14_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
       Molecular Timing of Somatic Drivers
     </a>
   </li>
@@ -464,7 +476,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../S14_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
+    <a href="../S15_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
       Class Prediction using methylation classifier
     </a>
   </li>
@@ -476,8 +488,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S15_expression_immune/" title="Expression-based analysis of tumor microenvironment" class="md-nav__link">
-      Expression-based analysis of tumor microenvironment
+    <a href="../S16_expression_immune/" title="Immune Microenvironment Analysis" class="md-nav__link">
+      Immune Microenvironment Analysis
     </a>
   </li>
 
@@ -493,7 +505,7 @@
 
 
   <li class="md-nav__item">
-    <a href="https://jax.org/verhaak-lab" title="Contact" class="md-nav__link">
+    <a href="https://verhaaklab.com/contact" title="Contact" class="md-nav__link">
       Contact
     </a>
   </li>
@@ -560,7 +572,7 @@
 <h2 id="de-novo-signatures">De-novo signatures<a class="headerlink" href="#de-novo-signatures" title="Permanent link">&para;</a></h2>
 <p>First, de-novo signatures (Figure 3B) were constructed for canine (n=77), human pediatric (n=53) and adult cohort (n=23) using somatic snvs from whole-genome data. Signatures were constructed using non-negative matrix factorization (nmf R package, version 0.21.0) with brunet approach and 100 iterations with expected range of signatures between 2 to 10. Optimal signatures were then selected using nmfEstimateRank function to match number of de-novo signatures (clusters) – 1 where inflection point for cophenetic correlation coefficient was observed. Accordingly, three de-novo signatures were found in canine and human pediatric gliomas while five in adult glioblastoma cohort.</p>
 <h2 id="known-human-signatures">Known human signatures<a class="headerlink" href="#known-human-signatures" title="Permanent link">&para;</a></h2>
-<p>In the second part, known human mutational signatures from COSMIC (v2, n=30) and published pediatric cancer signature from two studies, T1 to T11 (Ma et al., 2018) and P1 (Gröbner et al., 2018) were pooled together and used to deconvolute (MutationalPattern R package, version 1.6.2) mutational trinucleotide context (n=96) from somatic snvs in each of three cohorts. Somatic ultra-hypermutation cases from pediatric (n=3) and adult cohort (n=1) were excluded from signature analysis. Cosine similarities of known signatures with de-novo signatures was then calculated and clustered using hierarchical clustering (Figure 3B). Absolute and relative contribution of known signatures per sample was then quantified using fit_to_signatures function which finds the linear combination of signatures that closely resembles 96 context based mutational matrix by solving the nonnegative least-squares constraints problem. We then selected top contributing signatures per cohort based on signatures which contributed per sample to higher than 3<sup>rd</sup> quartile of median value of each signature’s contribution (rowMedian) per cohort (Figure S3A). Top contributing signatures were further calculated using outlier profling on canine patients showing highest mutational load (&gt;3<sup>rd</sup> quartile of median coding mutation rate per megabase) and plotted in Figure 3A. Signatures contributing to driver mutations (Figure 3C) were calculated based on first getting relative proportion of trinucleotide context per snv and then finding known signatures with maximum value for the same trinucleotide context. Known signatures were combined to a single group where they are shown in literature as potential underlying process, e.g., aging group is associated with COSMIC signature 1 and 5, and show significant cosine similarity (&gt; 0.9) with pediatric signatures T1 and T4, respectively. Table S6 provides mapping between signature and known/proposed mechanisms, if any.</p>
+<p>In the second part, known human mutational signatures from COSMIC (v2, n=30) and published pediatric cancer signature from two studies, T1 to T11 (Mansour et al., 2018) and P1 (Gröbner et al., 2018) were pooled together and used to deconvolute (MutationalPattern R package, version 1.6.2) mutational trinucleotide context (n=96) from somatic snvs in each of three cohorts. Somatic ultra-hypermutation cases from pediatric (n=3) and adult cohort (n=1) were excluded from signature analysis. Cosine similarities of known signatures with de-novo signatures was then calculated and clustered using hierarchical clustering (Figure 3B). Absolute and relative contribution of known signatures per sample was then quantified using fit_to_signatures function which finds the linear combination of signatures that closely resembles 96 context based mutational matrix by solving the nonnegative least-squares constraints problem. We then selected top contributing signatures per cohort based on signatures which contributed per sample to higher than 3<sup>rd</sup> quartile of median value of each signature’s contribution (rowMedian) per cohort (Figure S3A). Top contributing signatures were further calculated using outlier profling on canine patients showing highest mutational load (&gt;3<sup>rd</sup> quartile of median coding mutation rate per megabase) and plotted in Figure 3A. Outlier sample detection was done using car::outlierTest function in R to label true outliers from entire cohort (2 cases) while correcting for confounding effects due to type of tissue archival (snap-frozen vs ffpe) and analysis type (tumor-matched normal versus tumor-only somatic variant calling). This was followed by second run of outlier by first excluding true outliers (2 cases), and then labelling outliers (six cases) based on chi-squared statistics using outliers::scores function in R. Signatures contributing to driver mutations (Figure 3C) were calculated based on first getting relative proportion of trinucleotide context per snv and then finding known signatures with maximum value for the same trinucleotide context. Known signatures were combined to a single group where they are shown in literature as potential underlying process, e.g., aging group is associated with COSMIC signature 1 and 5, and show significant cosine similarity (&gt; 0.9) with pediatric signatures T1 and T4, respectively. Table S6 provides mapping between signature and known/proposed mechanisms, if any.</p>
                 
                   
                 
@@ -573,9 +585,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://canineglioma.verhaaklab.com/methods/S12_mut_sigs/";
+      this.page.url = "https://canineglioma.verhaaklab.com/methods/S13_mut_sigs/";
       this.page.identifier =
-        "/methods/S12_mut_sigs/";
+        "/methods/S13_mut_sigs/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -597,7 +609,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../S11_aneuploidy/" title="Aneuploidy Metrics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../S12_ith/" title="Intratumor Heterogeneity" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -606,13 +618,13 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Aneuploidy Metrics
+                Intratumor Heterogeneity
               </span>
             </div>
           </a>
         
         
-          <a href="../S13_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../S14_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
@@ -647,7 +659,7 @@
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://jax.org/verhaak-lab" class="md-footer-social__link fa fa-envelope"></a>
+      <a href="https://verhaaklab.com/contact" class="md-footer-social__link fa fa-envelope"></a>
     
       <a href="https://twitter.com/roelverhaak" class="md-footer-social__link fa fa-twitter"></a>
     

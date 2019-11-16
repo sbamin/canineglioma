@@ -433,7 +433,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../S12_mut_sigs/" title="Mutational Signatures" class="md-nav__link">
+    <a href="../S12_ith/" title="Intratumor Heterogeneity" class="md-nav__link">
+      Intratumor Heterogeneity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S13_mut_sigs/" title="Mutational Signatures" class="md-nav__link">
       Mutational Signatures
     </a>
   </li>
@@ -445,7 +457,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../S13_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
+    <a href="../S14_mut_timing/" title="Molecular Timing of Somatic Drivers" class="md-nav__link">
       Molecular Timing of Somatic Drivers
     </a>
   </li>
@@ -457,7 +469,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../S14_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
+    <a href="../S15_class_predict_methy/" title="Class Prediction using methylation classifier" class="md-nav__link">
       Class Prediction using methylation classifier
     </a>
   </li>
@@ -469,8 +481,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S15_expression_immune/" title="Expression-based analysis of tumor microenvironment" class="md-nav__link">
-      Expression-based analysis of tumor microenvironment
+    <a href="../S16_expression_immune/" title="Immune Microenvironment Analysis" class="md-nav__link">
+      Immune Microenvironment Analysis
     </a>
   </li>
 
@@ -486,7 +498,7 @@
 
 
   <li class="md-nav__item">
-    <a href="https://jax.org/verhaak-lab" title="Contact" class="md-nav__link">
+    <a href="https://verhaaklab.com/contact" title="Contact" class="md-nav__link">
       Contact
     </a>
   </li>
@@ -544,7 +556,7 @@
                 
                 <p>The simplest metric of aneuploidy was computed by taking the size of all non-neutral segments divided by the size of all segments. The resulting aneuploidy value indicates the proportion of the segmented genome that is non-diploid. In parallel, an arm-level aneuploidy score modeled after a previously described method was computed (Taylor et al., 2018). Briefly, adjacent segments with identical arm-level calls (-1, 0 or 1) were merged into a single segment with a single call. For each merged/reduced segment, the proportion of the chromosome arm it spans was calculated. Segments spanning greater than 80% of the arm length resulted in a call of either -1 (loss), 0 (neutral) or +1 (gain) to the entire arm, or NA if no contiguous segment spanned at least 80% of the arm's length. For each sample the number of arms with a non-neutral event was finally counted. The resulting aneuploidy score is a positive integer with a minimum value of 0 (no chromosomal arm-level events detected) and a maximum value of 38 (total number of autosomal chromosome arms – given all of canine chromosomes are either acrocentric or telocentric).</p>
 <h2 id="clustering-based-on-shared-syntenic-regions">Clustering based on shared syntenic regions<a class="headerlink" href="#clustering-based-on-shared-syntenic-regions" title="Permanent link">&para;</a></h2>
-<p>Shared syntenic regions between CanFam3.1 and hg19 reference genome were downloaded from Ensembl BioMart (version 94) database using orthologous mapped Ensembl gene ids. Arm-level synteny was based on arm-level aneuploidy scores of shared syntenic regions in the respective, canine and human genomes. Hierarchical clustering of syntenic arms was then carried out for each of canine, human pediatric and adult cohort (Figure 2C).</p>
+<p>Shared syntenic regions between CanFam3.1 and hg19 reference genome were downloaded from Ensembl BioMart (version 94) database using orthologous mapped Ensembl gene ids. Arm-level synteny was based on arm-level aneuploidy scores of shared syntenic regions in the respective, canine and human genomes. Hierarchical clustering of proportion of patients per molecular subtype having syntenic arm-level aneuploidy was then carried out for each of canine, human pediatric and adult cohort (Figure 2C).</p>
                 
                   
                 
@@ -596,13 +608,13 @@
           </a>
         
         
-          <a href="../S12_mut_sigs/" title="Mutational Signatures" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../S12_ith/" title="Intratumor Heterogeneity" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Mutational Signatures
+                Intratumor Heterogeneity
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -631,7 +643,7 @@
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
-      <a href="https://jax.org/verhaak-lab" class="md-footer-social__link fa fa-envelope"></a>
+      <a href="https://verhaaklab.com/contact" class="md-footer-social__link fa fa-envelope"></a>
     
       <a href="https://twitter.com/roelverhaak" class="md-footer-social__link fa fa-twitter"></a>
     

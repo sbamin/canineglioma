@@ -13,7 +13,7 @@
         <meta name="description" content="Canine Glioma Project - Summary and Extended Methods">
       
       
-        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S02_data_sources/">
+        <link rel="canonical" href="https://canineglioma.verhaaklab.com/methods/S12_ith/">
       
       
         <meta name="author" content="Samir B. Amin">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Published Data Sources</title>
+        <title>Estimating Intratumor Heterogeneity</title>
       
     
     
@@ -95,9 +95,9 @@
     <meta name="robots" content="nofollow">
   
 
-  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S02_data_sources/">
+  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S12_ith/">
   
-    <meta property="og:title" content="Published Data Sources">
+    <meta property="og:title" content="Estimating Intratumor Heterogeneity">
   
   <meta property="og:description" content="Canine Glioma Project - Summary and Extended Methods">
   <meta property="og:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
@@ -110,7 +110,7 @@
   <meta name="twitter:site" content="@roelverhaak">
   <meta name="twitter:creator" content="@roelverhaak">
   
-    <meta property="twitter:title" content="Published Data Sources">
+    <meta property="twitter:title" content="Estimating Intratumor Heterogeneity">
   
   <meta name="twitter:description" content="Canine Glioma Project - Summary and Extended Methods">
   <meta name="twitter:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
@@ -155,7 +155,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Published Data Sources
+                Estimating Intratumor Heterogeneity
               
             </span>
           
@@ -267,18 +267,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Data Sources" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../S02_data_sources/" title="Data Sources" class="md-nav__link">
       Data Sources
     </a>
-    
   </li>
 
         
@@ -394,11 +387,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../S12_ith/" title="Intratumor Heterogeneity" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Intratumor Heterogeneity" class="md-nav__link md-nav__link--active">
       Intratumor Heterogeneity
     </a>
+    
   </li>
 
         
@@ -480,9 +480,9 @@
               
                 
                 
-                  <h1>Data Sources</h1>
+                  <h1>Intratumor Heterogeneity</h1>
                 
-                <p>For comparison to human glioma, we downloaded both - raw sequencing data and processed tables for human pediatric and adult gliomas with appropriate controlled-data access agreements where needed. We used published mutation rates (Figure 1D) and mutational signatures (Figure 3) from pan-cancer datasets from adults (n=3,281) and pediatric (n=961) cohorts (Alexandrov et al., 2013; Bailey et al., 2018; Gröbner et al., 2018). For aneuploidy and molecular life history analysis (details below), we downloaded raw sequencing data and analyzed whole genomes from 53 pediatric gliomas (Ma et al., 2018; St. Jude Cloud Pediatric Cancer Genome Project, <a href="https://pecan.stjude.cloud">https://pecan.stjude.cloud</a>), SNP6 data from adult gliomas – IDHwt (n=517), IDHmut-codel (n=171), and IDHmut-noncodel (n=281) cases (Ceccarelli et al., 2016), as well as whole genomes from 23 adult GBMs (Brennan et al., 2013). For coding mutation rate calculation, we used a subset of TCGA glioma set where exome/whole genome based variant calls were available: IDHwt (n=371), IDHmut-non-codel (n=268), and IDHmut-codel (n=169).</p>
+                <p>We estimated patient-level ITH based on whole-genome derived subclonal structure and number of somatic variants in each of these subclones. Subclonal structure and cellular prevalence or cancer cell fraction of each tumor subclone (and underlying somatic variants) was derived using TITAN allele-specific copy number calls. Since accuracy of inferred subclonal structure depends largely on sequencing read depth and number of somatic variants per inferred subclone, we limited estimation of subclonal structure for maximum five subclones per patient given a minimum sequencing read depth of 30X for whole genome data we had across all three cohorts. Shannon entropy was then calculated using entropy function in the R package: entropy by taking number of somatic variants per subclone per patient as a vector. A resulting Shannon entropy value was used to plot figures along with cancer cell fraction and number of clones derived per patient. We acknowledge that our estimation of ITH and resolving subclonal structure can be improved with higher depth of sequencing (100X or more) to detect subclonal structures (number of clones) (Deshwar et al., 2015).</p>
                 
                   
                 
@@ -495,9 +495,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://canineglioma.verhaaklab.com/methods/S02_data_sources/";
+      this.page.url = "https://canineglioma.verhaaklab.com/methods/S12_ith/";
       this.page.identifier =
-        "/methods/S02_data_sources/";
+        "/methods/S12_ith/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -519,7 +519,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../S01_samples/" title="Samples" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../S11_aneuploidy/" title="Aneuploidy Metrics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -528,19 +528,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Samples
+                Aneuploidy Metrics
               </span>
             </div>
           </a>
         
         
-          <a href="../S03_sample_prep/" title="Sample Preparations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../S13_mut_sigs/" title="Mutational Signatures" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Sample Preparations
+                Mutational Signatures
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
