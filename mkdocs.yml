@@ -14,7 +14,6 @@ nav:
       - Somatic SNVs and Indels: methods/S05_somatic_variants.md
       - Significantly Mutated Genes: methods/S06_smgs.md
       - Cancer Hallmarks: methods/S07_hallmarks.md
-      - Telomere Length Estimation: methods/S08_telomere_length.md
       - Somatic Mutation Rate: methods/S09_mutation_rate.md
       - Somatic Copy Number Aberrations: methods/S10_SCNA.md
       - Aneuploidy Metrics: methods/S11_aneuploidy.md
