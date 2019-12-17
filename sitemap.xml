@@ -2,82 +2,182 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://canineglioma.verhaaklab.com/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S01_samples/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S02_data_sources/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S03_sample_prep/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S04_alignments_fprint/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S05_somatic_variants/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S06_smgs/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S07_hallmarks/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S09_mutation_rate/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S10_SCNA/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S11_aneuploidy/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S12_ith/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S13_mut_sigs/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S14_mut_timing/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S15_class_predict_methy/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://canineglioma.verhaaklab.com/methods/S16_expression_immune/</loc>
-     <lastmod>2019-12-01</lastmod>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F1A/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F1B/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F1C/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F1D/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/S1/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F2A/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F2B/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F2C/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F2D/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/S2/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F3A/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F3B/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F3C/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F3D/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/S3/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F4/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/S4/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F5A/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/F5B/</loc>
+     <lastmod>2019-12-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://canineglioma.verhaaklab.com/figures/S5/</loc>
+     <lastmod>2019-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
