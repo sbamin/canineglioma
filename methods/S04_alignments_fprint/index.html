@@ -62,17 +62,18 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,400i,700|Fira+Code&display=fallback">
+        <style>body,input{font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Code","Courier New",Courier,monospace}</style>
       
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+      <link rel="stylesheet" href="../../assets/css/katex.css">
     
-      <link rel="stylesheet" href="../../assets/css/extra.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
     
+
     
       
         
@@ -86,32 +87,38 @@
 </script>
       
     
+
     
+  
+      
 
-  
+      
 
-  
+      <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S04_alignments_fprint/">
 
-  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S04_alignments_fprint/">
-  
-    <meta property="og:title" content="Sequencing alignments, QC, and Fingerprinting">
-  
-  <meta property="og:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
-  <meta property="og:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
-  <meta property="og:image:alt" content="Image alt">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="640">
+      
+        <meta property="og:title" content="Sequencing alignments, QC, and Fingerprinting">
+      
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@roelverhaak">
-  <meta name="twitter:creator" content="@roelverhaak">
-  
-    <meta property="twitter:title" content="Sequencing alignments, QC, and Fingerprinting">
-  
-  <meta name="twitter:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
-  <meta name="twitter:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
-  <meta name="twitter:image:alt" content="Image alt">
+      <meta property="og:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
+      <meta property="og:image" content="../../assets/images/lab_logo_sq-md.jpg">
+      <meta property="og:image:alt" content="Image alt">
+      <meta property="og:image:type" content="image/jpeg">
+      <meta property="og:image:width" content="300">
+      <meta property="og:image:height" content="300">
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="@roelverhaak">
+      <meta name="twitter:creator" content="@roelverhaak">
+
+      
+        <meta property="twitter:title" content="Sequencing alignments, QC, and Fingerprinting">
+      
+
+      <meta name="twitter:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
+
+      <meta name="twitter:image" content="../../assets/images/lab_logo_sq-md.jpg">
+      <meta name="twitter:image:alt" content="Image alt">
 
 
   </head>
@@ -970,7 +977,7 @@
 <h2 id="rna-alignments">RNA alignments<a class="headerlink" href="#rna-alignments" title="Permanent link">&para;</a></h2>
 <p>Raw fastq files from paired-end RNA-seq assay for 41 tumor samples and 3 matched normal tissue samples were first preprocessed through fastp (version 0.19.5) (Chen et al., 2018) to perform read-based quality pruning, including adapter trimming. Resulting fastq files were then used as input for kallisto quant (version 0.45.0) – a pseudoalignment based method to quantify RNA abundance at transcript-level in transcripts per million (TPM) counts format. We then used sleuth R package (version 0.30.0) (Pimentel et al., 2017) to output model-based, gene-level normalized TPM matrix which was also corrected for potential batch effects due to RNA-seq data derived from two sequencing core facilities and tissue archival (snap-frozen vs FFPE). Detailed workflow, including command-line parameters for model fitting are in extended methods section.</p>
 <h2 id="rrbs-alignments">RRBS alignments<a class="headerlink" href="#rrbs-alignments" title="Permanent link">&para;</a></h2>
-<p>Raw fastq files from RRBS assay for 45 tumor samples were processed through FastQC (version 0.11.7, <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc">https://www.bioinformatics.babraham.ac.uk/projects/fastqc</a>) and Trim Galore (version 0.5.0,  <a href="https://github.com/FelixKrueger/TrimGalore">https://github.com/FelixKrueger/TrimGalore</a>) for quality control, filtering low quality base calls, and adapter trimming. Trimmed reads were then mapped to a bisulfite converted reference genome (canFam3.1, obtained from Ensembl release 85) using the Bismark Bisulfite Mapper (v0.19.1) with the Bowtie2 short read aligner (v2.2.3) (Krueger and Andrews, 2011), allowing for one non-bisulfite mismatch per read. Cytosine methylation calls were made for the mapped reads using the Bismark methylation extractor (version 0.19). The resulting methylation values were obtained as <span class="arithmatex">\(\beta\)</span>-values, calculated as the ratio of methylated to total reads at a given CpG site.</p>
+<p>Raw fastq files from RRBS assay for 45 tumor samples were processed through FastQC (version 0.11.7, <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc">https://www.bioinformatics.babraham.ac.uk/projects/fastqc</a>) and Trim Galore (version 0.5.0,  <a href="https://github.com/FelixKrueger/TrimGalore">https://github.com/FelixKrueger/TrimGalore</a>) for quality control, filtering low quality base calls, and adapter trimming. Trimmed reads were then mapped to a bisulfite converted reference genome (canFam3.1, obtained from Ensembl release 85) using the Bismark Bisulfite Mapper (v0.19.1) with the Bowtie2 short read aligner (v2.2.3) (Krueger and Andrews, 2011), allowing for one non-bisulfite mismatch per read. Cytosine methylation calls were made for the mapped reads using the Bismark methylation extractor (version 0.19). The resulting methylation values were obtained as $\beta$-values, calculated as the ratio of methylated to total reads at a given CpG site.</p>
 <h2 id="dna-fingerprinting">DNA fingerprinting<a class="headerlink" href="#dna-fingerprinting" title="Permanent link">&para;</a></h2>
 <p>DNA fingerprinting for each of WGS and exome tumor-normal and tumor-only bam files was done using NGSCheckMate tool (version 1.0.0) (Lee et al., 2017). Germline snps in protein-coding regions was used as a variant reference panel to allow simultaneous fingerprinting of WGS and exome libraries. NGSCheckMate does sample pairing QC based on shared germline variants found in samples (tumor and normal tissue from the same patient) and also model difference between samples (or libraries) based on sequencing depth-dependent variation in allelic fraction of reference variants. Fingerprint results for WGS and exome samples from 77 canine glioma did not show mixture of tumor-normal or cross-patient sample contamination (See Figure S1F). </p>
                 
@@ -1079,9 +1086,11 @@
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
+        <script src="../../assets/js/katex.js"></script>
       
-        <script src="../../assets/js/extra.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
       
         <script src="../../search/main.js"></script>
       

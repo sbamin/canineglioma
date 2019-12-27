@@ -62,17 +62,18 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,400i,700|Fira+Code&display=fallback">
+        <style>body,input{font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Code","Courier New",Courier,monospace}</style>
       
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+      <link rel="stylesheet" href="../../assets/css/katex.css">
     
-      <link rel="stylesheet" href="../../assets/css/extra.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
     
+
     
       
         
@@ -86,32 +87,38 @@
 </script>
       
     
+
     
+  
+      
 
-  
+      
 
-  
+      <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S15_class_predict_methy/">
 
-  <meta property="og:url" content="https://canineglioma.verhaaklab.com/methods/S15_class_predict_methy/">
-  
-    <meta property="og:title" content="Class Prediction using Methylation Profiles">
-  
-  <meta property="og:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
-  <meta property="og:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
-  <meta property="og:image:alt" content="Image alt">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="640">
+      
+        <meta property="og:title" content="Class Prediction using Methylation Profiles">
+      
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@roelverhaak">
-  <meta name="twitter:creator" content="@roelverhaak">
-  
-    <meta property="twitter:title" content="Class Prediction using Methylation Profiles">
-  
-  <meta name="twitter:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
-  <meta name="twitter:image" content="https://canineglioma.verhaaklab.com/img/cgp_banner.png">
-  <meta name="twitter:image:alt" content="Image alt">
+      <meta property="og:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
+      <meta property="og:image" content="../../assets/images/lab_logo_sq-md.jpg">
+      <meta property="og:image:alt" content="Image alt">
+      <meta property="og:image:type" content="image/jpeg">
+      <meta property="og:image:width" content="300">
+      <meta property="og:image:height" content="300">
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="@roelverhaak">
+      <meta name="twitter:creator" content="@roelverhaak">
+
+      
+        <meta property="twitter:title" content="Class Prediction using Methylation Profiles">
+      
+
+      <meta name="twitter:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
+
+      <meta name="twitter:image" content="../../assets/images/lab_logo_sq-md.jpg">
+      <meta name="twitter:image:alt" content="Image alt">
 
 
   </head>
@@ -851,7 +858,7 @@
                 
                   <h1>Class Prediction using methylation classifier</h1>
                 
-                <p>To compare the methylation patterns of human and canine glioma, the LIBLINEAR library was used to fit an L2-regularized logistic regression classifier. Model training and validation was performed on the human glioma samples and normal controls in the GSE109381 dataset (Capper et al., 2018), with the methylation status of CpGs located in regions of the human genome orthologous to canine CpG islands used to predict DNA methylation-based subtypes of glioma. The methylation categories designated as regression outcome variables were derived from the World Health Organization classification of gliomas: IDH-wildtype adult glioma, IDH-mutant, 1p/19q-intact adult glioma, IDH-mutant, 1p/19q-codeleted adult glioma, adult normal control, pediatric glioma, and pediatric normal control. After model fitting, the logistic regression classifier was applied to the canine samples, using the -values of CpGs orthologous to the selected 11,495 Illumina 450K probes as input data. For classifier CpG sites in the canine samples with no methylation observations, <span class="arithmatex">\(\beta\)</span>-values were predicted using the DNA module of the DeepCpG algorithm, a deep learning algorithm that predicts methylation state based on local DNA sequence context (Angermueller et al., 2017). The logistic regression classifier outputs the probability that a sample matches a given methylation category. Category probabilities were calculated for the canine samples, and these probabilities were compared with sample age, anatomical location, tumor grade, tumor purity, and mutation rate (Figure 4).</p>
+                <p>To compare the methylation patterns of human and canine glioma, the LIBLINEAR library was used to fit an L2-regularized logistic regression classifier. Model training and validation was performed on the human glioma samples and normal controls in the GSE109381 dataset (Capper et al., 2018), with the methylation status of CpGs located in regions of the human genome orthologous to canine CpG islands used to predict DNA methylation-based subtypes of glioma. The methylation categories designated as regression outcome variables were derived from the World Health Organization classification of gliomas: IDH-wildtype adult glioma, IDH-mutant, 1p/19q-intact adult glioma, IDH-mutant, 1p/19q-codeleted adult glioma, adult normal control, pediatric glioma, and pediatric normal control. After model fitting, the logistic regression classifier was applied to the canine samples, using the -values of CpGs orthologous to the selected 11,495 Illumina 450K probes as input data. For classifier CpG sites in the canine samples with no methylation observations, $\beta$-values were predicted using the DNA module of the DeepCpG algorithm, a deep learning algorithm that predicts methylation state based on local DNA sequence context (Angermueller et al., 2017). The logistic regression classifier outputs the probability that a sample matches a given methylation category. Category probabilities were calculated for the canine samples, and these probabilities were compared with sample age, anatomical location, tumor grade, tumor purity, and mutation rate (Figure 4).</p>
                 
                   
                 
@@ -958,9 +965,11 @@
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
+        <script src="../../assets/js/katex.js"></script>
       
-        <script src="../../assets/js/extra.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
       
         <script src="../../search/main.js"></script>
       
