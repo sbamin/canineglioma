@@ -1,6 +1,6 @@
 ## Site details
-site_name: 'Canine Glioma Project'
-site_description: 'Canine Glioma Project - Summary and Extended Methods'
+site_name: 'Canine Glioma Project &middot; Verhaak Lab'
+site_description: 'Canine Glioma Project &middot; Summary and Extended Methods'
 site_author: 'Samir B. Amin'
 site_url: 'https://canineglioma.verhaaklab.com'
 # site_suburl: '/cgp/canine/methods'
@@ -22,6 +22,32 @@ nav:
       - Molecular Timing of Somatic Drivers: methods/S14_mut_timing.md
       - Class Prediction using methylation classifier: methods/S15_class_predict_methy.md
       - Immune Microenvironment Analysis: methods/S16_expression_immune.md
+    - Figures:
+      - F1:
+        - figures/F1A.md
+        - figures/F1B.md
+        - figures/F1C.md
+        - figures/F1D.md
+        - figures/S1.md
+      - F2:
+        - figures/F2A.md
+        - figures/F2B.md
+        - figures/F2C.md
+        - figures/F2D.md
+        - figures/S2.md
+      - F3:
+        - figures/F3A.md
+        - figures/F3B.md
+        - figures/F3C.md
+        - figures/F3D.md
+        - figures/S3.md
+      - F4:
+        - figures/F4.md
+        - figures/S4.md
+      - F5:
+        - figures/F5A.md
+        - figures/F5B.md
+        - figures/S5.md
     - Contact: https://verhaaklab.com/contact
 
 ## Copyright
@@ -81,8 +107,6 @@ markdown_extensions:
       linenums: true
   - toc:
       permalink: true
-  - pymdownx.arithmatex:
-      generic: true
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
