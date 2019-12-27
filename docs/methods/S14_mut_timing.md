@@ -1,6 +1,5 @@
 ---
 title: Molecular Timing of Somatic Drivers
-noindex: true
 ---
 
 Probabilistic estimation of relative timing of driver mutations (among 73 observed somatic snvs in cancer driver genes) was based on existing methods (Gerstung et al., 2017; Jolly and Van Loo, 2018) with several steps carried out using Palimpsest R package (version 1.0.0; https://github.com/FunGeST/Palimpsest) (Shinde et al., 2018) and custom R scripts based on published approach(McGranahan et al., 2015):

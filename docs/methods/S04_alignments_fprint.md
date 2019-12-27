@@ -1,6 +1,5 @@
 ---
 title: Sequencing alignments, QC, and Fingerprinting
-noindex: true
 ---
 
 ## DNA alignments

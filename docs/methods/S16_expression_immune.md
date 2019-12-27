@@ -1,6 +1,5 @@
 ---
 title: Immune Microenvironment Analysis
-noindex: true
 ---
 
 ## Immunohistochemistry 

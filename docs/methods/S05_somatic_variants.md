@@ -1,6 +1,5 @@
 ---
 title: Somatic Variant Calls
-noindex: true
 ---
 
 ## Somatic callers

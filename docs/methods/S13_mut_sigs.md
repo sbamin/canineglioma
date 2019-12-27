@@ -1,6 +1,5 @@
 ---
 title: Mutational Signatures
-noindex: true
 ---
 
 Mutational signature analysis was performed in two-parts.

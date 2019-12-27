@@ -1,6 +1,5 @@
 ---
 title: Somatic Copy Number Aberrations (SCNA)
-noindex: true
 ---
 
 ## Segmentation and Significant Peaks

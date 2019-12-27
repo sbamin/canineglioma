@@ -1,6 +1,5 @@
 ---
 title: Sample preparation, QC, and Sequencing
-noindex: true
 ---
 
 ## DNA/RNA extraction
