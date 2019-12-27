@@ -36,20 +36,21 @@ theme:
     primary: 'indigo'
     accent: 'blue'
   font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
+    text: 'IBM Plex Sans'
+    code: 'Fira Code'
   logo: 'assets/images/logo.png'
   favicon: 'assets/images/logo.png'
   feature:
     tabs: false
 
 extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css
-  - 'assets/css/extra.css'
+  - 'assets/css/katex.css'
+  - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
 
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js
-  - 'assets/js/extra.js'
+  - 'assets/js/katex.js'
+  - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js'
+  - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js'
 
 extra:
   disqus: 'verhaaklab'
@@ -97,3 +98,5 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.betterem:
       smart_enable: all
+  # - pymdownx.arithmatex:
+  #     generic: true
