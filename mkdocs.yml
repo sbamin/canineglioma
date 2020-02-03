@@ -3,7 +3,9 @@ site_name: 'Canine Glioma Project &middot; Verhaak Lab'
 site_description: 'Canine Glioma Project &middot; Summary and Extended Methods'
 site_author: 'Samir B. Amin'
 site_url: 'https://canineglioma.verhaaklab.com'
-# site_suburl: '/cgp/canine/methods'
+# repo_name: 'TheJacksonLaboratory/canineglioma'
+# repo_url: 'https://github.com/TheJacksonLaboratory/canineglioma'
+
 nav:
     - Home: index.md
     - Methods:
@@ -23,6 +25,7 @@ nav:
       - Class Prediction using methylation classifier: methods/S15_class_predict_methy.md
       - Immune Microenvironment Analysis: methods/S16_expression_immune.md
     - Figures:
+      - figures/preload.md
       - F1:
         - figures/F1A.md
         - figures/F1B.md
@@ -51,7 +54,7 @@ nav:
     - Contact: https://verhaaklab.com/contact
 
 ## Copyright
-copyright: 'Copyright &copy; 2017 - 2019 <a href="https://verhaaklab.com">Verhaak Lab at the Jackson Laboratory for Genomic Medicine</a>'
+copyright: 'Copyright &copy; 2017 - 2020 <a href="https://verhaaklab.com">Verhaak Lab at the Jackson Laboratory for Genomic Medicine</a>'
 
 ## Configuration
 theme:
@@ -59,8 +62,8 @@ theme:
   custom_dir: 'mkdocs-material/material'
   language: 'en'
   palette:
-    primary: 'indigo'
-    accent: 'blue'
+    primary: 'Blue'
+    accent: 'Blue'
   font:
     text: 'IBM Plex Sans'
     code: 'Fira Code'
@@ -86,7 +89,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/roelverhaak'
     - type: 'github'
-      link: 'https://github.com/sbamin'
+      link: 'https://github.com/TheJacksonLaboratory/canineglioma'
     - type: 'twitter'
       link: 'https://twitter.com/sbamin'
   search:
