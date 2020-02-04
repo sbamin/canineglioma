@@ -469,8 +469,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../preload/" title="Preload · RData" class="md-nav__link">
-      Preload &middot; RData
+    <a href="../A1_preload/" title="Preload" class="md-nav__link">
+      Preload
     </a>
   </li>
 
@@ -611,8 +611,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S1/" title="S1 · Suppl Figure 1" class="md-nav__link">
-      S1 &middot; Suppl Figure 1
+    <a href="../S1/" title="S1A · DNA fingerprinting" class="md-nav__link">
+      S1A &middot; DNA fingerprinting
     </a>
   </li>
 
@@ -695,8 +695,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S2/" title="S2 · Suppl Figure 2" class="md-nav__link">
-      S2 &middot; Suppl Figure 2
+    <a href="../S2/" title="S2 · IGV Plots" class="md-nav__link">
+      S2 &middot; IGV Plots
     </a>
   </li>
 
@@ -863,19 +863,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../F5A/" title="F5A · Comparative Immunohistochemistry - Stained Slides" class="md-nav__link">
-      F5A &middot; Comparative Immunohistochemistry - Stained Slides
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../F5B/" title="F5B · Comparative Immunohistochemistry - Quantitative" class="md-nav__link">
+    <a href="../F5/" title="F5B · Comparative Immunohistochemistry - Quantitative" class="md-nav__link">
       F5B &middot; Comparative Immunohistochemistry - Quantitative
     </a>
   </li>
@@ -1202,8 +1190,69 @@
 
 <h3 id="suppl-fig-1f">Suppl Fig 1F<a class="headerlink" href="#suppl-fig-1f" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>Detailed under <a href="/figures/F2A/">F2A</a>.</p>
+<p>Somatic mutational lanscape, including copy-number aberrations of COSMIC cancer genes. This figure also contains somatic copy-number data which is detailed under <a href="/figures/F2A/">Fig 2A</a>.</p>
 </blockquote>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nf">pdf</span><span class="p">(</span><span class="s">&quot;SF1F.pdf&quot;</span><span class="p">,</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="m">18</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span> <span class="n">pointsize</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span>
+    <span class="n">fonts</span> <span class="o">=</span> <span class="s">&quot;Arial&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">compress</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">useDingbats</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="n">suppl_fig_1F</span> <span class="o">&lt;-</span> <span class="nf">oncoplot</span><span class="p">(</span><span class="n">maf</span> <span class="o">=</span> <span class="n">cgp_maftools_gistic_n81</span><span class="p">,</span>
+    <span class="c1">## adding known SCNA drivers</span>
+    <span class="n">genes</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">cancer_genes_maftools</span><span class="p">,</span> <span class="s">&quot;CDKN2A&quot;</span><span class="p">,</span> <span class="s">&quot;PTEN&quot;</span><span class="p">),</span>
+    <span class="n">additionalFeature</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;dnds_mutsig&quot;</span><span class="p">,</span> <span class="s">&quot;Driver&quot;</span><span class="p">),</span>
+    <span class="n">removeNonMutated</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+    <span class="n">keepGeneOrder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+    <span class="n">writeMatrix</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+    <span class="n">sortByMutation</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+    <span class="n">fontSize</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span>
+    <span class="n">legendFontSize</span> <span class="o">=</span> <span class="m">1.2</span><span class="p">,</span>
+    <span class="n">annotationFontSize</span> <span class="o">=</span> <span class="m">1.2</span><span class="p">,</span>
+    <span class="n">clinicalFeatures</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Tumor_Morphology&quot;</span><span class="p">,</span> <span class="s">&quot;Tumor_Grade&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;Tumor_Location&quot;</span><span class="p">,</span> <span class="s">&quot;Tissue_Archival&quot;</span><span class="p">,</span> 
+                       <span class="s">&quot;Matched_Normal&quot;</span><span class="p">),</span>
+    <span class="n">annotationColor</span> <span class="o">=</span> <span class="n">ann_colors</span><span class="p">,</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">varcall_colors[</span>
+    <span class="nf">c</span><span class="p">(</span><span class="nf">levels</span><span class="p">(</span><span class="n">cgp_maftools_custom_scna_n81</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">Variant_Classification</span><span class="p">),</span> 
+    <span class="s">&quot;Multi_Hit&quot;</span><span class="p">)</span>
+    <span class="n">]</span><span class="p">,</span>
+    <span class="n">logColBar</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+    <span class="n">gene_mar</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span>
+    <span class="n">bgCol</span> <span class="o">=</span> <span class="s">&quot;#ffffff&quot;</span><span class="p">,</span>
+    <span class="n">borderCol</span> <span class="o">=</span> <span class="s">&quot;#CCCCCC&quot;</span><span class="p">)</span>
+
+<span class="nf">dev.off</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
                 
                   
                 
@@ -1240,7 +1289,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../preload/" title="Preload &middot; RData" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../A1_preload/" title="Preload" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1249,7 +1298,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Preload &middot; RData
+                Preload
               </span>
             </div>
           </a>

@@ -465,8 +465,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../preload/" title="Preload · RData" class="md-nav__link">
-      Preload &middot; RData
+    <a href="../A1_preload/" title="Preload" class="md-nav__link">
+      Preload
     </a>
   </li>
 
@@ -544,8 +544,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S1/" title="S1 · Suppl Figure 1" class="md-nav__link">
-      S1 &middot; Suppl Figure 1
+    <a href="../S1/" title="S1A · DNA fingerprinting" class="md-nav__link">
+      S1A &middot; DNA fingerprinting
     </a>
   </li>
 
@@ -637,8 +637,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S2/" title="S2 · Suppl Figure 2" class="md-nav__link">
-      S2 &middot; Suppl Figure 2
+    <a href="../S2/" title="S2 · IGV Plots" class="md-nav__link">
+      S2 &middot; IGV Plots
     </a>
   </li>
 
@@ -805,19 +805,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../F5A/" title="F5A · Comparative Immunohistochemistry - Stained Slides" class="md-nav__link">
-      F5A &middot; Comparative Immunohistochemistry - Stained Slides
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../F5B/" title="F5B · Comparative Immunohistochemistry - Quantitative" class="md-nav__link">
+    <a href="../F5/" title="F5B · Comparative Immunohistochemistry - Quantitative" class="md-nav__link">
       F5B &middot; Comparative Immunohistochemistry - Quantitative
     </a>
   </li>
@@ -872,7 +860,35 @@
                 
                   <h1>F2C &middot; Comparative Shared Syntenic Aneuploidy</h1>
                 
-                <p>Updating...</p>
+                <p><code>mat_aneuploidy_summary_mostvar_cgAll</code> matrix contains proportion of patients per cohort with arm-level aneuploidy, and was based on <a href="/methods/S11_aneuploidy/">arm-level aneuploidy metrics</a>. Related code is available at the GLASS consortium <a href="https://github.com/TheJacksonLaboratory/GLASS/tree/master/sql/cnv">marker paper code repository</a>, namely, <code>recapseg_postgres.sql</code> and <code>taylor_aneuploidy.sql</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pheatmap</span><span class="o">::</span><span class="nf">pheatmap</span><span class="p">(</span><span class="n">mat_aneuploidy_summary_mostvar_cgAll</span><span class="p">,</span>
+    <span class="n">cluster_rows</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">cluster_cols</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+    <span class="n">cellwidth</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span> <span class="n">cellheight</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span>
+    <span class="n">fontsize_col</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">fontsize_row</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span>
+    <span class="n">labels_col</span> <span class="o">=</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">mat_aneuploidy_summary_mostvar_cgAll</span><span class="p">),</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;F2C.pdf&quot;</span><span class="p">,</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">angle_col</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span>
+    <span class="n">gaps_row</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
+    <span class="n">useDingbats</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Barthel FP, Johnson KC, Varn FS, Moskalik AD, Tanner G, Kocakavuk E, et al. Longitudinal molecular trajectories of diffuse glioma in adults. Nature 2019. doi: <a href="https://doi.org/10.1038/s41586-019-1775-1">10.1038/s41586-019-1775-1</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 

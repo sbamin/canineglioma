@@ -42,7 +42,7 @@
     
     
       
-        <title>S1 &middot; Suppl Figure 1</title>
+        <title>S1A &middot; DNA fingerprinting</title>
       
     
     
@@ -97,7 +97,7 @@
       <meta property="og:url" content="https://canineglioma.verhaaklab.com/figures/S1/">
 
       
-        <meta property="og:title" content="S1 &middot; Suppl Figure 1">
+        <meta property="og:title" content="S1A &middot; DNA fingerprinting">
       
 
       <meta property="og:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
@@ -112,7 +112,7 @@
       <meta name="twitter:creator" content="@roelverhaak">
 
       
-        <meta property="twitter:title" content="S1 &middot; Suppl Figure 1">
+        <meta property="twitter:title" content="S1A &middot; DNA fingerprinting">
       
 
       <meta name="twitter:description" content="Canine Glioma Project &middot; Summary and Extended Methods">
@@ -159,7 +159,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                S1 &middot; Suppl Figure 1
+                S1A &middot; DNA fingerprinting
               
             </span>
           
@@ -465,8 +465,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../preload/" title="Preload · RData" class="md-nav__link">
-      Preload &middot; RData
+    <a href="../A1_preload/" title="Preload" class="md-nav__link">
+      Preload
     </a>
   </li>
 
@@ -552,8 +552,8 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="S1 · Suppl Figure 1" class="md-nav__link md-nav__link--active">
-      S1 &middot; Suppl Figure 1
+    <a href="./" title="S1A · DNA fingerprinting" class="md-nav__link md-nav__link--active">
+      S1A &middot; DNA fingerprinting
     </a>
     
   </li>
@@ -637,8 +637,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S2/" title="S2 · Suppl Figure 2" class="md-nav__link">
-      S2 &middot; Suppl Figure 2
+    <a href="../S2/" title="S2 · IGV Plots" class="md-nav__link">
+      S2 &middot; IGV Plots
     </a>
   </li>
 
@@ -805,19 +805,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../F5A/" title="F5A · Comparative Immunohistochemistry - Stained Slides" class="md-nav__link">
-      F5A &middot; Comparative Immunohistochemistry - Stained Slides
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../F5B/" title="F5B · Comparative Immunohistochemistry - Quantitative" class="md-nav__link">
+    <a href="../F5/" title="F5B · Comparative Immunohistochemistry - Quantitative" class="md-nav__link">
       F5B &middot; Comparative Immunohistochemistry - Quantitative
     </a>
   </li>
@@ -870,9 +858,171 @@
               
                 
                 
-                  <h1>S1 &middot; Suppl Figure 1</h1>
+                  <h1>S1A &middot; DNA fingerprinting</h1>
                 
-                <p>Updating...</p>
+                <ul>
+<li>DNA fingerprinting of whole genome and exome samples from canine glioma patients was performed using <a href="https://github.com/parklab/NGSCheckMate">NGSCheckMate</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. <a href="/methods/s04_alignments_fprint/#dna-fingerprinting">Details</a></li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">## Run NGSCheckMate Fingerprint</span>
+<span class="c1">## https://github.com/parklab/NGSCheckMate</span>
+
+<span class="c1">## @sbamin</span>
+
+<span class="nv">NGSCM_EXE</span><span class="o">=</span><span class="s2">&quot;/projects/verhaak-lab/verhaak_env/verhaak_apps/NGSCheckMate/ncm.py&quot;</span>
+<span class="nv">OUTDIR</span><span class="o">=</span><span class="s2">&quot;/fastscratch/foo/cgp/ngs_checkmate&quot;</span>
+
+<span class="c1">## dbsnp file</span>
+<span class="nv">DBSNP</span><span class="o">=</span><span class="s2">&quot;Canis_familiaris_dbsnp_protein_coding_cds_exons_canonical.bed&quot;</span>
+
+<span class="nv">REF_FASTA</span><span class="o">=</span><span class="s2">&quot;CanFam3_1.fa&quot;</span>
+
+<span class="nv">BAMLIST</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/pipelines/cgp_qc/runner/fingerprint/cgp_bams.tsv&quot;</span>
+
+<span class="c1">## Number of parallel bcftools</span>
+<span class="nv">THREADS</span><span class="o">=</span><span class="m">12</span>
+
+mkdir -p <span class="s2">&quot;</span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span><span class="s2">&quot;</span>/vcfs
+mkdir -p <span class="s2">&quot;</span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span><span class="s2">&quot;</span>/results
+
+<span class="nb">export</span> NGSCM_EXE OUTDIR DBSNP REF_FASTA BAMLIST
+
+<span class="nb">source</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">RVPYTHON</span><span class="si">}</span><span class="s2">&quot;</span>/v4.2.0/bin/activate base <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">&quot;switched to python2 legacy env; using samtools, bcftools, htslib 1.9&quot;</span>
+
+<span class="nb">command</span> -v python <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">command</span> -v samtools <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">command</span> -v bcftools
+
+<span class="c1">## load ngs_checkmate</span>
+module load rvngscheckmate/1.3.0
+
+<span class="c1">## Run mpileup and get per-bam vcf for DBSNP regions</span>
+mpileup_fn<span class="o">()</span> <span class="o">{</span>
+
+  <span class="nv">MYBAM</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+  <span class="k">if</span> <span class="o">[[</span> ! -f <span class="s2">&quot;</span><span class="nv">$MYBAM</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;ERROR: BAM file at </span><span class="nv">$MYBAM</span><span class="s2"> does not exitst&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+  <span class="k">fi</span>
+
+  <span class="nv">VCFID</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">&quot;%s/vcfs/fingerprint_%s.vcf&quot;</span> <span class="s2">&quot;</span><span class="nv">$OUTDIR</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>basename <span class="s2">&quot;</span><span class="nv">$MYBAM</span><span class="s2">&quot;</span> .bam<span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span>
+
+  <span class="nb">echo</span> -e <span class="s2">&quot;\n\nGetting mpileup...\nfrom: </span><span class="nv">$MYBAM</span><span class="s2">\nto: </span><span class="nv">$VCFID</span><span class="s2">\nBED: </span><span class="nv">$DBSNP</span><span class="s2">\n&quot;</span>
+  sleep <span class="m">2</span>
+
+  <span class="nb">set</span> -euo pipefail
+
+  <span class="k">if</span> <span class="o">[[</span> ! -s <span class="s2">&quot;</span><span class="si">${</span><span class="nv">VCFID</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    bcftools mpileup -Ou -f <span class="s2">&quot;</span><span class="si">${</span><span class="nv">REF_FASTA</span><span class="si">}</span><span class="s2">&quot;</span> -R <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DBSNP</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYBAM</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> <span class="se">\</span>
+      bcftools call -Ou -mv <span class="p">|</span> <span class="se">\</span>
+      bcftools filter -s LowQual -e <span class="s1">&#39;%QUAL&lt;20 || DP&gt;100&#39;</span> &gt; <span class="s2">&quot;</span><span class="nv">$VCFID</span><span class="s2">&quot;</span>
+  <span class="k">else</span>
+    <span class="nb">echo</span> -e <span class="s2">&quot;\n\nSKIP: </span><span class="nv">$VCFID</span><span class="s2"> is present - skipping mpileup\n\n&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="nb">export</span> -f mpileup_fn
+
+<span class="c1">############# Run mpileup in parallel #########################</span>
+<span class="nv">THREADS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">THREADS</span><span class="k">:-</span><span class="nv">2</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Running </span><span class="nv">$THREADS</span><span class="s2"> parallel bcftools mpileups&quot;</span>
+cat <span class="s2">&quot;</span><span class="nv">$BAMLIST</span><span class="s2">&quot;</span> <span class="p">|</span> parallel -j<span class="s2">&quot;</span><span class="si">${</span><span class="nv">THREADS</span><span class="si">}</span><span class="s2">&quot;</span> mpileup_fn <span class="o">{}</span>
+<span class="c1">###############################################################</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Running NGSCheckMate&quot;</span>
+sleep <span class="m">2</span>
+
+python <span class="s2">&quot;</span><span class="si">${</span><span class="nv">NGSCM_EXE</span><span class="si">}</span><span class="s2">&quot;</span> -V -d <span class="s2">&quot;</span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span><span class="s2">&quot;</span>/vcfs -O <span class="s2">&quot;</span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span><span class="s2">&quot;</span>/results -N cgp_fingerprint_ngscheckmate_v2 -bed <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DBSNP</span><span class="si">}</span><span class="s2">&quot;</span> -nz
+
+<span class="nv">exitstat</span><span class="o">=</span><span class="nv">$?</span>
+<span class="nb">echo</span> <span class="s2">&quot;ending NGSCheckMate with exit: </span><span class="nv">$exitstat</span><span class="s2">&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Lee S, Lee S, Ouellette S, Park W-Y, Lee EA, Park PJ. NGSCheckMate: software for validating sample identity in next-generation sequencing studies within and across data types. Nucleic Acids Res 2017;45:e103. doi: <a href="https://doi.org/10.1093/nar/gkx193">10.1093/nar/gkx193</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
