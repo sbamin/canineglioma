@@ -126,4 +126,37 @@ dev.off()
 
 ### Suppl Fig 1F
 
->Detailed under [F2A](/figures/F2A/).
+>Somatic mutational lanscape, including copy-number aberrations of COSMIC cancer genes. This figure also contains somatic copy-number data which is detailed under [Fig 2A](/figures/F2A/).
+
+```r
+pdf("SF1F.pdf",
+    width = 18, height = 12, pointsize = 12,
+    fonts = "Arial", bg = "white",
+    compress = FALSE, useDingbats = FALSE)
+
+suppl_fig_1F <- oncoplot(maf = cgp_maftools_gistic_n81,
+    ## adding known SCNA drivers
+    genes = c(cancer_genes_maftools, "CDKN2A", "PTEN"),
+    additionalFeature = c("dnds_mutsig", "Driver"),
+    removeNonMutated = FALSE,
+    keepGeneOrder = FALSE,
+    writeMatrix = TRUE,
+    sortByMutation = TRUE,
+    fontSize = 0.7,
+    legendFontSize = 1.2,
+    annotationFontSize = 1.2,
+    clinicalFeatures = c("Tumor_Morphology", "Tumor_Grade",
+                       "Tumor_Location", "Tissue_Archival", 
+                       "Matched_Normal"),
+    annotationColor = ann_colors,
+    colors = varcall_colors[
+    c(levels(cgp_maftools_custom_scna_n81@data$Variant_Classification), 
+    "Multi_Hit")
+    ],
+    logColBar = FALSE,
+    gene_mar = 7,
+    bgCol = "#ffffff",
+    borderCol = "#CCCCCC")
+
+dev.off()
+```
