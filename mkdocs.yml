@@ -25,7 +25,7 @@ nav:
       - Class Prediction using methylation classifier: methods/S15_class_predict_methy.md
       - Immune Microenvironment Analysis: methods/S16_expression_immune.md
     - Figures:
-      - figures/preload.md
+      - Preload: figures/A1_preload.md
       - F1:
         - figures/F1A.md
         - figures/F1B.md
@@ -48,8 +48,7 @@ nav:
         - figures/F4.md
         - figures/S4.md
       - F5:
-        - figures/F5A.md
-        - figures/F5B.md
+        - figures/F5.md
         - figures/S5.md
     - Contact: https://verhaaklab.com/contact
 
