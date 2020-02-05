@@ -1,4 +1,0 @@
-# Canine Glioma
-
-Code repository
-
