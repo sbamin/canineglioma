@@ -3,8 +3,12 @@ site_name: 'Canine Glioma Project &middot; Verhaak Lab'
 site_description: 'Canine Glioma Project &middot; Extended Methods, Data, and Code for Figures'
 site_author: 'Samir B. Amin'
 site_url: 'https://canineglioma.verhaaklab.com'
-# repo_name: 'TheJacksonLaboratory/canineglioma'
-# repo_url: 'https://github.com/TheJacksonLaboratory/canineglioma'
+## enable 'edit this page' link
+repo_edit: false
+repo_name: 'TheJacksonLaboratory/canineglioma'
+repo_url: 'https://github.com/TheJacksonLaboratory/canineglioma'
+## add last modified, require git-revision-date-localized plugin
+last_modtime: true
 
 nav:
     - Home: index.md
@@ -126,3 +130,8 @@ markdown_extensions:
       smart_enable: all
   # - pymdownx.arithmatex:
   #     generic: true
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
