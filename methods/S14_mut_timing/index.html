@@ -908,6 +908,7 @@
                 
                   <h1>Molecular Timing of Somatic Drivers</h1>
                 
+                  
                 <p>Probabilistic estimation of relative timing of driver mutations (among 73 observed somatic snvs in cancer driver genes) was based on existing methods (Gerstung et al., 2017; Jolly and Van Loo, 2018) with several steps carried out using Palimpsest R package (version 1.0.0; <a href="https://github.com/FunGeST/Palimpsest">https://github.com/FunGeST/Palimpsest</a>) (Shinde et al., 2018) and custom R scripts based on published approach(McGranahan et al., 2015):</p>
 <p>First step involved categorizing somatic drivers into clonal vs subclonal events using estimated cancer cell fraction (CCF) which is estimated fraction of cancer cells with a somatic snv. CCF per somatic snv was a product of variant allelic fraction (VAF) of a somatic snv, adjusted by local copy number of gene locus and whole tumor sample (ploidy) as well as purity estimate (tumor cell content) inferred from TitanCNA algorithm (Detailed under copy number estimation section above). A clonal (early) vs subclonal (late) mutation was then classified based on upper boundary of CCF was above 0.95 (clonal) or not (subclonal).</p>
 <p>Second, we timed copy number gain and copy-neutral LOH regions based on VAF of somatic snvs in these copy regions, i.e., early mutations prior to copy gain will have higher VAF relative to VAF of late mutations after copy gain.</p>

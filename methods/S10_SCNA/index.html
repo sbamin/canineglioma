@@ -994,6 +994,7 @@
                 
                   <h1>Somatic Copy Number Aberrations</h1>
                 
+                  
                 <h2 id="segmentation-and-significant-peaks">Segmentation and Significant Peaks<a class="headerlink" href="#segmentation-and-significant-peaks" title="Permanent link">&para;</a></h2>
 <p>Somatic copy-numbers were called for paired tumor-normal cases (n=56) using HMMCopy tool (version 1.22.0) using author’s recommendations. In brief, GC counts and mappability files for CanFam3.1 genome were generated with 1000 bp window size. Read counts for each of tumor and normal bam files were generated using 1000 bp window size. Resulting count, mappability and count files were feed into HMMCopy algorithm (<a href="http://bioconductor.org/packages/release/bioc/html/HMMcopy.html">http://bioconductor.org/packages/release/bioc/html/HMMcopy.html</a>) and segmentations were called using Viterbi algorithm.</p>
 <p>Segmented copy number calls were used to generate Integrated Genome Viewer (IGV) copy-number plots and GISTIC2 (version 2.0.22) based somatic copy number significance (Mermel et al., 2011), including calling gene-level deep deletions, loss-of-heterozygosity (LOH), and amplifications (Figure 2A) as well as inferring aneuploidy metrics (Figure 2B, 2C, 2D). Segmented copy number for pediatric gliomas (n=53) were called by using cloud-based TitanCNA workflow (<a href="https://dxapp.verhaaklab.com/dnanexus_ngsapp">https://dxapp.verhaaklab.com/dnanexus_ngsapp</a>).</p>
