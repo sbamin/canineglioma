@@ -156,7 +156,10 @@ ls()
 | cgp_maftools_gistic_matched | maftools compatible MAF object **only** on 67 canine patients with paired tumor-normal samples where somatic copy number data was available. |
 | cgp_maftools_gistic_n81 | maftools compatible MAF object of 81 canine patients. This object **also** contain copy number data on 67 of 81 canine patients where paired tumor-normal samples were available. |
 | cgp_maftools_gistic_methy | maftools compatible MAF object of 42 canine patients where DNA methylation data was available. |
-| cancer_genes_maftools | Cancer genes with observed somatic mutation in canine patients (n=48). Based on cancer hallmark analysis (Fig 1B).
+| cancer_genes_maftools | Cancer genes with observed somatic mutation in canine patients (n=48). Based on cancer hallmark analysis (Fig 1B). |
+| HALLMARK | Genes (n=277) to Cancer Hallmarks (n=11) mapping |
+| CG_all | Somatic variants in canine glioma cohort (n=62/81 cases) |
+| ALL_HALLMARK_v1 | Cancer Hallmark table for Figure 1C |
 | mutrate_table | Somatic mutation burden across patients of canine and human pediatric and adult cancers (n=4,840). |
 | merged_anp_scores | Comparative aneuploidy metrics showing fraction of genome with aneuploidy |
 | cgp_aneuploidy_metrics_master | aneuploidy metrics for 67 canine glioma patients. |
@@ -172,3 +175,6 @@ ls()
 | merged_ag_pg_cg_denovo_sig | De-novo mutational signatures from canine, human pediatric and adult cohort. |
 | trimmed_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3C |
 | win_table_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3D |
+| {cgp, tcga}_info | Sample metadata for suppl figure 5. |
+| {cgp, ped, tcga}_cibersort | CIBERSORT output for three cohorts. |
+| fig5b_dat | Data related to IHC panel, Figure 5B. |
