@@ -514,8 +514,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../A1_preload/" title="Preload" class="md-nav__link">
-      Preload
+    <a href="../A1_preload/" title="Start Here" class="md-nav__link">
+      Start Here
     </a>
   </li>
 
@@ -770,8 +770,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S3/" title="S3 · Suppl Figure 3" class="md-nav__link">
-      S3 &middot; Suppl Figure 3
+    <a href="../S3/" title="S3 · Suppl Figures" class="md-nav__link">
+      S3 &middot; Suppl Figures
     </a>
   </li>
 
@@ -967,61 +967,61 @@
 52
 53
 54
-55</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>## Function to plot each of three panels of Fig 3C
-plot_driver_gene_signatures &lt;- function(df, xtitle) {
+55</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">## Function to plot each of three panels of Fig 3C</span>
+<span class="n">plot_driver_gene_signatures</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">xtitle</span><span class="p">)</span> <span class="p">{</span>
 
-  tmp_driver_vcf &lt;- df %&gt;%
-    filter(Gene_Name %in% oncoprint_genes_snv_scna) %&gt;%
-    ## extract columns that have signature wise probability per somatic variant
-    dplyr::select(Gene_Name, ends_with(&quot;prob&quot;)) %&gt;%
-    distinct() %&gt;%
-    gather(sigs, prop, -Gene_Name) %&gt;%
-    mutate(prop = if_else(is.na(prop), 0, prop)) %&gt;%
-    group_by(Gene_Name) %&gt;%
-    mutate(total_prop = sum(prop),
-           prop_scaled = scales::rescale(prop, to = c(0, 1))) %&gt;%
-    ungroup() %&gt;%
-    filter(!total_prop == 0) %&gt;%
-    mutate(sigs = sprintf(&quot;S%s&quot;, gsub(&quot;(Signature\\.)([0-9]{1,2})(\\.prob)&quot;, &quot;\\2&quot;, sigs))) %&gt;%
-    left_join(driver_sigs_groups %&gt;% rename(sigs = signature))
+  <span class="n">tmp_driver_vcf</span> <span class="o">&lt;-</span> <span class="n">df</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">Gene_Name</span> <span class="o">%in%</span> <span class="n">oncoprint_genes_snv_scna</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="c1">## extract columns that have signature wise probability per somatic variant</span>
+    <span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">Gene_Name</span><span class="p">,</span> <span class="nf">ends_with</span><span class="p">(</span><span class="s">&quot;prob&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">distinct</span><span class="p">()</span> <span class="o">%&gt;%</span>
+    <span class="nf">gather</span><span class="p">(</span><span class="n">sigs</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="o">-</span><span class="n">Gene_Name</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">prop</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">prop</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="n">prop</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">Gene_Name</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">total_prop</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">prop</span><span class="p">),</span>
+           <span class="n">prop_scaled</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">rescale</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)))</span> <span class="o">%&gt;%</span>
+    <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="n">total_prop</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">sigs</span> <span class="o">=</span> <span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;S%s&quot;</span><span class="p">,</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;(Signature\\.)([0-9]{1,2})(\\.prob)&quot;</span><span class="p">,</span> <span class="s">&quot;\\2&quot;</span><span class="p">,</span> <span class="n">sigs</span><span class="p">)))</span> <span class="o">%&gt;%</span>
+    <span class="nf">left_join</span><span class="p">(</span><span class="n">driver_sigs_groups</span> <span class="o">%&gt;%</span> <span class="nf">rename</span><span class="p">(</span><span class="n">sigs</span> <span class="o">=</span> <span class="n">signature</span><span class="p">))</span>
 
-    cols_sig_group &lt;- c(&quot;Aging&quot; = &quot;#b2182b&quot;,
-                        &quot;MMR&quot; = &quot;#fddbc7&quot;,
-                        &quot;HR defect&quot; = &quot;#ffffbf&quot;,
-                        &quot;S18_Neuroblastoma&quot; = &quot;#542788&quot;,
-                        &quot;APOBEC_AID&quot; = &quot;#ef8a62&quot;,
-                        &quot;UV&quot; = &quot;#998ec3&quot;,
-                        &quot;S16_S25&quot; = &quot;lightgray&quot;)
+    <span class="n">cols_sig_group</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Aging&quot;</span> <span class="o">=</span> <span class="s">&quot;#b2182b&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;MMR&quot;</span> <span class="o">=</span> <span class="s">&quot;#fddbc7&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;HR defect&quot;</span> <span class="o">=</span> <span class="s">&quot;#ffffbf&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;S18_Neuroblastoma&quot;</span> <span class="o">=</span> <span class="s">&quot;#542788&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;APOBEC_AID&quot;</span> <span class="o">=</span> <span class="s">&quot;#ef8a62&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;UV&quot;</span> <span class="o">=</span> <span class="s">&quot;#998ec3&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;S16_S25&quot;</span> <span class="o">=</span> <span class="s">&quot;lightgray&quot;</span><span class="p">)</span>
 
-  ggplot(tmp_driver_vcf, aes(Gene_Name, prop_scaled, fill = factor(sig_group))) +
-    geom_bar(position = &quot;fill&quot;,stat = &quot;identity&quot;) +
-    scale_y_continuous(labels = scales::percent_format()) +
-    coord_flip() +
-    scale_fill_manual(values = cols_sig_group) +
-    theme_cowplot(font_size = 22) +
-    labs(x = &quot;Percentage contribution from signatures&quot;,
-         y = xtitle,
-         fill = &quot;Signatures&quot;) +
-    theme(legend.title = element_text(color = &quot;blue&quot;, size = 14),
-          legend.text = element_text(size = 12))
-}
+  <span class="nf">ggplot</span><span class="p">(</span><span class="n">tmp_driver_vcf</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">Gene_Name</span><span class="p">,</span> <span class="n">prop_scaled</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="n">sig_group</span><span class="p">)))</span> <span class="o">+</span>
+    <span class="nf">geom_bar</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">percent_format</span><span class="p">())</span> <span class="o">+</span>
+    <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">cols_sig_group</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_cowplot</span><span class="p">(</span><span class="n">font_size</span> <span class="o">=</span> <span class="m">22</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Percentage contribution from signatures&quot;</span><span class="p">,</span>
+         <span class="n">y</span> <span class="o">=</span> <span class="n">xtitle</span><span class="p">,</span>
+         <span class="n">fill</span> <span class="o">=</span> <span class="s">&quot;Signatures&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">legend.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">14</span><span class="p">),</span>
+          <span class="n">legend.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">12</span><span class="p">))</span>
+<span class="p">}</span>
 
-## Plot Fig 3C panels
-plot_driver_genes_sigs_cg &lt;- plot_driver_gene_signatures(trimmed_cg_vcf,
-    &quot;Canine&quot;)
-plot_driver_genes_sigs_pg &lt;- plot_driver_gene_signatures(trimmed_pg_vcf,
-    &quot;Pediatric&quot;)
-plot_driver_genes_sigs_ag &lt;- plot_driver_gene_signatures(trimmed_ag_vcf,
-    &quot;Adult&quot;)
+<span class="c1">## Plot Fig 3C panels</span>
+<span class="n">plot_driver_genes_sigs_cg</span> <span class="o">&lt;-</span> <span class="nf">plot_driver_gene_signatures</span><span class="p">(</span><span class="n">trimmed_cg_vcf</span><span class="p">,</span>
+    <span class="s">&quot;Canine&quot;</span><span class="p">)</span>
+<span class="n">plot_driver_genes_sigs_pg</span> <span class="o">&lt;-</span> <span class="nf">plot_driver_gene_signatures</span><span class="p">(</span><span class="n">trimmed_pg_vcf</span><span class="p">,</span>
+    <span class="s">&quot;Pediatric&quot;</span><span class="p">)</span>
+<span class="n">plot_driver_genes_sigs_ag</span> <span class="o">&lt;-</span> <span class="nf">plot_driver_gene_signatures</span><span class="p">(</span><span class="n">trimmed_ag_vcf</span><span class="p">,</span>
+    <span class="s">&quot;Adult&quot;</span><span class="p">)</span>
 
-ggsave(&quot;F3C.pdf&quot;,
-grid.arrange(plot_driver_genes_sigs_cg + theme(legend.position=&quot;bottom&quot;),
-            plot_driver_genes_sigs_pg + theme(legend.position=&quot;bottom&quot;),
-            plot_driver_genes_sigs_ag + theme(legend.position=&quot;bottom&quot;),
-            ncol = 3, widths=c(4,4,4), heights = c(8,8,8)),
-width=20,
-height=24,
-useDingbats = FALSE)
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;F3C.pdf&quot;</span><span class="p">,</span>
+<span class="nf">grid.arrange</span><span class="p">(</span><span class="n">plot_driver_genes_sigs_cg</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="s">&quot;bottom&quot;</span><span class="p">),</span>
+            <span class="n">plot_driver_genes_sigs_pg</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="s">&quot;bottom&quot;</span><span class="p">),</span>
+            <span class="n">plot_driver_genes_sigs_ag</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="s">&quot;bottom&quot;</span><span class="p">),</span>
+            <span class="n">ncol</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="n">heights</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">8</span><span class="p">)),</span>
+<span class="n">width</span><span class="o">=</span><span class="m">20</span><span class="p">,</span>
+<span class="n">height</span><span class="o">=</span><span class="m">24</span><span class="p">,</span>
+<span class="n">useDingbats</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
                 

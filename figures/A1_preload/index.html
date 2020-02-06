@@ -42,7 +42,7 @@
     
     
       
-        <title>Preload &middot; RData</title>
+        <title>Start Here &middot; Canine Glioma</title>
       
     
     
@@ -97,7 +97,7 @@
       <meta property="og:url" content="https://canineglioma.verhaaklab.com/figures/A1_preload/">
 
       
-        <meta property="og:title" content="Preload &middot; RData">
+        <meta property="og:title" content="Start Here &middot; Canine Glioma">
       
 
       <meta property="og:description" content="Canine Glioma Project &middot; Extended Methods, Data, and Code for Figures">
@@ -112,7 +112,7 @@
       <meta name="twitter:creator" content="@roelverhaak">
 
       
-        <meta property="twitter:title" content="Preload &middot; RData">
+        <meta property="twitter:title" content="Start Here &middot; Canine Glioma">
       
 
       <meta name="twitter:description" content="Canine Glioma Project &middot; Extended Methods, Data, and Code for Figures">
@@ -170,7 +170,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Preload &middot; RData
+                Start Here &middot; Canine Glioma
               
             </span>
           
@@ -525,11 +525,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Preload
+        Start Here
       </label>
     
-    <a href="./" title="Preload" class="md-nav__link md-nav__link--active">
-      Preload
+    <a href="./" title="Start Here" class="md-nav__link md-nav__link--active">
+      Start Here
     </a>
     
       
@@ -819,8 +819,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S3/" title="S3 · Suppl Figure 3" class="md-nav__link">
-      S3 &middot; Suppl Figure 3
+    <a href="../S3/" title="S3 · Suppl Figures" class="md-nav__link">
+      S3 &middot; Suppl Figures
     </a>
   </li>
 
@@ -1006,7 +1006,7 @@
                 <!-- enable git edit link only if config.repo_edit is set to true -->
                 
                 
-                  <h1>Preload</h1>
+                  <h1>Start Here</h1>
                 
                 <h3 id="r-session">R session<a class="headerlink" href="#r-session" title="Permanent link">&para;</a></h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nf">sessionInfo</span><span class="p">()</span>
@@ -1231,7 +1231,8 @@ loaded via a namespace (and not attached):
 25
 26
 27
-28</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">## For Figure 1 and 2, including supplemental figures</span>
+28
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">## For Figure 1 and 2, including supplemental figures</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">knitr</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">htmlTable</span><span class="p">)</span>
 
@@ -1259,6 +1260,7 @@ loaded via a namespace (and not attached):
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">GenomicFeatures</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">NMF</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">BradleyTerryScalable</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1357,6 +1359,10 @@ loaded via a namespace (and not attached):
 <tr>
 <td>trimmed_{cg,pg,ag}_vcf</td>
 <td>Trimmed VCFs for plotting Figure 3C</td>
+</tr>
+<tr>
+<td>win_table_{cg,pg,ag}_vcf</td>
+<td>Trimmed VCFs for plotting Figure 3D</td>
 </tr>
 </tbody>
 </table>

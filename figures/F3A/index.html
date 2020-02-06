@@ -518,8 +518,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../A1_preload/" title="Preload" class="md-nav__link">
-      Preload
+    <a href="../A1_preload/" title="Start Here" class="md-nav__link">
+      Start Here
     </a>
   </li>
 
@@ -828,8 +828,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S3/" title="S3 · Suppl Figure 3" class="md-nav__link">
-      S3 &middot; Suppl Figure 3
+    <a href="../S3/" title="S3 · Suppl Figures" class="md-nav__link">
+      S3 &middot; Suppl Figures
     </a>
   </li>
 
@@ -1139,24 +1139,24 @@
 15
 16
 17
-18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>## mut_mat object is within /data/cgp_base_objects_v1.0.RData
-## mut_mat &lt;- MutationalPattern::mut_matrix(vcf_list = vcfs,
-    ref_genome = ref_genome)
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">## mut_mat object is within /data/cgp_base_objects_v1.0.RData</span>
+<span class="c1">## mut_mat &lt;- MutationalPattern::mut_matrix(vcf_list = vcfs,</span>
+    <span class="n">ref_genome</span> <span class="o">=</span> <span class="n">ref_genome</span><span class="p">)</span>
 
-fit_res &lt;- fit_to_signatures(mut_mat, cancer_signatures)
+<span class="n">fit_res</span> <span class="o">&lt;-</span> <span class="nf">fit_to_signatures</span><span class="p">(</span><span class="n">mut_mat</span><span class="p">,</span> <span class="n">cancer_signatures</span><span class="p">)</span>
 
-hypermutators &lt;- c(&quot;i_8228&quot;, &quot;i_95FC&quot;, &quot;i_BD58&quot;, &quot;i_1C36&quot;,
-    &quot;i_502F&quot;, &quot;i_D732&quot;, &quot;i_6B06&quot;, &quot;i_56B5&quot;)
+<span class="n">hypermutators</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;i_8228&quot;</span><span class="p">,</span> <span class="s">&quot;i_95FC&quot;</span><span class="p">,</span> <span class="s">&quot;i_BD58&quot;</span><span class="p">,</span> <span class="s">&quot;i_1C36&quot;</span><span class="p">,</span>
+    <span class="s">&quot;i_502F&quot;</span><span class="p">,</span> <span class="s">&quot;i_D732&quot;</span><span class="p">,</span> <span class="s">&quot;i_6B06&quot;</span><span class="p">,</span> <span class="s">&quot;i_56B5&quot;</span><span class="p">)</span>
 
-non_hypermutators &lt;- colnames(mut_mat)[!colnames(mut_mat) %in% hypermutators]
+<span class="n">non_hypermutators</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">mut_mat</span><span class="p">)</span><span class="n">[</span><span class="o">!</span><span class="nf">colnames</span><span class="p">(</span><span class="n">mut_mat</span><span class="p">)</span> <span class="o">%in%</span> <span class="n">hypermutators]</span>
 
-## non-hypermutators or one without outlier mutation profile
-fit_res_nonhm &lt;- fit_to_signatures(mut_mat[, colnames(mut_mat) %in%
-    non_hypermutators], cancer_signatures)
+<span class="c1">## non-hypermutators or one without outlier mutation profile</span>
+<span class="n">fit_res_nonhm</span> <span class="o">&lt;-</span> <span class="nf">fit_to_signatures</span><span class="p">(</span><span class="n">mut_mat[</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">mut_mat</span><span class="p">)</span> <span class="o">%in%</span>
+    <span class="n">non_hypermutators]</span><span class="p">,</span> <span class="n">cancer_signatures</span><span class="p">)</span>
 
-## hypermutators or one with outlier mutation profile
-fit_res_hm &lt;- fit_to_signatures(mut_mat[, colnames(mut_mat) %in%
-    hypermutators], cancer_signatures)
+<span class="c1">## hypermutators or one with outlier mutation profile</span>
+<span class="n">fit_res_hm</span> <span class="o">&lt;-</span> <span class="nf">fit_to_signatures</span><span class="p">(</span><span class="n">mut_mat[</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">mut_mat</span><span class="p">)</span> <span class="o">%in%</span>
+    <span class="n">hypermutators]</span><span class="p">,</span> <span class="n">cancer_signatures</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
