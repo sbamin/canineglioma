@@ -1,5 +1,6 @@
 ---
 title: F2C &middot; Comparative Shared Syntenic Aneuploidy
+authors: "Floris P. Barthel"
 ---
 
 `mat_aneuploidy_summary_mostvar_cgAll` matrix contains proportion of patients per cohort with arm-level aneuploidy, and was based on [arm-level aneuploidy metrics](/methods/S11_aneuploidy/). Related code is available at the GLASS consortium [marker paper code repository](https://github.com/TheJacksonLaboratory/GLASS/tree/master/sql/cnv), namely, `recapseg_postgres.sql` and `taylor_aneuploidy.sql` [^1].

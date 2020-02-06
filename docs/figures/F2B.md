@@ -1,10 +1,11 @@
 ---
 title: F2B &middot; Comparative Aneuploidy Burden
+authors: "Floris P. Barthel"
 ---
 
 ### Fig 2B
 
->Comparative aneuploidy burden.
+>Comparative aneuploidy burden. Related code is available at the GLASS consortium [marker paper code repository](https://github.com/TheJacksonLaboratory/GLASS/tree/master/sql/cnv), namely, `recapseg_postgres.sql` and `taylor_aneuploidy.sql` [^1].
 
 ```r
 fig_2B <- ggpubr::ggboxplot(merged_anp_scores %>%
@@ -77,3 +78,5 @@ save_plot("SF2E.pdf",
           dpi = "retina",
           useDingbats = FALSE)
 ```
+
+[^1]: Barthel FP, Johnson KC, Varn FS, Moskalik AD, Tanner G, Kocakavuk E, et al. Longitudinal molecular trajectories of diffuse glioma in adults. Nature 2019. doi: [10.1038/s41586-019-1775-1](https://doi.org/10.1038/s41586-019-1775-1).
