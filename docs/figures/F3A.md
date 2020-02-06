@@ -59,7 +59,7 @@ nonhm_sampled <- c(28,48,30,57,54,40,37,7,62)
 
 >Fitted mutational signatures, i.e., `fit_res`, `fit_res_hm` and `fit_res_nonhm` were derived using `fit_to_signatures` function from *MutationalPatterns* R package[^2].
 
-```
+```r
 ## mut_mat object is within /data/cgp_base_objects_v1.0.RData
 ## mut_mat <- MutationalPattern::mut_matrix(vcf_list = vcfs,
     ref_genome = ref_genome)

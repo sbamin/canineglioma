@@ -29,7 +29,7 @@ nav:
       - Class Prediction using methylation classifier: methods/S15_class_predict_methy.md
       - Immune Microenvironment Analysis: methods/S16_expression_immune.md
     - Figures:
-      - Preload: figures/A1_preload.md
+      - Start Here: figures/A1_preload.md
       - F1:
         - figures/F1A.md
         - figures/F1B.md

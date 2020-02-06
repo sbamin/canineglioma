@@ -4,7 +4,7 @@ title: F3C &middot; Comparative Somatic Mutational Signatures in Driver Genes
 
 >Plot estimated mutational signature contribution per driver gene.
 
-```
+```r
 ## Function to plot each of three panels of Fig 3C
 plot_driver_gene_signatures <- function(df, xtitle) {
 

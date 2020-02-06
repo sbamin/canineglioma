@@ -1,5 +1,5 @@
 ---
-title: Preload &middot; RData
+title: Start Here &middot; Canine Glioma
 ---
 
 ### R session
@@ -137,6 +137,7 @@ library(MutationalPatterns)
 library(tidyverse)
 library(GenomicFeatures)
 library(NMF)
+library(BradleyTerryScalable)
 ```
 
 ### Load R objects
@@ -170,7 +171,4 @@ ls()
 | instability_sigs_df | subset of `fit_res$contribution` matrix for suppl fig 3B. |
 | merged_ag_pg_cg_denovo_sig | De-novo mutational signatures from canine, human pediatric and adult cohort. |
 | trimmed_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3C |
-
-
-
-
+| win_table_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3D |

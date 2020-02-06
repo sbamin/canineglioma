@@ -23,7 +23,7 @@ merged_ag_pg_cg_denovo_sig <- as_tibble(ag_denovo_sig, rownames = "sigs") %>%
     column_to_rownames("sigs")
 ```
 
-*   Calculate cosine similarity using `deconvolution_compare` function in [*Palimpsest*](https://github.com/FunGeST/Palimpsest) R package[^1].
+*   Calculate cosine similarity using `deconvolution_compare` function in [*Palimpsest*](https://github.com/FunGeST/Palimpsest) R package[^1]. Author of Palimpsest package has provided [a detailed documentation](https://github.com/FunGeST/Palimpsest/raw/master/Files/vignette_palimpsest_2.0.pdf) on how to run Palimpsest workflow.
 
 ```r
 ## Deconvoluted signatures from human cancers
