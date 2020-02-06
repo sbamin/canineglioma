@@ -166,7 +166,11 @@ ls()
 | cancer_signatures | Known human mutational signatures in adult (n=30, COSMIC v2) and pediatric cancers (n=12). |
 | fit_res_hm | Somatic mutational signatures in canine glioma patients with outlier mutation profile (n=8). Signatures were fitted to known human mutational signatures. |
 | fit_res_nonhm | Somatic mutational signatures in canine glioma patients without outlier mutation profile (n=73). Signatures were fitted to known human mutational signatures. |
-| hm_nonhm_topsigs_tbl | Mutational signatures and their grouping to proposed mechnaism |
+| hm_nonhm_topsigs_tbl, driver_sigs_groups | Mutational signatures and their grouping to proposed mechnaism |
 | instability_sigs_df | subset of `fit_res$contribution` matrix for suppl fig 3B. |
+| merged_ag_pg_cg_denovo_sig | De-novo mutational signatures from canine, human pediatric and adult cohort. |
+| trimmed_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3C |
+
+
 
 
