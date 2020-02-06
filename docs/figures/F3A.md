@@ -343,5 +343,5 @@ ggsave("SF3B.pdf",
        useDingbats = FALSE)
 ```
 
-[^1]: Earlier version of fit_res_hm had 9 and not 8 canine glioma patients with outlier mutation profile. Therefore, 9 cases were selected at random from remaining patients without outlier mutation profile.
+[^1]: Earlier version of `fit_res_hm` had 9 and not 8 canine glioma patients with outlier mutation profile. Therefore, 9 cases were selected at random from remaining patients without outlier mutation profile.
 [^2]: Blokzijl F, Janssen R, van Boxtel R, Cuppen E. MutationalPatterns: comprehensive genome-wide analysis of mutational processes. Genome Med 2018;10:33. doi: [10.1186/s13073-018-0539-0](https://doi.org/10.1186/s13073-018-0539-0).
