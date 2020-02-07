@@ -12,7 +12,7 @@ master_mutrate_table_cns_cg_who <- mutrate_table %>%
                                  TRUE ~ who_subtype)) %>%
   filter(tumor_location == "Brain", total_per_mb < 10) %>%
   mutate(ctype = reorder(x = who_subtype, X = total_per_mb, FUN = median)) %>%
-  select(-who_subtype) %>%
+  dplyr::select(-who_subtype) %>%
   dplyr::rename(who_subtype = ctype)
 
 log1py_breaks_cns = c(0, 0.5, 1, 2, 5, 10)
@@ -54,12 +54,15 @@ cowplot::save_plot("F1D.pdf", fig_1D,
 
 >Plot pancancer tumors
 
+??? error "unexpected `,` error"
+    Running code by copy-paste may result in error related to R syntax, e.g., `Error: unexpected ',' in "`. If so, try to copy code first in text editor or RStudio app with lint feature. Please [report bugs](https://github.com/TheJacksonLaboratory/canineglioma/issues) by submitting a GitHub issue.
+
 ```r
 master_mutrate_table_cg_who <- mutrate_table %>%
   mutate(who_subtype = case_when(cohort == "Canine Glioma" ~ "Canine Glioma",
                                  TRUE ~ who_subtype)) %>%
   mutate(ctype = reorder(x = who_subtype, X = total_per_mb, FUN = median)) %>%
-  select(-who_subtype) %>%
+  dplyr::select(-who_subtype) %>%
   dplyr::rename(who_subtype = ctype)
 
 log1py_breaks = c(0, 0.5, 1, 2, 5, 10,20,50,100,300,500)
@@ -85,7 +88,8 @@ suppl_fig_1D <- mutrate_plot1_all_cg_who +
   geom_jitter(width = 0.2) +
   scale_y_continuous(trans = "log1p", breaks = log1py_breaks) +
   cowplot::theme_cowplot(font_size = 22) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, colour = mutrate_plot1_axis_colour_cg_who),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1,
+    colour = mutrate_plot1_axis_colour_cg_who),
         legend.position = "bottom", legend.key.size = unit(1, "cm")) +
   labs(x = "Cancer type across 4,840 patients",
        y = "Total coding snvs+indels per MB in log(x+1) scale")
@@ -107,7 +111,7 @@ high_grade_gliomas <- cgp_suppl_sample_info_master %>%
 mutrate_table_cns_hgg_idh_classes_cg_who <- master_mutrate_table_cns_cg_who %>%
   filter(grepl("IDH|H3", who_subtype) | 
            (cohort == "Canine Glioma" & sample %in% high_grade_gliomas)) %>%
-  rename(who_subtype_orig = who_subtype) %>%
+  dplyr::rename(who_subtype_orig = who_subtype) %>%
   mutate(who_subtype_orig = if_else(cohort == "Canine Glioma", "Canine HGG", as.character(who_subtype_orig))) %>%
   mutate(who_subtype = reorder(x = who_subtype_orig, X = total_per_mb, FUN = median))
 
@@ -133,7 +137,7 @@ suppl_fig_1E <- ggpubr::ggboxplot(mutrate_table_cns_hgg_idh_classes_cg_who,
   ggpubr::stat_compare_means(comparisons = mutrate_comparisons_idh_classes_cg_who,
     method = "wilcox.test")
 
-cowplot::save_plot("SF1E",
+cowplot::save_plot("SF1E.pdf",
                    suppl_fig_1E,
                    base_height = 12, base_width = 16,
                    dpi = "retina",

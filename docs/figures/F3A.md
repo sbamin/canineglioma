@@ -49,7 +49,7 @@ cgp_outlier_mutant_cases
 
 ```r
 ## nonhm_sampled <- sample(ncol(fit_res_nonhm$contribution),
-    ncol(fit_res_hm$contribution), replace = FALSE)
+##     ncol(fit_res_hm$contribution), replace = FALSE)
 
 ## following cases were used in the right-side panel of fig 3A
 nonhm_sampled <- c(28,48,30,57,54,40,37,7,62)
@@ -62,7 +62,7 @@ nonhm_sampled <- c(28,48,30,57,54,40,37,7,62)
 ```r
 ## mut_mat object is within /data/cgp_base_objects_v1.0.RData
 ## mut_mat <- MutationalPattern::mut_matrix(vcf_list = vcfs,
-    ref_genome = ref_genome)
+##    ref_genome = ref_genome)
 
 fit_res <- fit_to_signatures(mut_mat, cancer_signatures)
 

@@ -51,14 +51,21 @@ varcall_colors <- c(Amp = "#006400",
     In_Frame_Ins = "#FFC1C9",
     Missense_Mutation = "#CD6600",
     Translation_Start_Site = "#008B8B",
-    Multi_Hit = "#3D3D3D"
+    Multi_Hit = "#3D3D3D")
 ```
 
 ### Fig 1A
 
 >Somatic mutational lanscape of glioma driver genes. Based on [significantly mutated genes analysis](/methods/S06_smgs).
 
+??? error "font family 'Arial' not found"
+    If you get an error, `font family 'Arial' not found in PostScript font database`, either remove *fonts* argument from `pdf` or import system fonts using *extrafont* R package. See [documentation by Gavin Simpson](https://www.fromthebottomoftheheap.net/2013/09/09/preparing-figures-for-plos-one-with-r/) for details.
+
 ```r
+## Import Arial fonts
+library(extrafont)
+loadfonts()
+
 pdf("F1A.pdf",
     width = 18, height = 12, pointsize = 12,
     fonts = "Arial", bg = "white",
@@ -131,7 +138,7 @@ dev.off()
 ```r
 pdf("SF1F.pdf",
     width = 18, height = 12, pointsize = 12,
-    fonts = "Arial", bg = "white",
+    bg = "white",
     compress = FALSE, useDingbats = FALSE)
 
 suppl_fig_1F <- oncoplot(maf = cgp_maftools_gistic_n81,
@@ -150,7 +157,7 @@ suppl_fig_1F <- oncoplot(maf = cgp_maftools_gistic_n81,
                        "Matched_Normal"),
     annotationColor = ann_colors,
     colors = varcall_colors[
-    c(levels(cgp_maftools_custom_scna_n81@data$Variant_Classification), 
+    c(levels(cgp_maftools_gistic_n81@data$Variant_Classification), 
     "Multi_Hit")
     ],
     logColBar = FALSE,

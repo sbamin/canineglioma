@@ -1,2 +1,94 @@
+User-agent: Googlebot
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Googlebot-Image
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Twitterbot
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Bingbot
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: DuckDuckBot
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: ia_archiver
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Applebot
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: facebookexternalhit
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Facebot
+Disallow: /assets/js/
+Disallow: /assets/javascripts/
+Disallow: /assets/stylesheets/
+Disallow: /assets/css/
+Disallow: /assets/fonts/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
 User-agent: *
 Disallow: /
+
+Sitemap: https://canineglioma.verhaaklab.com/sitemap.xml

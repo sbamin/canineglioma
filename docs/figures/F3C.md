@@ -21,7 +21,7 @@ plot_driver_gene_signatures <- function(df, xtitle) {
     ungroup() %>%
     filter(!total_prop == 0) %>%
     mutate(sigs = sprintf("S%s", gsub("(Signature\\.)([0-9]{1,2})(\\.prob)", "\\2", sigs))) %>%
-    left_join(driver_sigs_groups %>% rename(sigs = signature))
+    left_join(driver_sigs_groups %>% dplyr::rename(sigs = signature))
 
     cols_sig_group <- c("Aging" = "#b2182b",
                         "MMR" = "#fddbc7",

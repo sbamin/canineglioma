@@ -44,7 +44,7 @@ fig_2B <- ggpubr::ggboxplot(merged_anp_scores %>%
     theme(axis.text.x = element_text(angle = 45, hjust = 1),
     axis.title.x = element_blank())
 
-cowplot::save_plot("F2B",
+cowplot::save_plot("F2B.pdf",
           fig_2B,
           base_height = 4, base_width = 5,
           dpi = "retina", useDingbats = FALSE)

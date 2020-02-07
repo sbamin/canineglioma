@@ -6,6 +6,9 @@ title: F2D &middot; Comparative Intratumor Heterogeneity
 
 >Clonality of potential driver genes with respect to intra-tumor heterogeneity as measured with Shannon entropy.
 
+??? error "Error: unexpected symbol in...`who_subtype`..."
+    Prefer runnning code in RStudio. This error does not appear when running code in RStudio but pops up when running on command-line R. Likely due to font ligatures and/or use of of line breaks.
+
 ```r
 fig_2D <- ggplot(merged_ccf_vaf_df %>%
     ## Pediatric LGG has minimal somatic
@@ -18,16 +21,16 @@ fig_2D <- ggplot(merged_ccf_vaf_df %>%
         aes(colour = clone_type, size = VAF)) +
     scale_size(range = c(.1, 10), name = "VAF") +
     ggrepel::geom_label_repel(
-    data = . %>%
-    filter(Hugo_Symbol %in%
-        c(oncoprint_genes_snv_scna, "CIC")) %>%
-    group_by(who_subtype, clone_type) %>%
-    add_count(Hugo_Symbol, sort = T) %>%
-    mutate(Hugo_Symbol = sprintf("%s (%s)", Hugo_Symbol, n)) %>%
-    filter((who_subtype != "PG_H3wt" & n >= 1) | 
-           (who_subtype == "PG_H3wt" & n >= 2))
-    ungroup() %>%
-    distinct(Hugo_Symbol, .keep_all = TRUE),
+        data = . %>%
+                filter(Hugo_Symbol %in%
+                    c(oncoprint_genes_snv_scna, "CIC")) %>%
+                group_by(who_subtype, clone_type) %>%
+                add_count(Hugo_Symbol, sort = T) %>%
+                mutate(Hugo_Symbol = sprintf("%s (%s)", Hugo_Symbol, n)) %>%
+                filter((who_subtype != "PG_H3wt" & n >= 1) | 
+                       (who_subtype == "PG_H3wt" & n >= 2))
+                ungroup() %>%
+                distinct(Hugo_Symbol, .keep_all = TRUE),
     nudge_x = 0.25,
     direction = "y",
     hjust = 0,
@@ -42,7 +45,7 @@ fig_2D <- ggplot(merged_ccf_vaf_df %>%
     legend.text = element_text(size = 14)) +
     guides(colour = guide_legend(override.aes = list(size = 10, alpha = 1)))
 
-cowplot::save_plot("F2D",
+cowplot::save_plot("F2D.pdf",
           fig_2D,
           base_height = 12, base_width = 16,
           dpi = "retina", useDingbats = FALSE)

@@ -2,13 +2,23 @@
 title: Start Here &middot; Canine Glioma
 ---
 
+### Raw sequence data
+
+Sequencing data generated from canine patients with glioma (n=83 donors) is available in the Binary Alignment Map (BAM) format (n=373) at the NCBI SRA database under BioProject ID: [PRJNA579792](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA579792).
+
+[View details](/methods/S02_data_sources/) on comparative sequencing data used from patients of human pediatric and glioma.
+
 ### R session
 
+- [x] Prefer using RStudio or similar GUI over copy-pasting code in terminal. The latter may emit errors due to issues with syntax highlighting and font ligatures used on this website.
+- [x] Code on this website was evaluated in an isolated, new environment and syntax-related errors were addressed on the top of respective code blocks. Please [report bugs](https://github.com/TheJacksonLaboratory/canineglioma/issues) by submitting a GitHub issue. 
+
+ 
 ```r
 sessionInfo()
 ```
 
->Package versions may have updated versions here. Versions for core R packages that were used in the manuscript are listed in the manuscript under STAR methods `=>` Key Resources Table.
+>Package versions may have updated versions here than what was used at the time of publication. Versions for core R packages that were used in the manuscript are listed in the manuscript under STAR methods `=>` Key Resources Table.
 
 ```
 R version 3.6.1 (2019-07-05)
@@ -45,7 +55,7 @@ other attached packages:
 [23] NMF_0.21.0                Biobase_2.44.0           
 [25] BiocGenerics_0.30.0       cluster_2.1.0            
 [27] rngtools_1.4              pkgmaker_0.27            
-[29] registry_0.5-1           
+[29] registry_0.5-1            extrafont_0.17          
 
 loaded via a namespace (and not attached):
   [1] colorspace_1.4-1            ggsignif_0.5.0             
@@ -138,15 +148,20 @@ library(tidyverse)
 library(GenomicFeatures)
 library(NMF)
 library(BradleyTerryScalable)
+
+## Import Arial fonts
+library(extrafont)
+loadfonts()
 ```
 
 ### Load R objects
 
-Download [/data/cgp_base_objects_v1.0.RData](/data/cgp_base_objects_v1.0.RData)
+:rocket: Download [/data/cgp_base_objects_v1_20200207.RData](/data/cgp_base_objects_v1_20200207.RData) ==Link will be active on Feb 10, 2020.==
 
 ```r
-load("cgp_base_objects_v1.RData")
+load("cgp_base_objects_v1_20200207.RData")
 ls()
+## 37 objects
 ```
 
 | R object | Description |
@@ -175,6 +190,8 @@ ls()
 | merged_ag_pg_cg_denovo_sig | De-novo mutational signatures from canine, human pediatric and adult cohort. |
 | trimmed_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3C |
 | win_table_{cg,pg,ag}_vcf | Trimmed VCFs for plotting Figure 3D |
+| cgp_RRBS.noNormals_class_prediction | class prediction table for Figure 4 |
+| cgp_RRBS.noNormals_sample_info | Donor level information for 45 canine patients with glioma where DNA methylation data was available. |
 | {cgp, tcga}_info | Sample metadata for suppl figure 5. |
 | {cgp, ped, tcga}_cibersort | CIBERSORT output for three cohorts. |
 | fig5b_dat | Data related to IHC panel, Figure 5B. |

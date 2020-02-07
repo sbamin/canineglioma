@@ -17,6 +17,7 @@ denovo_cg_sig <- as.data.frame(t(nmf_res$signatures))
 *   Resulting de-novo signatures from three cohorts were then merged into a single dataframe.
 
 ```r
+## merged_ag_pg_cg_denovo_sig is already given in cgp_base_objects_*.RData 
 merged_ag_pg_cg_denovo_sig <- as_tibble(ag_denovo_sig, rownames = "sigs") %>%
     bind_rows(as_tibble(pg_denovo_sig, rownames = "sigs")) %>%
     bind_rows(as_tibble(transposed_denovo_cg_sig, rownames = "sigs")) %>%
@@ -36,9 +37,16 @@ colnames(alt_cancer_sig_transposed) <-
         colnames(alt_cancer_sig_transposed))
 
 ## calculate cosine similarity
+pdf("tmp_SF3D.pdf",
+    width = 18, height = 12, pointsize = 12,
+    bg = "white",
+    compress = FALSE, useDingbats = FALSE)
+
 cos_sim_denovo_cancer_sig_ag_pg_cg <- Palimpsest::deconvolution_compare(
     merged_ag_pg_cg_denovo_sig,
     alt_cancer_sig_transposed)
+
+dev.off()
 
 ## Plot Suppl Fig 3D
 ## Fig3B is a cropped version of Suppl Fig 3D

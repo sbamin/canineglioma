@@ -23,7 +23,7 @@ mk_win_table <- function(win_table_vcf) {
     dplyr::select(Gene_Name, result, n) %>%
     ## get weighted counts by multiplying events and occurrence
     mutate(weighted_result = result * n) %>%
-    rename(freq = n) %>%
+    dplyr::rename(freq = n) %>%
     group_by(Gene_Name) %>%
     mutate(mean_result = mean(weighted_result)) %>%
     ungroup() %>%
@@ -47,10 +47,10 @@ mk_win_table <- function(win_table_vcf) {
                     stringsAsFactors = F) %>%
     tbl_df() %>%
     ## rename V1 and V2 to P1 and P2, respectively
-    rename_at(vars(V1, V2), ~gsub("V", "P", .)) %>%
+    dplyr::rename_at(vars(V1, V2), ~gsub("V", "P", .)) %>%
     ## where _vaf is clonality based estimate if event
     ## is ~clonal (early) or ~subclonal
-    rename(P1_vaf = V3,
+    dplyr::rename(P1_vaf = V3,
            P2_vaf = V4) %>%
     ## take a win/loss/draw call
     mutate(outcome = case_when(P1_vaf > P2_vaf ~ "P1",

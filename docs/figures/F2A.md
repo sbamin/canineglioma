@@ -24,7 +24,7 @@ mafplot_2_scna <- oncoplot(maf = cgp_maftools_gistic_matched,
                         "Tumor_Location"),
     annotationColor = ann_colors,
     colors = varcall_colors[
-    c(levels(cgp_maftools_custom_scna@data$Variant_Classification),
+    c(levels(cgp_maftools_gistic_matched@data$Variant_Classification),
     "Multi_Hit")
     ],
     logColBar = FALSE,

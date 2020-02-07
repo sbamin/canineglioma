@@ -8,7 +8,7 @@ Cancer Hallmarks enrichment across canine, human pediatric and adult gliomas.
 
 ```r
 table_hallmark <- as.data.frame(table(HALLMARK$hallmark)) %>%
-                    rename(hallmark = Var1)
+                    dplyr::rename(hallmark = Var1)
 
 ## require at least one driver event
 Freq_threshold = 1
@@ -17,10 +17,10 @@ CG_HALLMARK <- CG_all %>%
   gather(key = sample, value = value, -gene_symbol) %>%
   filter(gene_symbol %in% HALLMARK$gene_symbol) %>% 
   left_join(HALLMARK, by = "gene_symbol") %>% 
-  select(-gene_symbol) %>% 
+  dplyr::select(-gene_symbol) %>% 
   group_by(hallmark, sample) %>% 
   mutate(sum = sum(value)) %>%  
-  select(-value) %>% 
+  dplyr::select(-value) %>% 
   ungroup() %>% 
   distinct() %>%
   left_join(table_hallmark) %>% 
@@ -31,7 +31,7 @@ CG_HALLMARK <- CG_all %>%
   mutate(proportion_CG = n_alterations/n_hallmark,
          CG_no_alterations = n_hallmark - n_alterations) %>% 
   filter(alteration != 0) %>% 
-  select(hallmark, proportion_CG,
+  dplyr::select(hallmark, proportion_CG,
          CG_alterations = n_alterations,
          CG_no_alterations,
          CG_total = n_hallmark) %>% 
@@ -51,7 +51,7 @@ ALL_HALLMARK_v1 <- AG_IDHWT_HALLMARK %>%
     left_join(PG_HGG_HALLMARK,  by =  "hallmark") %>%
     left_join(PG_LGG_HALLMARK,  by =  "hallmark") %>%
     left_join(CG_HALLMARK,  by =  "hallmark") %>% 
-    select(hallmark,
+    dplyr::select(hallmark,
         IDHWT = proportion_AG_IDHWT,
         IDHMUT_CODEL = proportion_AG_IDHMUT_CODEL,
         IDHMUT_NONCODEL = proportion_AG_IDHMUT_NONCODEL,

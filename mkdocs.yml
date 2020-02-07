@@ -99,6 +99,7 @@ extra:
     tokenizer: '[\s\-\.]+'
   twittercard:
     user: roelverhaak
+    logourl: '/assets/images/lab_logo_sq-md.jpg'
 
 # Google Analytics
 google_analytics:
@@ -124,6 +125,7 @@ markdown_extensions:
   - pymdownx.tilde
   - meta
   - footnotes
+  - pymdownx.emoji
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.betterem:
@@ -135,3 +137,5 @@ plugins:
   - search
   - git-revision-date-localized:
       type: date
+  - minify:
+      minify_html: true
