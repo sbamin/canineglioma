@@ -1,2 +1,58 @@
+User-agent: Googlebot
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Googlebot-Image
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Twitterbot
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Bingbot
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: DuckDuckBot
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: ia_archiver
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Applebot
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: facebookexternalhit
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
+User-agent: Facebot
+Disallow: /assets/
+Disallow: /CNAME
+Disallow: /*.md$
+Disallow: /data/
+
 User-agent: *
 Disallow: /
+
+Sitemap: https://canineglioma.verhaaklab.com/sitemap.xml
