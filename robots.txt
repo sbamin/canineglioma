@@ -1,53 +1,62 @@
 User-agent: Googlebot
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: Googlebot-Image
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: Twitterbot
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: Bingbot
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: DuckDuckBot
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: ia_archiver
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: Applebot
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: facebookexternalhit
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
 
 User-agent: Facebot
 Disallow: /assets/
+Allow: /assets/images/
 Disallow: /CNAME
 Disallow: /*.md$
 Disallow: /data/
