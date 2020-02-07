@@ -74,7 +74,7 @@
     <span class=nf>ungroup</span><span class=p>()</span> <span class=o>%&gt;%</span>
     <span class=nf>filter</span><span class=p>(</span><span class=o>!</span><span class=n>total_prop</span> <span class=o>==</span> <span class=m>0</span><span class=p>)</span> <span class=o>%&gt;%</span>
     <span class=nf>mutate</span><span class=p>(</span><span class=n>sigs</span> <span class=o>=</span> <span class=nf>sprintf</span><span class=p>(</span><span class=s>&quot;S%s&quot;</span><span class=p>,</span> <span class=nf>gsub</span><span class=p>(</span><span class=s>&quot;(Signature\\.)([0-9]{1,2})(\\.prob)&quot;</span><span class=p>,</span> <span class=s>&quot;\\2&quot;</span><span class=p>,</span> <span class=n>sigs</span><span class=p>)))</span> <span class=o>%&gt;%</span>
-    <span class=nf>left_join</span><span class=p>(</span><span class=n>driver_sigs_groups</span> <span class=o>%&gt;%</span> <span class=nf>rename</span><span class=p>(</span><span class=n>sigs</span> <span class=o>=</span> <span class=n>signature</span><span class=p>))</span>
+    <span class=nf>left_join</span><span class=p>(</span><span class=n>driver_sigs_groups</span> <span class=o>%&gt;%</span> <span class=n>dplyr</span><span class=o>::</span><span class=nf>rename</span><span class=p>(</span><span class=n>sigs</span> <span class=o>=</span> <span class=n>signature</span><span class=p>))</span>
 
     <span class=n>cols_sig_group</span> <span class=o>&lt;-</span> <span class=nf>c</span><span class=p>(</span><span class=s>&quot;Aging&quot;</span> <span class=o>=</span> <span class=s>&quot;#b2182b&quot;</span><span class=p>,</span>
                         <span class=s>&quot;MMR&quot;</span> <span class=o>=</span> <span class=s>&quot;#fddbc7&quot;</span><span class=p>,</span>
@@ -113,7 +113,7 @@
 <span class=n>width</span><span class=o>=</span><span class=m>20</span><span class=p>,</span>
 <span class=n>height</span><span class=o>=</span><span class=m>24</span><span class=p>,</span>
 <span class=n>useDingbats</span> <span class=o>=</span> <span class=kc>FALSE</span><span class=p>)</span>
-</pre></div> </td></tr></table> <p>Last updated: February 6, 2020</p> <h2 id=__comments>Comments</h2> <div class="admonition bug"> <p class=admonition-title>Issues with code ?</p> <p>Please limit comments below for general questions. For code-related query, prefer <a href=https://github.com/TheJacksonLaboratory/canineglioma/issues>submitting a GitHub issue</a>.</p> </div> <div id=disqus_thread></div> <script>
+</pre></div> </td></tr></table> <p>Last updated: February 7, 2020</p> <h2 id=__comments>Comments</h2> <div class="admonition bug"> <p class=admonition-title>Issues with code ?</p> <p>Please limit comments below for general questions. For code-related query, prefer <a href=https://github.com/TheJacksonLaboratory/canineglioma/issues>submitting a GitHub issue</a>.</p> </div> <div id=disqus_thread></div> <script>
     var disqus_config = function () {
       this.page.url = "https://canineglioma.verhaaklab.com/figures/F3C/";
       this.page.identifier =

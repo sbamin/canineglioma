@@ -76,7 +76,7 @@
 3
 4
 5</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>## nonhm_sampled &lt;- sample(ncol(fit_res_nonhm$contribution),</span>
-    <span class=nf>ncol</span><span class=p>(</span><span class=n>fit_res_hm</span><span class=o>$</span><span class=n>contribution</span><span class=p>),</span> <span class=n>replace</span> <span class=o>=</span> <span class=kc>FALSE</span><span class=p>)</span>
+<span class=c1>##     ncol(fit_res_hm$contribution), replace = FALSE)</span>
 
 <span class=c1>## following cases were used in the right-side panel of fig 3A</span>
 <span class=n>nonhm_sampled</span> <span class=o>&lt;-</span> <span class=nf>c</span><span class=p>(</span><span class=m>28</span><span class=p>,</span><span class=m>48</span><span class=p>,</span><span class=m>30</span><span class=p>,</span><span class=m>57</span><span class=p>,</span><span class=m>54</span><span class=p>,</span><span class=m>40</span><span class=p>,</span><span class=m>37</span><span class=p>,</span><span class=m>7</span><span class=p>,</span><span class=m>62</span><span class=p>)</span>
@@ -99,7 +99,7 @@
 17
 18</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>## mut_mat object is within /data/cgp_base_objects_v1.0.RData</span>
 <span class=c1>## mut_mat &lt;- MutationalPattern::mut_matrix(vcf_list = vcfs,</span>
-    <span class=n>ref_genome</span> <span class=o>=</span> <span class=n>ref_genome</span><span class=p>)</span>
+<span class=c1>##    ref_genome = ref_genome)</span>
 
 <span class=n>fit_res</span> <span class=o>&lt;-</span> <span class=nf>fit_to_signatures</span><span class=p>(</span><span class=n>mut_mat</span><span class=p>,</span> <span class=n>cancer_signatures</span><span class=p>)</span>
 
@@ -568,7 +568,7 @@
        <span class=n>width</span><span class=o>=</span><span class=m>12</span><span class=p>,</span>
        <span class=n>height</span><span class=o>=</span><span class=m>8</span><span class=p>,</span>
        <span class=n>useDingbats</span> <span class=o>=</span> <span class=kc>FALSE</span><span class=p>)</span>
-</pre></div> </td></tr></table> <div class=footnote> <hr> <ol> <li id=fn:1> <p>Earlier version of <code>fit_res_hm</code> had 9 and not 8 canine glioma patients with outlier mutation profile. Therefore, 9 cases were selected at random from remaining patients without outlier mutation profile.&#160;<a class=footnote-backref href=#fnref:1 title="Jump back to footnote 1 in the text">&#8617;</a></p> </li> <li id=fn:2> <p>Blokzijl F, Janssen R, van Boxtel R, Cuppen E. MutationalPatterns: comprehensive genome-wide analysis of mutational processes. Genome Med 2018;10:33. doi: <a href=https://doi.org/10.1186/s13073-018-0539-0>10.1186/s13073-018-0539-0</a>.&#160;<a class=footnote-backref href=#fnref:2 title="Jump back to footnote 2 in the text">&#8617;</a></p> </li> </ol> </div> <p>Last updated: February 6, 2020</p> <h2 id=__comments>Comments</h2> <div class="admonition bug"> <p class=admonition-title>Issues with code ?</p> <p>Please limit comments below for general questions. For code-related query, prefer <a href=https://github.com/TheJacksonLaboratory/canineglioma/issues>submitting a GitHub issue</a>.</p> </div> <div id=disqus_thread></div> <script>
+</pre></div> </td></tr></table> <div class=footnote> <hr> <ol> <li id=fn:1> <p>Earlier version of <code>fit_res_hm</code> had 9 and not 8 canine glioma patients with outlier mutation profile. Therefore, 9 cases were selected at random from remaining patients without outlier mutation profile.&#160;<a class=footnote-backref href=#fnref:1 title="Jump back to footnote 1 in the text">&#8617;</a></p> </li> <li id=fn:2> <p>Blokzijl F, Janssen R, van Boxtel R, Cuppen E. MutationalPatterns: comprehensive genome-wide analysis of mutational processes. Genome Med 2018;10:33. doi: <a href=https://doi.org/10.1186/s13073-018-0539-0>10.1186/s13073-018-0539-0</a>.&#160;<a class=footnote-backref href=#fnref:2 title="Jump back to footnote 2 in the text">&#8617;</a></p> </li> </ol> </div> <p>Last updated: February 7, 2020</p> <h2 id=__comments>Comments</h2> <div class="admonition bug"> <p class=admonition-title>Issues with code ?</p> <p>Please limit comments below for general questions. For code-related query, prefer <a href=https://github.com/TheJacksonLaboratory/canineglioma/issues>submitting a GitHub issue</a>.</p> </div> <div id=disqus_thread></div> <script>
     var disqus_config = function () {
       this.page.url = "https://canineglioma.verhaaklab.com/figures/F3A/";
       this.page.identifier =
