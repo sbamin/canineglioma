@@ -28,7 +28,7 @@ fig_2D <- ggplot(merged_ccf_vaf_df %>%
                 add_count(Hugo_Symbol, sort = T) %>%
                 mutate(Hugo_Symbol = sprintf("%s (%s)", Hugo_Symbol, n)) %>%
                 filter((who_subtype != "PG_H3wt" & n >= 1) | 
-                       (who_subtype == "PG_H3wt" & n >= 2))
+                       (who_subtype == "PG_H3wt" & n >= 2)) %>%
                 ungroup() %>%
                 distinct(Hugo_Symbol, .keep_all = TRUE),
     nudge_x = 0.25,

@@ -59,13 +59,9 @@ varcall_colors <- c(Amp = "#006400",
 >Somatic mutational lanscape of glioma driver genes. Based on [significantly mutated genes analysis](/methods/S06_smgs).
 
 ??? error "font family 'Arial' not found"
-    If you get an error, `font family 'Arial' not found in PostScript font database`, either remove *fonts* argument from `pdf` or import system fonts using *extrafont* R package. See [documentation by Gavin Simpson](https://www.fromthebottomoftheheap.net/2013/09/09/preparing-figures-for-plos-one-with-r/) for details.
+    If you get an error, `font family 'Arial' not found in PostScript font database`, either remove *fonts* argument from `pdf` or import system fonts using *extrafont* R package. See [documentation by Gavin Simpson](https://www.fromthebottomoftheheap.net/2013/09/09/preparing-figures-for-plos-one-with-r/) for details. Run `extrafont::loadfonts()` as detailed in [Start Here](/figures/a1_preload/#load-r-packages).
 
 ```r
-## Import Arial fonts
-library(extrafont)
-loadfonts()
-
 pdf("F1A.pdf",
     width = 18, height = 12, pointsize = 12,
     fonts = "Arial", bg = "white",

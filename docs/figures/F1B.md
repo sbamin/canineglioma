@@ -13,6 +13,11 @@ lollipops -U O43791 -legend -labels -o spop.png P94R@2
 *   Alternate code using `lollipopPlot` function in R package, [*maftools*](https://bioconductor.org/packages/release/bioc/html/maftools.html)[^2]
 
 ```r
+pdf("F1B.pdf",
+    width = 18, height = 12, pointsize = 12,
+    bg = "white",
+    compress = FALSE, useDingbats = FALSE)
+
 lollipopPlot(maf = maf_nogistic,
             gene = 'PIK3CA',
             AACol = 'HGVSp_Short',
@@ -48,6 +53,8 @@ lollipopPlot(maf = maf_nogistic,
              printCount = TRUE, colors = NULL, domainColors = NULL,
              labelOnlyUniqueDoamins = TRUE, defaultYaxis = TRUE,
              titleSize = c(1.2, 1), pointSize = 1.2)
+
+dev.off()
 ```
 
 

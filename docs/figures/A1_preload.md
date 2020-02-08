@@ -149,7 +149,8 @@ library(GenomicFeatures)
 library(NMF)
 library(BradleyTerryScalable)
 
-## Import Arial fonts
+## Import Arial fonts to avoid error
+## related to font not found
 library(extrafont)
 loadfonts()
 ```
