@@ -54,6 +54,9 @@ nav:
       - F5:
         - figures/F5.md
         - figures/S5.md
+    - R Markdown:
+        - How-To: run_code/index.md
+        - Output: run_code/run_all.md
     - Contact: https://verhaaklab.com/contact
 
 ## Copyright
