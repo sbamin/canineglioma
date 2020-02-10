@@ -9,6 +9,7 @@ Samirkumar B. Amin, Kevin J. Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-
 
 !!! cite "Citation"
     Amin et al., Comparative Molecular Life History of Spontaneous Canine and Human Gliomas, *Cancer Cell* (2020). DOI: [10.1016/j.ccell.2020.01.004](https://doi.org/10.1016/j.ccell.2020.01.004) Feb 10, 2020
+    [Full text](https://authors.elsevier.com/a/1aYXc_YwcvlkVR)[^fulltext]
 
 !!! Summary
     Sporadic gliomas in companion dogs provide a window on the interaction between tumorigenic mechanisms and host environment. We compared the molecular profiles of canine gliomas with those of human pediatric and adult gliomas to characterize evolutionarily conserved mammalian mutational processes in gliomagenesis. Employing whole genome-, exome-, transcriptome- and methylation-sequencing of 83 canine gliomas, we found alterations shared between canine and human gliomas such as the receptor tyrosine kinases, TP53 and cell cycle pathways, and IDH1 R132. Canine gliomas showed high similarity with human pediatric gliomas per robust aneuploidy, mutational rates, relative timing of mutations, and DNA methylation patterns. Our cross-species comparative genomic analysis provides unique insights into glioma etiology and the chronology of glioma-causing somatic alterations.
@@ -18,3 +19,5 @@ Samirkumar B. Amin, Kevin J. Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-
 
 !!! info "Lead Contact"
     [Roel Verhaak](https://verhaaklab.com/contact)
+
+[^fulltext]: Full text link is provided by the publisher and valid until March 31, 2020.
