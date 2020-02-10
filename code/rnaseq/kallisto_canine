@@ -1,0 +1,161 @@
+#!/bin/bash
+
+# CGP Kallisto-Pizzly pipeline
+# v1.3.0
+# Samir B. Amin, @sbamin
+
+# usage
+show_help() {
+cat << EOF
+
+Wrapper to run Kallisto-Pizzly pipeline for canine genome
+Required parameters: Analysis UUID, Unique sample name, tarball filename, and path to base directory under which annotations and STAR index is kept.
+
+    -h  display this help and exit
+        -s sample name (Required, no spaces)
+        -t path to kallisto transcriptome index (default: CanFam3_1_cdna_all_kallisto_v0.45.0.idx)
+        -g path to ensembl gtf file (default: CanFam3_1_85_new_RNA_pcg_linc.gtf)
+        -k path to cdna or transcript fasta file (default: CanFam3_1_cdna_all.fa)
+        -p path to fastqs base directory (Default given	in script)
+        -f FQ1 file name, including any preceding path that align with -p basedir (Required)
+        -r FQ2 file name, including any preceding path that align with -p basedir (Required)
+
+Example: ${0##*/} -u sample1 -p /fastscratch/rnaseq -f sample1/S1_R1.fq.gz -r sample1/S1_R2.fq.gz
+
+EOF
+}
+
+if [[ $# -lt 3 ]];then show_help;exit 1;fi
+
+while getopts "s:t:g:k:p:f:r:h" opt; do
+    case "$opt" in
+        h) show_help;exit 0;;
+        s) SNAME=$OPTARG;;
+        t) TRINDEX=$OPTARG;;
+		k) TRFASTA=$OPTARG;;
+		g) ENSGTF=$OPTARG;;
+		p) FASTQPATH=$OPTARG;;
+		f) FQ1=$OPTARG;;
+		r) FQ2=$OPTARG;;
+       '?') show_help >&2 exit 1 ;;
+    esac
+done
+
+# ## format time stamp: DO NOT for hpc and flowr as rerun may not able to find required input files.
+# TSTAMP=$(date +%d%b%y_%H%M%S%Z)
+
+## define and check for use supplied variables
+SNAME=${SNAME}
+TRINDEX=${TRINDEX:-"/fastscratch/amins/kallisto/fasta/ensembl_v95/Canis_familiaris.CanFam3.1.cdna.all_ensembl_v95.fa.idx"}
+TRFASTA=${TRFASTA:-"/fastscratch/amins/kallisto/fasta/ensembl_v95/Canis_familiaris.CanFam3.1.cdna.all.fa.gz"}
+ENSGTF=${ENSGTF:-"/fastscratch/amins/kallisto/fasta/ensembl_v95/Canis_familiaris.CanFam3.1.95.gtf.gz"}
+FASTQPATH=${FASTQPATH:-"/fastscratch/amins/kallisto/fastqs"}
+FASTQ1="${FASTQPATH}"/"${FQ1}"
+FASTQ2="${FASTQPATH}"/"${FQ2}"
+
+if [[ -f "${FASTQ1}" && -f "${FASTQ2}" ]]; then
+	echo -e "Found fastqs: ${FASTQ1} and ${FASTQ2} for the sample: ${SNAME}\n"
+else
+	echo -e "\n#### ERROR ####\nfastqs ${FQ1} and/or ${FQ2} are not present at ${FASTQPATH}\n" >&2
+	exit 1
+fi
+
+##############################  LOAD INDEX AND ANNOTATIONS  ###################################
+
+## make output path and file prefix:
+OUTDIR="kallisto_pizzly_${SNAME}"
+mkdir -p "${OUTDIR}"
+OUTPATH="$(pwd)"/"${OUTDIR}"
+
+## adjust nCPUs to use
+THREADS="${THREADS:-4}"
+
+## check for annotations and STAR index plus OUTPUT DIR, and then start workflow
+
+if [[ ! -f "${TRINDEX}" || ! -f "${TRFASTA}" || ! -f "${ENSGTF}" || -z "${SNAME}" || ! -d "${OUTPATH}" ]];then
+    echo -e "\n##### ERROR #####\nOne or more of following is missing or have zero-byte file size:\nTranscript fasta, index, and GTF file may not exist at ${TRFASTA}, ${TRINDEX} or ${ENSGTF}, respectively\nSample ID -s is empty or malformed: ${SNAME}\nor sample output directory at ${OUTPATH} is not accessible\n#################\n"
+    exit 1
+else
+	echo -e "\n    STARTING Kallisto-Pizzly workflow    \n"
+
+cat << EOF
+
+		#### INFO ####
+
+		SAMPLE_NAME: "${SNAME}"
+		FASTQ1: "${FASTQ1}"
+		FASTQ2: "${FASTQ2}"
+
+		TRANSCRIPT FASTA: "${TRFASTA}"
+		TRANSCRIPT KALLISTO: "${TRINDEX}"
+		ANNOTATIONS: "${ENSGTF}"
+
+		OUTPUT_PATH: "${OUTPATH}"
+
+		#### END INFO ####
+EOF
+
+fi
+
+################################# kallisto quant #################################
+
+LOGDIR="${HOME}/logs/kallisto_canine"
+mkdir -p "${LOGDIR}"
+
+if [[ -f "${OUTPATH}"/kallisto_quant.done ]]; then
+
+	echo -e "\n#### INFO ####\nkallisto seems to be already done\nSKIP\n"
+	printf "%s\t%s\tkallisto_quant\tSKIP\t%s\tNIL\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" | tee -a "${LOGDIR}"/track_kallisto.log
+else
+
+	echo "Starting kallisto quant at ${OUTPATH}"
+	printf "%s\t%s\tkallisto_quant\tRUNNING\t%s\tNIL\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%S%Z)" | tee -a "${LOGDIR}"/track_kallisto.log
+
+	echo -e "\nUsing kallisto from following path\n"
+	command -v kallisto
+	kallisto version || true
+
+	## Command to run
+	kallisto quant -t "${THREADS}" -i "${TRINDEX}" -o "${OUTPATH}" -b 100 --fusion <(zcat "${FASTQ1}") <(zcat "${FASTQ2}") && touch "${OUTPATH}"/kallisto_quant.done
+	exitstat=$?
+
+	if [[ "${exitstat}" == 0 ]]; then
+		printf "%s\t%s\tmap\tDONE\t%s\t%s\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" "${exitstat}" >> "${OUTPATH}"/kallisto_quant.done
+		printf "%s\t%s\tmap\tDONE\t%s\t%s\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" "${exitstat}" | tee -a "${LOGDIR}"/track_kallisto.log
+	else
+		printf "%s\t%s\tmap\tERROR\t%s\t%s\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" "${exitstat}" | tee -a "${LOGDIR}"/track_kallisto.log
+		exit "${exitstat}"
+	fi
+fi
+
+################################# PIZZLY FUSION ##################################
+
+if [[ -f "${OUTPATH}"/pizzly_fusion.done ]]; then
+	echo -e "\n#### INFO ####\nPizzly fusion seems to be already done\nSKIP FUSION\n"
+	printf "%s\t%s\tpizzly_fusion\tSKIP\t%s\tNIL\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" | tee -a "${LOGDIR}"/track_kallisto.log
+else
+	#### Fusion caller ####
+	echo -e "\n#### INFO ####\nStarting fusion caller\n$(date +%d%b%y_%H%M%S%Z)\n"
+	printf "%s\t%s\tpizzly_fusion\tRUNNING\t%s\tNIL\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" | tee -a "${LOGDIR}"/track_kallisto.log
+	
+	echo -e "\nUsing pizzly from following path\n"
+	command -v pizzly
+	pizzly --version || true
+
+	pizzly -k 31 --gtf "${ENSGTF}" --align-score 2 --insert-size 400 --fasta "${TRFASTA}" --output "${OUTPATH}"/pizzly_fusion_"${SNAME}" "${OUTPATH}"/fusion.txt && \
+        touch "${OUTPATH}"/pizzly_fusion.done
+
+	exitstat="$?"
+
+	if [[ "${exitstat}" == 0 ]]; then
+		printf "%s\t%s\tpizzly_fusion\tDONE\t%s\t%s\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" "${exitstat}" >> "${OUTPATH}"/pizzly_fusion.done
+		printf "%s\t%s\tpizzly_fusion\tDONE\t%s\t%s\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" "${exitstat}" | tee -a "${LOGDIR}"/track_kallisto.log
+	else
+		printf "%s\t%s\tpizzly_fusion\tERROR\t%s\t%s\n" "${SNAME}" "${OUTPATH}" "$(date +%d%b%y_%H%M%Z)" "${exitstat}" | tee -a "${LOGDIR}"/track_kallisto.log
+		exit "${exitstat}"
+	fi
+fi
+
+exit "${exitstat}"
+
+## END ##

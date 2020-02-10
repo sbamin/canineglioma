@@ -1,0 +1,254 @@
+#!/bin/bash
+
+# CGP STAR-HTSeq pipeline, including STAR-Fusion
+# v1.3.0
+# Samir B. Amin, @sbamin
+
+# usage
+show_help() {
+cat << EOF
+
+Wrapper to run STAR-HTSeq pipeline for canine genome
+Required parameters: Analysis UUID, Unique sample name, tarball filename, and path to base directory under which annotations and STAR index is kept.
+
+Usage: ${0##*/} -u <ANALYSIS UUID> -s <UNIQUE SAMPLE NAME> -b <ABSOLUTE PATH TO BASE DIRECTORY> -f <tarball file name from cgquery metadata> | tee -a ~/starseq.log
+
+    -h  display this help and exit
+        -u analysis uuid (Required)
+        -s sample name (Optional; default to analysis uuid)
+        -b absolute path to reference base directory: should include starindex directory and gtf file (Default given in script)
+        -p path to fastqs base directory (Default given	in script)
+        -f FQ1 file name, including any preceding path that align with -p basedir (Required)
+        -r FQ2 file name, including any preceding path that align with -p basedir (Required)
+
+Example: ${0##*/} -u sample1 -b /projects/verhaak-lab/PRADA_Dog_ref -p /projects/verhaak-lab/RAWSEQ/CANINE/RNAseq/merged_fqs -f sample1/S1_R1.fq.gz -r sample1/S1_R2.fq.gz | tee -a ~/starseq.log
+
+EOF
+}
+
+if [[ $# -lt 3 ]];then show_help;exit 1;fi
+
+while getopts "u:s:b:p:f:r:h" opt; do
+    case "$opt" in
+        h) show_help;exit 0;;
+        u) SUUID=$OPTARG;;
+        s) SNAME=$OPTARG;;
+        b) STARBASE=$OPTARG;;
+		p) FASTQPATH=$OPTARG;;
+		f) FQ1=$OPTARG;;
+		r) FQ2=$OPTARG;;
+       '?') show_help >&2 exit 1 ;;
+    esac
+done
+
+# ## format time stamp: DO NOT for hpc and flowr as rerun may not able to find required input files.
+# TSTAMP=$(date +%d%b%y_%H%M%S%Z)
+
+## define and check for use supplied variables
+SUUID=${SUUID}
+SNAME=${SNAME:-"$SUUID"}
+STARBASE=${STARBASE:-"/projects/verhaak-lab/PRADA_Dog_ref"}
+FASTQPATH=${FASTQPATH:-"/projects/verhaak-lab/RAWSEQ/CANINE/RNAseq/merged_fqs"}
+FASTQ1="${FASTQPATH}"/"${FQ1}"
+FASTQ2="${FASTQPATH}"/"${FQ2}"
+
+# RGID for bam header
+RGID="${SUUID}"
+
+if [[ -f "${FASTQ1}" && -f "${FASTQ2}" ]]; then
+	echo -e "Found fastqs: ${FASTQ1} and ${FASTQ2} for the sample: ${SUUID}\n"
+else
+	echo -e "\n#### ERROR ####\nfastqs ${FQ1} and/or ${FQ2} are not present at ${FASTQPATH}\n" >&2
+	exit 1
+fi
+
+##############################  LOAD INDEX AND ANNOTATIONS  ###################################
+
+## define annotations and STAR index:
+MYGTF="${STARBASE}"/CanFam3_1_85_new_RNA_pcg_linc.gtf
+FUSIONGTF="${STARBASE}"/CanFam3_1_85_new_RNA_pcg_linc.gtf
+STARINDEX="${STARBASE}"/starindex
+
+## make output path and file prefix:
+STAROUT="out/STAR_${SUUID}"
+mkdir -p "${STAROUT}"
+STARID="${STAROUT}/STAR_${SUUID}"_
+OUTPATH="$(pwd)"/"${STAROUT}"
+
+## adjust nCPUs to be used for STAR and Fusion analysis
+THREADS="${THREADS:-4}"
+
+# write comment file which will be appended to bam file under @CO header
+printf "@CO\tSTAR mapped file prefix: %s\tHelix\n" "${STARID}" >| "${STARID}"comment.txt
+
+## check for annotations and STAR index plus OUTPUT DIR, and then start workflow
+
+if [[ ! -d "${STARINDEX}" || ! -s "${MYGTF}" || ! -s "${FUSIONGTF}" || ! -d "${STAROUT}" ]];then
+    echo -e "\n##### ERROR #####\nOne or more of following is missing or have zero-byte file size:\nSTAR INDEX and STAR OUTPUT directory may not exist at ${STARINDEX} and ${STAROUT} respectively\nAnnotation files are either not present or of zero-byte size at ${MYGTF} and at ${FUSIONGTF}\n#################\n"
+    exit 1
+else
+	echo -e "\n    STARTING STAR-HTSeq workflow    \n"
+
+cat << EOF
+
+		#### START INFO ####
+
+		SAMPLE_NAME: "${SNAME}"
+		ANALYSIS_UUID: "${SUUID}"
+		FASTQ1: "${FASTQ1}"
+		FASTQ2: "${FASTQ2}"
+		RGID: "${RGID}"
+
+		BASE_DIR: "${STARBASE}"
+		ANNOTATIONS: "${MYGTF}"
+		FUSION GTF: "${FUSIONGTF}"
+
+		OUTPUT_PREFIX: "${STARID}"
+		OUTPUT_PATH: "${OUTPATH}"
+
+		#### END INFO ####
+EOF
+
+fi
+
+################################# STAR ALIGNER #################################
+
+LOGDIR="${HOME}/logs/starseq_canine"
+mkdir -p "${LOGDIR}"
+
+if [[ -f "${STAROUT}"/STAR_map.done ]]; then
+
+	echo -e "\n#### INFO ####\nSTAR mapping seems to be already done\nSKIP MAPPING\n"
+	printf "%s\t%s\tmap\tSKIP\t%s\tNIL\n" "${SUUID}" "${OUTPATH}" "$(date +%d%b%y_%H%M%S%Z)" | tee -a "${LOGDIR}"/startrack.log
+	
+	exitstat="$?"
+else
+
+	## Config suggestions from PCAWG-3 and STAR-Fustion wiki
+	## https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf
+	## https://github.com/STAR-Fusion/STAR-Fusion/wiki
+
+	#### STAR mapping ####
+	echo "Starting STAR mapping at ${STARID}"
+	exitstat="$?"
+	printf "%s\t%s\tmap\tRUNNING\t%s\t%s\n" "${SUUID}" "${OUTPATH}" "$(date +%d%b%y_%H%M%S%Z)" "${exitstat}" | tee -a "${LOGDIR}"/startrack.log
+
+	## IMP: SET UPDARED STAR ##
+	export PATH="/projects/verhaak-lab/verhaak_env/verhaak_apps/star/STAR-2.6.1d/bin/Linux_x86_64_static:${PATH}"
+	echo -e "\nUsing STAR from following path\n"
+	command -v STAR
+	STAR --version || true
+
+	STAR    --runMode alignReads \
+			--runThreadN "${THREADS}" \
+			--genomeDir "${STARINDEX}" \
+			--genomeLoad NoSharedMemory \
+			--readFilesIn "${FASTQ1}" "${FASTQ2}" \
+			--readFilesCommand gunzip -c \
+			--twopassMode Basic \
+			--runRNGseed 777 \
+			--outFilterType Normal \
+			--outFilterMultimapNmax 20 \
+			--outFilterMismatchNmax 9 \
+			--outFilterMultimapScoreRange 1 \
+			--outFilterMatchNminOverLread 0.66 \
+			--outFilterScoreMinOverLread 0.66 \
+			--outReadsUnmapped None \
+			--alignIntronMin 20 \
+			--alignIntronMax 100000 \
+			--alignMatesGapMax 100000 \
+			--alignSJoverhangMin 8 \
+			--alignSJstitchMismatchNmax 5 -1 5 5 \
+			--sjdbScore 2 \
+			--alignSJDBoverhangMin 1 \
+			--sjdbOverhang 74 \
+			--chimSegmentMin 12 \
+			--chimJunctionOverhangMin 12 \
+			--chimSegmentReadGapMax 3 \
+			--quantMode GeneCounts \
+			--outMultimapperOrder Random \
+			--outSAMstrandField intronMotif \
+			--chimOutJunctionFormat 1 \
+			--outSAMattributes All \
+			--outSAMunmapped Within KeepPairs \
+			--outSAMtype BAM Unsorted \
+			--limitBAMsortRAM 30000000000 \
+			--outSAMmode Full \
+			--outSAMheaderHD @HD VN:1.4 \
+			--outSAMattrRGline ID:"${RGID}" LB:RNA-Seq PL:ILLUMINA PM:Illumina_HiSeq_2000 PU:"${RGID}"_PU SM:"${SUUID}" \
+			--outSAMheaderCommentFile "${STARID}"comment.txt \
+			--outFileNamePrefix "${STARID}"
+
+	exitstat="$?"
+	printf "%s\t%s\tmap\tDONE\t%s\t%s\n" "${SUUID}" "${OUTPATH}" "$(date +%d%b%y_%H%M%S%Z)" "${exitstat}" | tee -a "${LOGDIR}"/startrack.log
+
+	## remove fastqs if exit code is zero
+
+	if [[ "${exitstat}" == 0 ]]; then
+		echo -e "\nSTAR mapping was run with exit code: ${exitstat}\n"
+
+		printf "%s\t%s\tmap\tDONE\t%s\t%s\n" "${SUUID}" "${OUTPATH}" "$(date +%d%b%y_%H%M%S%Z)" "${exitstat}" | tee -a "${STAROUT}"/STAR_map.done
+	else
+		echo -e "\n#### ERROR ####\n: STAR mapping is reporting exit status of ${exitstat}\nCheck output at ${STARID}\n"
+
+		exit "${exitstat}"
+	fi
+fi
+
+################################# STAR FUSION ##################################
+
+if [[ -f "${STAROUT}"/STAR_fusion.done ]]; then
+	echo -e "\n#### INFO ####\nSTAR fusion seems to be already done\nSKIP FUSION\n"
+	printf "%s\tfusion\tSKIP\t%s\tNIL\n" "${SUUID}" "$(date +%d%b%y_%H%M%S%Z)" | tee -a "${LOGDIR}"/startrack.log
+else
+	#### Fusion calls ####
+	echo -e "\n#### INFO ####\nStarting STAR fusion calls\n$(date +%d%b%y_%H%M%S%Z)\n"
+	exitstat="$?"
+	printf "%s\tfusion\tRUNNING\t%s\t%s\n" "${SUUID}" "$(date +%d%b%y_%H%M%S%Z)" "${exitstat}" | tee -a "${LOGDIR}"/startrack.log
+	
+	echo -e "\nUsing STAR and STAR-Fusion from following path\n"
+	command -v STAR
+	STAR --version || true
+	command -v STAR-Fusion
+	STAR-Fusion --version || true
+
+	export TRINITY_HOME="/projects/verhaak-lab/verhaak_env/anaconda/v4.2.0/envs/star/opt/trinity-2.8.4"
+	echo -e "TRINITY_HOME: $TRINITY_HOME"
+	command -v Trinity
+	Trinity --version || true
+
+	## prepend star library modules to PERL libpath
+	export PERL5LIB="/projects/verhaak-lab/verhaak_env/anaconda/v4.2.0/envs/star/lib/site_perl/5.26.2/x86_64-linux-thread-multi:/projects/verhaak-lab/verhaak_env/anaconda/v4.2.0/envs/star/lib/site_perl/5.26.2:/projects/verhaak-lab/verhaak_env/anaconda/v4.2.0/envs/star/lib/5.26.2/x86_64-linux-thread-multi:/projects/verhaak-lab/verhaak_env/anaconda/v4.2.0/envs/star/lib/5.26.2${PERL5LIB:+:$PERL5LIB}"
+	echo -e "\nPERL5LIB set to: $PERL5LIB\n"
+
+	## tmp dir
+	MYTMPDIR="$(printf "tmp_fusion_%s" "$SUUID")"
+	mkdir -p "${MYTMPDIR}"
+
+	STAR-Fusion --left_fq "${FASTQ1}"  \
+				--right_fq "${FASTQ2}" \
+				--examine_coding_effect \
+				--extract_fusion_reads \
+				--FusionInspector inspect \
+				--denovo_reconstruct \
+				--tmpdir "${MYTMPDIR}" \
+				--chimeric_junction "${STARID}"Chimeric.out.junction \
+				--genome_lib_dir "${STARBASE}"/starfusion/v2_201812/ctat_genome_lib_build_dir \
+				--CPU "${THREADS}" \
+				--output_dir "${STAROUT}"
+
+	exitstat="$?"
+	printf "%s\tfusion\tDONE\t%s\t%s\n" "${SUUID}" "$(date +%d%b%y_%H%M%S%Z)" "${exitstat}" | tee -a "${LOGDIR}"/startrack.log
+
+	if [[ "${exitstat}" == 0 ]]; then
+		echo -e "\nSTAR-Fusion was run with exit code: ${exitstat}\n"
+
+		printf "%s\tfusion\tDONE\t%s\t%s\n" "${SUUID}" "$(date +%d%b%y_%H%M%S%Z)" "${exitstat}" | tee -a "${LOGDIR}"/STAR_fusion.done
+	else
+		echo -e "\n#### WARNING ####\n: STAR fusion is reporting exit status of ${exitstat}\nCheck output at ${STARID}\n"
+	fi
+fi
+
+exit "${exitstat}"
+
+## END ##
