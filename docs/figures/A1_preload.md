@@ -157,7 +157,7 @@ loadfonts()
 
 ### Load R objects
 
-:rocket: Download [/data/cgp_base_objects_v1_20200207.RData](/data/cgp_base_objects_v1_20200207.RData) ==Link will be active on Feb 10, 2020.==
+:rocket: Download [/data/cgp_base_objects_v1_20200207.RData](/data/cgp_base_objects_v1_20200207.RData) md5sum: 12812097f49d8c8300a470491387c7d1.
 
 ```r
 load("cgp_base_objects_v1_20200207.RData")
