@@ -1,0 +1,7 @@
+jobname	sub_type	prev_jobs	dep_type	queue	memory_reserved	walltime	cpu_reserved	nodes	platform	jobid
+get_pileup_tm	serial	none	none	batch	64gb	16:00:00	4	1	torque	1
+get_pileup_nr	serial	none	none	batch	64gb	16:00:00	4	1	torque	2
+calc_contamin	serial	"get_pileup_tm,get_pileup_nr"	gather	batch	32gb	2:00:00	4	1	torque	3
+m2_s1_base_filter	serial	calc_contamin	serial	batch	32gb	2:00:00	2	1	torque	4
+m2_s2_collect_seqerr	serial	none	none	batch	64gb	12:00:00	4	1	torque	5
+m2_s2_oxog	serial	"m2_s1_base_filter,m2_s2_collect_seqerr"	gather	batch	64gb	2:00:00	4	1	torque	6
