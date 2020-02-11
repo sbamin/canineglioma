@@ -1,0 +1,3 @@
+[submodule "theme-mkdocs-material"]
+	path = theme-mkdocs-material
+	url = git@github.com:sbamin/theme-mkdocs-material.git

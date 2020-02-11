@@ -65,7 +65,7 @@ copyright: 'Copyright &copy; 2017 - 2020 <a href="https://verhaaklab.com">Verhaa
 ## Configuration
 theme:
   name: null
-  custom_dir: 'mkdocs-material/material'
+  custom_dir: 'theme-mkdocs-material/material'
   language: 'en'
   palette:
     primary: 'Blue'
