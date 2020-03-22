@@ -6,7 +6,7 @@ title: Start Here &middot; Canine Glioma
 
 Sequencing data generated from canine patients with glioma (n=83 donors) is available in the Binary Alignment Map (BAM) format (n=373) at the NCBI SRA database under BioProject ID: [PRJNA579792](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA579792).
 
-[View details](/methods/S02_data_sources/) on comparative sequencing data used from patients of human pediatric and glioma.
+[View details](/methods/S02_data_sources/) on comparative sequencing data used from patients of human pediatric and adult glioma.
 
 ### R session
 
