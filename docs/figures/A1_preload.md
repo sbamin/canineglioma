@@ -157,7 +157,7 @@ loadfonts()
 
 ### Load R objects
 
-:rocket: Download [/data/cgp_base_objects_v1_20200207.RData](/data/cgp_base_objects_v1_20200207.RData) md5sum: 12812097f49d8c8300a470491387c7d1.
+:rocket: Download [/data/cgp_base_objects_v1_20200207.RData](/data/cgp_base_objects_v1_20200207.RData), md5sum: 12812097f49d8c8300a470491387c7d1.
 
 ```r
 load("cgp_base_objects_v1_20200207.RData")
@@ -196,3 +196,16 @@ ls()
 | {cgp, tcga}_info | Sample metadata for suppl figure 5. |
 | {cgp, ped, tcga}_cibersort | CIBERSORT output for three cohorts. |
 | fig5b_dat | Data related to IHC panel, Figure 5B. |
+
+We now have also updated CanFam3.1 aligned RNA-seq data[^methods] as tidyverse-compliant tibble format.
+
+*   Download [/data/cgp_rnaseq_sleuth_tpm_normed_canfam3.1_v201908.rds](/data/cgp_rnaseq_sleuth_tpm_normed_canfam3.1_v201908.rds), md5sum: b6159d234566a290e2a4105fa62b2cdb.
+*   Load data as follows:
+
+```sh
+library(tidyverse)
+rnaseq <- readRDS("cgp_rnaseq_sleuth_tpm_normed_canfam3.1_v201908.rds")
+glimpse(rnaseq)
+```
+
+[^methods]: [Details on RNA-seq alignments](/methods/S04_alignments_fprint/#rna-alignments)
