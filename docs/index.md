@@ -8,8 +8,7 @@ keywords: "adult glioma, pediatric glioma, canine glioma, comparative genomics, 
 Samirkumar B. Amin, Kevin J. Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-Ledesma, Emre Kocakavuk, Kevin C. Johnson, Floris P. Barthel, Frederick S. Varn, Cynthia Kassab, Xiaoyang Ling, Hoon Kim, Mary Barter, Ching C. Lau, Chew Yee Ngan, Margaret Chapman, Jennifer W. Koehler, James P. Long, Andrew D. Miller, C. Ryan Miller, Brian F. Porter, Daniel R. Rissi, Christina Mazcko, Amy K. LeBlanc, Peter J. Dickinson, Rebecca A. Packer, Amanda R. Taylor, John H. Rossmeisl Jr, Kevin D. Woolard, Amy B. Heimberger, Jonathan M. Levine, Roel G. W. Verhaak
 
 !!! cite "Citation"
-    Amin et al., Comparative Molecular Life History of Spontaneous Canine and Human Gliomas, *Cancer Cell* (2020). DOI: [10.1016/j.ccell.2020.01.004](https://doi.org/10.1016/j.ccell.2020.01.004) Feb 10, 2020
-    [Full text](https://authors.elsevier.com/a/1aYXc_YwcvlkVR)[^fulltext]
+    Amin SB, Anderson KJ, Boudreau CE, Martinez-Ledesma E, Kocakavuk E, Johnson KC, Barthel FP, Varn FS, Kassab C, Ling X, Kim H, Barter M, Lau CC, Ngan CY, Chapman M, Koehler JW, Long JP, Miller AD, Miller CR, Porter BF, Rissi DR, Mazcko C, LeBlanc AK, Dickinson PJ, Packer RA, Taylor AR, Rossmeisl JH Jr, Woolard KD, Heimberger AB, Levine JM, Verhaak RGW. Comparative Molecular Life History of Spontaneous Canine and Human Gliomas. *Cancer Cell*. 2020 Feb 10;37(2):243-257.e7. doi: 10.1016/j.ccell.2020.01.004. PubMed PMID: [32049048](https://pubmed.ncbi.nlm.nih.gov/32049048/); PubMed Central PMCID: [PMC7132629](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7132629/).
 
 !!! Summary
     Sporadic gliomas in companion dogs provide a window on the interaction between tumorigenic mechanisms and host environment. We compared the molecular profiles of canine gliomas with those of human pediatric and adult gliomas to characterize evolutionarily conserved mammalian mutational processes in gliomagenesis. Employing whole genome-, exome-, transcriptome- and methylation-sequencing of 83 canine gliomas, we found alterations shared between canine and human gliomas such as the receptor tyrosine kinases, TP53 and cell cycle pathways, and IDH1 R132. Canine gliomas showed high similarity with human pediatric gliomas per robust aneuploidy, mutational rates, relative timing of mutations, and DNA methylation patterns. Our cross-species comparative genomic analysis provides unique insights into glioma etiology and the chronology of glioma-causing somatic alterations.
@@ -19,5 +18,9 @@ Samirkumar B. Amin, Kevin J. Anderson, C. Elizabeth Boudreau, Emmanuel Martinez-
 
 !!! info "Lead Contact"
     [Roel Verhaak](https://verhaaklab.com/contact)
+
+
+!!! tip "Data availability"
+    Raw sequencing data, sample metadata, and somatic variant calls are available at the [NCI Integrated Canine Data Commons (ICDC)](https://caninecommons.cancer.gov/#/study/GLIOMA01) under accession ID: ICDC000003. Analysis-ready data objects for published figures are [available here](/figures/a1_preload/).
 
 [^fulltext]: Full text link is provided by the publisher and valid until March 31, 2020.
