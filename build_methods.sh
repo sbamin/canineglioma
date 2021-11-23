@@ -3,7 +3,7 @@
 ## strict check
 set -euo pipefail
 
-DOCDIR="$HOME"/Dropbox/acad/scripts/HOURGLASS/cgp_keystone/canineglioma
+DOCDIR="$HOME"/dbjax/code/gitrepos/github/cgp_keystone/canineglioma
 #### DANGER ####
 ## MAKE SURE TO HAVE VALID PATH HERE AS SCRIPT WILL NOT CHECK FOR PATH
 ## rsync may overwrite or worse, delete files on remote node.

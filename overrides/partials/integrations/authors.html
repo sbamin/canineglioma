@@ -1,0 +1,6 @@
+{% if page and page.meta and page.meta.authors is string %}
+<div class="admonition cite">
+<p class="admonition-title">Contributor(s)</p>
+<p>{{ page.meta.authors }}</p>
+</div>
+{% endif %}
