@@ -2,3 +2,4 @@ site/
 mkdocs-material/
 .Rproj.user
 docs/run_code/.Rhistory
+.DS_Store

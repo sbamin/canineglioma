@@ -1,33 +1,127 @@
 {% extends "base.html" %}
+
 {% block extrahead %}
+<!--   <link rel="stylesheet" href="{{config.site_url}}{{ 'assets/stylesheets/main.c296cc61.min.css' | url }}"> -->
+	{% if page and page.meta and page.meta.keywords %}
+		{% set keywords = page.meta.keywords %}
+		<meta name="keywords" content="{{ page.meta.keywords }}">
+	{% elif config.extra.site_keywords %}
+		{% set keywords = config.extra.site_keywords %}
+		<meta name="keywords" content="{{ config.extra.site_keywords }}">
+	{% endif %}
+
   {% set title = config.site_name %}
   {% if page and page.title and not page.is_homepage %}
-    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
+    {% set title = page.title ~ " &middot; " ~ config.site_name | striptags %}
   {% endif %}
-  {% set image = config.site_url ~ '/assets/images/logo.png' %}
+  {% set description = config.site_description %}
+  {% if page and page.meta and page.meta.description %}
+    {% set description = page.meta.description %}
+  {% endif %}
+  {% set image = config.site_url ~ 'assets/images/fixed/sitelogo.png' %}
+  {% if page and page.meta and page.meta.image %}
+    {% set image = config.site_url ~ page.meta.image %}
+  {% endif %}
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ config.site_description }}">
+  <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.canonical_url }}">
   <meta property="og:image" content="{{ image }}">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="256">
   <meta property="og:image:height" content="256">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@sbamin">
-  <meta name="twitter:creator" content="@sbamin">
+  <meta name="twitter:site" content="@{{ config.extra.twitter }}">
+  <meta name="twitter:creator" content="@{{ config.extra.twitter }}">
   <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ config.site_description }}">
+  <meta name="twitter:description" content="{{ description }}">
   <meta name="twitter:image" content="{{ image }}">
-  <link rel="stylesheet" href="{{ '/assets/stylesheets/overrides.2b41d529.min.css' | url }}">
+  <meta name="twitter:image:alt" content="webpage banner or site logo">
+{% endblock %}
+
+<!-- outdated version - remove suffix: off -->
+{% block outdatedoff %}
+  You're not viewing the latest version.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Click here to go to latest.</strong>
+  </a>
+{% endblock %}
+
+<!-- Announcements - remove suffix: off -->
+{% block announceoff %}
+  <a href="https://twitter.com/{{ config.extra.twitter }}">
+    For updates follow <strong>@{{ config.extra.twitter }}</strong> on
+    <span class="twemoji twitter">
+      {% include ".icons/fontawesome/brands/twitter.svg" %}
+    </span>
+    <strong>Twitter</strong>
+  </a>
 {% endblock %}
 
 {% block content %}
+  {% if page and page.meta and page.meta.wip == true %}
+	<div class="admonition warning"> <p class="admonition-title"> 🚧 Work in Progress 🚧 </p> <p>Following page is work in progress. Feel free to contribute by clicking <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg></span> icon below located next to the title of this page. If you land on a github 404 page, you may either not have logged into your github account or not have been added to verhaaklab group. For the latter, ping <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M446.2 270.4c-6.2-19-26.9-29.1-46-22.9l-45.4 15.1-30.3-90 45.4-15.1c19.1-6.2 29.1-26.8 23-45.9-6.2-19-26.9-29.1-46-22.9l-45.4 15.1-15.7-47c-6.2-19-26.9-29.1-46-22.9-19.1 6.2-29.1 26.8-23 45.9l15.7 47-93.4 31.2-15.7-47c-6.2-19-26.9-29.1-46-22.9-19.1 6.2-29.1 26.8-23 45.9l15.7 47-45.3 15c-19.1 6.2-29.1 26.8-23 45.9 5 14.5 19.1 24 33.6 24.6 6.8 1 12-1.6 57.7-16.8l30.3 90L78 354.8c-19 6.2-29.1 26.9-23 45.9 5 14.5 19.1 24 33.6 24.6 6.8 1 12-1.6 57.7-16.8l15.7 47c5.9 16.9 24.7 29 46 22.9 19.1-6.2 29.1-26.8 23-45.9l-15.7-47 93.6-31.3 15.7 47c5.9 16.9 24.7 29 46 22.9 19.1-6.2 29.1-26.8 23-45.9l-15.7-47 45.4-15.1c19-6 29.1-26.7 22.9-45.7zm-254.1 47.2-30.3-90.2 93.5-31.3 30.3 90.2-93.5 31.3z"></path></svg></span> <code>verhaaklabchannel</code> to be added into Team Verhaak.</p> </div>
+  {% endif %}
+
   {{ super() }}
 
-<!--   {% if page and page.meta and page.meta.author %}
+  {% if page and page.meta and page.meta.author %}
     <p><small>Author: {{ page.meta.author }}</small></p>
   {% else %}
-    <p><small>Author: {{ config.site_author }}</small></p>
-  {% endif %} -->
+    <p><small>Author: <a href="https://sbamin.com/about" rel="me">{{ config.site_author }}</a> <span class="twemoji">
+  {% include ".icons/fontawesome/brands/twitter.svg" %}
+</span><a href="https://twitter.com/{{config.extra.twitter}}">@{{config.extra.twitter}}</a></small></p>
+  {% endif %}
+
+  {% if page and page.meta and page.meta.comments == false %}
+  	<!-- disbale giscus -->
+  {% else %}
+	<!-- Giscus -->
+	<h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+	<p>Comments are powered by <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></span> <a href="https://github.com/TheJacksonLaboratory/canineglioma/discussions">github discussions</a></p>
+	<!-- Replace with generated snippet -->
+
+	<script src="https://giscus.app/client.js"
+	        data-repo="TheJacksonLaboratory/canineglioma"
+	        data-repo-id="MDEwOlJlcG9zaXRvcnkxOTEyOTczMjg="
+	        data-category="webchat"
+	        data-category-id="DIC_kwDOC2b3MM4CBGtB"
+	        data-mapping="pathname"
+	        data-reactions-enabled="1"
+	        data-emit-metadata="0"
+	        data-input-position="top"
+	        data-theme="light"
+	        data-lang="en"
+	        crossorigin="anonymous"
+	        async>
+	</script>
+
+	<!-- Reload on palette change -->
+	<script>
+	var palette = __md_get("__palette")
+	if (palette && typeof palette.color === "object")
+	  if (palette.color.scheme === "slate") {
+	    var giscus = document.querySelector("script[src*=giscus]")
+	    giscus.setAttribute("data-theme", "dark") 
+	  }
+
+	/* Register event handlers after documented loaded */
+	document.addEventListener("DOMContentLoaded", function() {
+	  var ref = document.querySelector("[data-md-component=palette]")
+	  ref.addEventListener("change", function() {
+	    var palette = __md_get("__palette")
+	    if (palette && typeof palette.color === "object") {
+	      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+	      /* Instruct Giscus to change theme */
+	      var frame = document.querySelector(".giscus-frame")
+	      frame.contentWindow.postMessage(
+	        { giscus: { setConfig: { theme } } },
+	        "https://giscus.app"
+	      )
+	    }
+	  })
+	})
+	</script>
+  {% endif %}
 {% endblock %}

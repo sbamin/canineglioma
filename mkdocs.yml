@@ -1,42 +1,23 @@
-# Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to
-# deal in the Software without restriction, including without limitation the
-# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-# sell copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-# IN THE SOFTWARE.
-
-# Site details
+# Project information
 site_name: 'Canine Glioma Project &middot; Verhaak Lab'
-site_description: 'Canine Glioma Project &middot; Extended Methods, Data, and Code for Figures'
-site_keywords: "canine,glioma,pediatric,comparative genomics,DIPG,verhaak,lab,jax"
-site_author: 'Samir B. Amin'
 site_url: 'https://canineglioma.verhaaklab.com'
-## enable 'edit this page' link
-repo_edit: false
+site_author: 'Samir B. Amin'
+site_description: 'Canine Glioma Project &middot; Extended Methods, Data, and Code for Figures'
+
+# Repository
 repo_name: 'TheJacksonLaboratory/canineglioma'
 repo_url: 'https://github.com/TheJacksonLaboratory/canineglioma'
-## add last modified, require git-revision-date-localized plugin
-last_modtime: true
-copyright: 'Copyright &copy; 2017 - 2021 <a href="https://verhaaklab.com">Verhaak Lab at the Jackson Laboratory for Genomic Medicine</a>'
+edit_uri: ""
+
+# Copyright
+copyright: >-
+  <a href="https://verhaaklab.com/privacy/">Disclosure</a>
 
 # Configuration
 theme:
   name: material
   custom_dir: overrides
-  logo: assets/images/logo.png
+  logo: assets/images/fixed/favicon.png
 
   # 404 page
   static_templates:
@@ -49,52 +30,59 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
-    - tabs
-    - instant
-    - search.suggest
-    - search.highlight
-    - search.share
-  palette:
-    primary: blue
-    accent: indigo
+    - navigation.tabs
+    - navigation.instant
+    - navigation.top
+    - navigation.indexes
+    - navigation.sections
+    - content.code.annotate
+  palette: #
+    - scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate # 
+      primary: teal
+      accent: "light green"
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   font:
-    text: 'IBM Plex Sans'
+    text: 'Roboto'
     code: 'Fira Code'
   icon:
     logo: logo
-  favicon: /assets/images/logo.png
+    repo: fontawesome/brands/git-square
+  favicon: assets/images/fixed/favicon.png
 
 # Plugins
 plugins:
-  - search:
-      separator: '[\s\-\.]+'
+  - search
+  - macros
   - git-revision-date-localized:
-      type: date
+      type: iso_date
+      timezone: US
       fallback_to_build_date: true
   - minify:
       minify_html: true
 
-# Google Analytics
-google_analytics:
-  # - !!python/object/apply:os.getenv ["UA-64053990-1"]
-  - UA-64053990-2
-  - auto
-
-# Customization
+## Customization
 extra_css:
-  - /assets/css/extra.css
-  - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css'
+  - assets/css/extra.css
 
 extra_javascript:
-  - '/assets/js/extra.js'
-  - '/assets/js/katex.js'
-  - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js'
-  - 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js'
+  - 'assets/js/extra.js'
+  - 'assets/js/mathjax.js'
+  - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
+  - 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js'
-  - '/assets/js/tables.js'
+  - 'assets/js/tables.js'
 
 extra:
-  disqus: 'verhaaklab'
+  disqus: ''
+  twitter: 'sbamin'
   social:
     - icon: fontawesome/regular/envelope
       link: 'https://verhaaklab.com/contact'
@@ -104,28 +92,34 @@ extra:
       link: 'https://github.com/sbamin'
     - icon: fontawesome/brands/twitter
       link: 'https://twitter.com/sbamin'
+  repo:
+    url: https://github.com/sbamin/code101
+    tree: /tree/main
+    blob: /blob/main
+  analytics:
+    provider: google
+    property: UA-64053990-2
+  site_keywords: "canine,glioma,pediatric,comparative genomics,DIPG,verhaak,lab,jax"
+  version:
+    provider: mike
+    default: latest
   twittercard:
     user: roelverhaak
-    logourl: '/assets/images/lab_logo_sq-md.jpg'
-
-# Google Analytics
-google_analytics:
-  - 'UA-64053990-2'
-  - 'auto'
+    logourl: '/assets/images/lab_logo_sq-md.jpg'  
 
 # Extensions
 markdown_extensions:
-  - markdown.extensions.admonition
-  - markdown.extensions.attr_list
-  - markdown.extensions.codehilite:
-      guess_lang: false
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
-  - markdown.extensions.meta
-  - markdown.extensions.toc:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
       permalink: true
-  # - pymdownx.arithmatex
-  #     generic: true
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -145,20 +139,20 @@ markdown_extensions:
       repo_url_shortener: true
       repo_url_shorthand: true
       user: sbamin
-      repo: issueboard
+      repo: code101
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:
       check_paths: true
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
   - pymdownx.tilde
-  - meta
 
-# Pages
+# Page tree
 nav:
     - Home: index.md
     - Methods:
