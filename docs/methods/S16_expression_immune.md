@@ -1,5 +1,8 @@
 ---
 title: Immune Microenvironment Analysis
+author: "Frederick S. Varn"
+twitter: "fsvarn"
+about: "https://verhaaklab.com/people/f_varn/"
 ---
 
 ## Immunohistochemistry 

@@ -63,7 +63,7 @@ plugins:
   - macros
   - git-revision-date-localized:
       type: iso_date
-      timezone: US
+      timezone: 'America/New_York'
       fallback_to_build_date: true
   - minify:
       minify_html: true
@@ -93,7 +93,7 @@ extra:
     - icon: fontawesome/brands/twitter
       link: 'https://twitter.com/sbamin'
   repo:
-    url: https://github.com/sbamin/code101
+    url: https://github.com/TheJacksonLaboratory/canineglioma
     tree: /tree/main
     blob: /blob/main
   analytics:

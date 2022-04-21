@@ -65,12 +65,11 @@
 
   {{ super() }}
 
+
   {% if page and page.meta and page.meta.author %}
-    <p><small>Author: {{ page.meta.author }}</small></p>
+    <p><small>Author: {{ page.meta.author }} {% if page.meta.twitter %}<span class="twemoji"> {% include ".icons/fontawesome/brands/twitter.svg" %}</span> <a href="https://twitter.com/{{page.meta.twitter}}">@{{page.meta.twitter}}</a>{% endif %} {% if page.meta.about %}<span class="twemoji"> {% include ".icons/fontawesome/solid/address-card.svg" %}</span> <a href="{{page.meta.about}}">About</a>{% endif %}</small></p>
   {% else %}
-    <p><small>Author: <a href="https://sbamin.com/about" rel="me">{{ config.site_author }}</a> <span class="twemoji">
-  {% include ".icons/fontawesome/brands/twitter.svg" %}
-</span><a href="https://twitter.com/{{config.extra.twitter}}">@{{config.extra.twitter}}</a></small></p>
+    <p><small>Author: <a href="https://sbamin.com/about" rel="me">{{ config.site_author }}</a> <span class="twemoji"> {% include ".icons/fontawesome/brands/twitter.svg" %}</span><a href="https://twitter.com/{{config.extra.twitter}}">@{{config.extra.twitter}}</a></small></p>
   {% endif %}
 
   {% if page and page.meta and page.meta.comments == false %}

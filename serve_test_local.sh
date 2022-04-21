@@ -12,6 +12,6 @@ fi
 
 ## activate python3
 cd "$DOCDIR" && echo -e "\nWorkdir is $DOCDIR\n"
-mkdocs -q serve
+mkdocs serve
 
 ## END ##
