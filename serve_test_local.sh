@@ -1,8 +1,5 @@
 #!/bin/bash
 
-## strict check
-set -euo pipefail
-
 DOCDIR="$HOME"/dbjax/code/gitrepos/github/cgp_keystone/canineglioma
 
 if [[ ! -d "$DOCDIR" || ! -x "$DOCDIR" ]]; then
@@ -10,8 +7,17 @@ if [[ ! -d "$DOCDIR" || ! -x "$DOCDIR" ]]; then
 	exit 1
 fi
 
-## activate python3
+#### Activate CONDA in subshell ####
+## Read https://github.com/conda/conda/issues/7980
+CONDA_BASE=$(conda info --base) && \
+source "${CONDA_BASE}"/etc/profile.d/conda.sh && \
+conda activate ruby
+#### END CONDA SETUP ####
+
+## strict check
+set -euo pipefail
+
 cd "$DOCDIR" && echo -e "\nWorkdir is $DOCDIR\n"
-mkdocs serve
+mkdocs -q serve
 
 ## END ##

@@ -54,7 +54,7 @@ theme:
     code: 'Fira Code'
   icon:
     logo: logo
-    repo: fontawesome/brands/git-square
+    repo: material/github
   favicon: assets/images/fixed/favicon.png
 
 # Plugins
