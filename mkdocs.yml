@@ -5,8 +5,8 @@ site_author: 'Samir B. Amin'
 site_description: 'Canine Glioma Project &middot; Extended Methods, Data, and Code for Figures'
 
 # Repository
-repo_name: 'TheJacksonLaboratory/canineglioma'
-repo_url: 'https://github.com/TheJacksonLaboratory/canineglioma'
+repo_name: 'sbamin/canineglioma'
+repo_url: 'https://github.com/sbamin/canineglioma'
 edit_uri: ""
 
 # Copyright
@@ -93,7 +93,7 @@ extra:
     - icon: fontawesome/brands/twitter
       link: 'https://twitter.com/sbamin'
   repo:
-    url: https://github.com/TheJacksonLaboratory/canineglioma
+    url: https://github.com/sbamin/canineglioma
     tree: /tree/main
     blob: /blob/main
   analytics:
