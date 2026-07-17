@@ -12,8 +12,12 @@ Genomic DNA and total RNA of fresh frozen tissue and FFPE tissue from paraffin s
 
 ### WES sample preparation
 
-Sample were prepared as described above in the WGS sample preparation, targeting 200bp with PCR amplification. Target capture was performed using SeqCap EZ Canine Exome Custom Design (canine 140702_canFam3_exomeplus_BB_EZ_HX1 probe set) (Broeckx et al., 2015) (Roche Nimblegen). Briefly, WGS libraries were hybridized with capture probes 
-using Nimblegen SepCap EZ Kit (Roche Nimblegen) according to manufacturer’s instruction. Captured fragments were PCR amplified and purified using Ampure XP beads. Quantification of libraries were performed using real-time qPCR (Thermo Fisher). Libraries were sequenced paired end of 76bp on Hiseq4000 (Illumina).
+Sample were prepared as described above in the WGS sample preparation, targeting 200bp with PCR amplification. Target capture was performed using SeqCap EZ Canine Exome Custom Design (canine 140702_canFam3_exomeplus_BB_EZ_HX1 probe set) (Broeckx et al., 2015) (Roche Nimblegen). Briefly, WGS libraries were hybridized with capture probes using Nimblegen SepCap EZ Kit (Roche Nimblegen) according to manufacturer’s instruction. Captured fragments were PCR amplified and purified using Ampure XP beads. Quantification of libraries were performed using real-time qPCR (Thermo Fisher). Libraries were sequenced paired end of 76bp on Hiseq4000 (Illumina).
+
+!!! info "Exome Capture Kit: 130728_canFam3_Exome_BB_EZ_HX1"
+	Download exome capture kit: [130728_canFam3_Exome_BB_EZ_HX1.zip](https://github.com/sbamin/canineglioma/blob/master/docs/data/130728_canFam3_Exome_BB_EZ_HX1.zip) Point of Contact: Bart Broeckx (Ghent University) and Chris Friedrich (Roche)
+	
+	>[md5](https://github.com/sbamin/canineglioma/blob/master/docs/data/130728_canFam3_Exome_BB_EZ_HX1.zip.md5): 9de5dd1e71ba1fc04433f5554fd6a322 130728_canFam3_Exome_BB_EZ_HX1.zip
 
 ### RNA-seq sample preparation
 

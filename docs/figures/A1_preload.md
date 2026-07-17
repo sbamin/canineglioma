@@ -11,7 +11,7 @@ Sequencing data generated from canine patients with glioma (n=83 donors) is avai
 ### R session
 
 - [x] Prefer using RStudio or similar GUI over copy-pasting code in terminal. The latter may emit errors due to issues with syntax highlighting and font ligatures used on this website.
-- [x] Code on this website was evaluated in an isolated, new environment and syntax-related errors were addressed on the top of respective code blocks. Please [report bugs](https://github.com/TheJacksonLaboratory/canineglioma/issues) by submitting a GitHub issue. 
+- [x] Code on this website was evaluated in an isolated, new environment and syntax-related errors were addressed on the top of respective code blocks. Please [report bugs](https://github.com/sbamin/canineglioma/issues) by submitting a GitHub issue. 
 
  
 ```r
