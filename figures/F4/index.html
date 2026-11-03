@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Canine Glioma Project · Extended Methods, Data, and Code for Figures"><meta name=author content="Kevin Anderson"><link href=https://canineglioma.verhaaklab.com/figures/F4/ rel=canonical><link href=../S3/ rel=prev><link href=../S4/ rel=next><link rel=icon href=../../assets/images/fixed/favicon.png><meta name=generator content="mkdocs-1.6.1, mkdocs-material-9.7.1"><title>F4 &middot; DNA Methylation based Prediction of Canine Gliomas - Canine Glioma Project &middot; Verhaak Lab</title><link rel=stylesheet href=../../assets/stylesheets/main.484c7ddc.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.ab4e12ef.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style><link rel=stylesheet href=../../assets/css/extra.css><script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script><!-- Determine analytics provider (deprecated, removed in v8) --><!-- Determine analytics provider --><!-- Set up analytics provider --><!-- Determine analytics property (deprecated, removed in v8) --><!-- Determine analytics property --><!-- Google Analytics 4 (G-XXXXXXXXXX) --><script>
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Canine Glioma Project · Extended Methods, Data, and Code for Figures"><meta name=author content="Kevin Anderson"><link href=https://canineglioma.verhaaklab.com/figures/F4/ rel=canonical><link href=../S3/ rel=prev><link href=../S4/ rel=next><link rel=icon href=../../assets/images/fixed/favicon.png><meta name=generator content="mkdocs-1.6.1, mkdocs-material-9.7.7"><title>F4 &middot; DNA Methylation based Prediction of Canine Gliomas - Canine Glioma Project &middot; Verhaak Lab</title><link rel=stylesheet href=../../assets/stylesheets/main.ec1eaa64.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.ab4e12ef.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style><link rel=stylesheet href=../../assets/css/extra.css><script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script><!-- Determine analytics provider (deprecated, removed in v8) --><!-- Determine analytics provider --><!-- Set up analytics provider --><!-- Determine analytics property (deprecated, removed in v8) --><!-- Determine analytics property --><!-- Google Analytics 4 (G-XXXXXXXXXX) --><script>
     window.ga = window.ga || function() {
       (ga.q = ga.q || []).push(arguments)
     }
@@ -35,74 +35,74 @@
 library(egg)
 
 # Cluster probabilities to determine sample plot order
-cgp_RRBS.noNormals_ord &lt;- hclust( dist(cgp_RRBS.noNormals_class_prediction$probabilities, method = &quot;euclidean&quot;), method = &quot;ward.D&quot; )$order
+cgp_RRBS.noNormals_ord &lt;- hclust( dist(cgp_RRBS.noNormals_class_prediction$probabilities, method = "euclidean"), method = "ward.D" )$order
 
 cgp_RRBS.noNormals_class_prediction$probabilities &lt;- cgp_RRBS.noNormals_class_prediction$probabilities[cgp_RRBS.noNormals_ord,]
-cgp_RRBS.noNormals_class_prediction$predictions &lt;- factor(cgp_RRBS.noNormals_class_prediction$predictions[cgp_RRBS.noNormals_ord], levels = c(&quot;Adult-IDH_mut&quot;,&quot;Adult-IDH_wt&quot;,&quot;Pediatric-Tumor&quot;))
+cgp_RRBS.noNormals_class_prediction$predictions &lt;- factor(cgp_RRBS.noNormals_class_prediction$predictions[cgp_RRBS.noNormals_ord], levels = c("Adult-IDH_mut","Adult-IDH_wt","Pediatric-Tumor"))
 
 # Reformat probabilities table for plotting
 cgp_RRBS.noNormals_class_probabilities &lt;- reshape2::melt(cgp_RRBS.noNormals_class_prediction$probabilities)
-colnames(cgp_RRBS.noNormals_class_probabilities) &lt;- c(&quot;Sample&quot;,&quot;Predicted_Class&quot;,&quot;Prediction_Probability&quot;)
+colnames(cgp_RRBS.noNormals_class_probabilities) &lt;- c("Sample","Predicted_Class","Prediction_Probability")
 
 cgp_RRBS.noNormals_class_probabilities$Sample &lt;- factor(cgp_RRBS.noNormals_class_probabilities$Sample, levels = rownames(cgp_RRBS.noNormals_class_prediction$probabilities)[cgp_RRBS.noNormals_ord])
 
 
 # Create shorthand barcode for sample text on x-axis (on mutationsFig) consisting of 4 character caseID only
-SampleLabel &lt;- unlist(lapply(strsplit(rownames(cgp_RRBS.noNormals_class_prediction$probabilities)[cgp_RRBS.noNormals_ord],&quot;-&quot;), `[`, 3))
-SampleLabel &lt;- paste0(&quot;i_&quot;,SampleLabel)
+SampleLabel &lt;- unlist(lapply(strsplit(rownames(cgp_RRBS.noNormals_class_prediction$probabilities)[cgp_RRBS.noNormals_ord],"-"), `[`, 3))
+SampleLabel &lt;- paste0("i_",SampleLabel)
 
 # Create label for sample text on x-axis (on mutationsFig) to color IDHmut samples
-SampleLabelStyle &lt;- rep(&quot;plain&quot;,length(SampleLabel))
-IDHmutsamples &lt;- which(rownames(cgp_RRBS.noNormals_class_prediction$probabilities)[cgp_RRBS.noNormals_ord] %in% c(&quot;CGP-S03-E7AB-8AD9ACF7-T1-A2-J05&quot;,&quot;CGP-S03-1165-177480CC-T1-A2-J05&quot;,&quot;CGP-S04-1166-3C6CFE5F-T1-A1-J05&quot;))
-SampleLabelStyle[IDHmutsamples] &lt;- &quot;bold&quot;
+SampleLabelStyle &lt;- rep("plain",length(SampleLabel))
+IDHmutsamples &lt;- which(rownames(cgp_RRBS.noNormals_class_prediction$probabilities)[cgp_RRBS.noNormals_ord] %in% c("CGP-S03-E7AB-8AD9ACF7-T1-A2-J05","CGP-S03-1165-177480CC-T1-A2-J05","CGP-S04-1166-3C6CFE5F-T1-A1-J05"))
+SampleLabelStyle[IDHmutsamples] &lt;- "bold"
 </code></pre></div> <h4 id=create-table-for-plotting-annotations>Create table for plotting annotations<a class=headerlink href=#create-table-for-plotting-annotations title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code>cgp_RRBS.noNormals_class_predictions &lt;- data.frame(Sample=rownames(cgp_RRBS.noNormals_class_prediction$probabilities),
                                                 Class=cgp_RRBS.noNormals_class_prediction$predictions,
                                                 Location=cgp_RRBS.noNormals_sample_info$Tumor_Location,
                                                 Tumor_Grade=cgp_RRBS.noNormals_sample_info$Tumor_Grade,
                                                 Histology=cgp_RRBS.noNormals_sample_info$Tumor_Morphology)
-cgp_RRBS.noNormals_class_predictions$Location &lt;- factor(cgp_RRBS.noNormals_class_predictions$Location, levels = c(&quot;Hemispheric&quot;,&quot;Cerebellar&quot;,&quot;Midline&quot;))
-</code></pre></div> <h4 id=labelscolors-for-plot>Labels/colors for plot<a class=headerlink href=#labelscolors-for-plot title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code>class_probabilities_labels &lt;- c(&quot;Glioma&quot;,&quot;Normal&quot;,&quot;IDHmut&quot;,&quot;IDHmut\n1p/19q codel&quot;,&quot;IDHwt&quot;,&quot;Normal&quot;)
-class_probabilities_limits &lt;- c(&quot;Pediatric-Tumor&quot;,&quot;Pediatric-Normal&quot;,&quot;Adult-IDH_mut&quot;,&quot;Adult-IDH_mut,1p/19q_codel&quot;,&quot;Adult-IDH_wt&quot;,&quot;Adult-Normal&quot;)
-class_probabilities_colors &lt;- c(rep(&quot;#fc8d62&quot;,2),rep(&quot;#8da0cb&quot;,4))
+cgp_RRBS.noNormals_class_predictions$Location &lt;- factor(cgp_RRBS.noNormals_class_predictions$Location, levels = c("Hemispheric","Cerebellar","Midline"))
+</code></pre></div> <h4 id=labelscolors-for-plot>Labels/colors for plot<a class=headerlink href=#labelscolors-for-plot title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code>class_probabilities_labels &lt;- c("Glioma","Normal","IDHmut","IDHmut\n1p/19q codel","IDHwt","Normal")
+class_probabilities_limits &lt;- c("Pediatric-Tumor","Pediatric-Normal","Adult-IDH_mut","Adult-IDH_mut,1p/19q_codel","Adult-IDH_wt","Adult-Normal")
+class_probabilities_colors &lt;- c(rep("#fc8d62",2),rep("#8da0cb",4))
 
 # NOTE: 
-# Label spacing for centering &quot;Pediatric&quot; over class categories:
-## labs(y = &quot;Predicted Class\nAdult                                                Pediatric&quot;)
-# Label spacing for centering &quot;Adult&quot; over class categories
-## labs(y = &quot;Predicted Class\nAdult          Pediatric&quot;)
+# Label spacing for centering "Pediatric" over class categories:
+## labs(y = "Predicted Class\nAdult                                                Pediatric")
+# Label spacing for centering "Adult" over class categories
+## labs(y = "Predicted Class\nAdult          Pediatric")
 </code></pre></div> <h4 id=plot-probabilities-and-predictions-data-frame-simultaneously>Plot probabilities and predictions data frame simultaneously<a class=headerlink href=#plot-probabilities-and-predictions-data-frame-simultaneously title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code>cgp_RRBS.noNormals_class_probabilitiesFig.reformatted &lt;- ggplot() +
-  geom_tile(data = cgp_RRBS.noNormals_class_probabilities, mapping = aes(x = Sample, y = Predicted_Class, fill = Prediction_Probability), colour = &quot;grey50&quot;) +
+  geom_tile(data = cgp_RRBS.noNormals_class_probabilities, mapping = aes(x = Sample, y = Predicted_Class, fill = Prediction_Probability), colour = "grey50") +
   geom_point(data = cgp_RRBS.noNormals_class_predictions, mapping = aes(x = Sample, y = Class, shape = Location, size = Tumor_Grade, colour = Histology)) +
-  scale_colour_manual(name=&#39;Histology&#39;, values=c(&#39;Astro&#39;=&#39;#d95f02&#39;, &#39;Oligo&#39;=&#39;#7570b3&#39;, &#39;Undefined&#39;=&#39;#1b9e77&#39;), labels = c(&#39;Astro&#39;,&#39;Oligo&#39;,&#39;Undefined&#39;)) +
-  scale_size_manual(name=&#39;Tumor Grade&#39;, values=c(&#39;High&#39;=8, &#39;Low&#39;=4), labels = c(&#39;High&#39;,&#39;Low&#39;)) +
-  guides(colour = guide_legend(&quot;Histology&quot;,override.aes=list(size = 4))) +
-  guides(shape = guide_legend(&quot;Location&quot;,override.aes=list(size = 4))) +
-  scale_fill_gradient(name = &quot;Prediction\nProbability&quot;,
-                      low = &quot;white&quot;,
-                      high = &quot;deepskyblue3&quot;,
+  scale_colour_manual(name='Histology', values=c('Astro'='#d95f02', 'Oligo'='#7570b3', 'Undefined'='#1b9e77'), labels = c('Astro','Oligo','Undefined')) +
+  scale_size_manual(name='Tumor Grade', values=c('High'=8, 'Low'=4), labels = c('High','Low')) +
+  guides(colour = guide_legend("Histology",override.aes=list(size = 4))) +
+  guides(shape = guide_legend("Location",override.aes=list(size = 4))) +
+  scale_fill_gradient(name = "Prediction\nProbability",
+                      low = "white",
+                      high = "deepskyblue3",
                       limits = c(0,1)) +
   theme(axis.text = element_text(size = 10),
         axis.text.x = element_text(angle=90, face=SampleLabelStyle),
         axis.text.y = element_text(color = rev(class_probabilities_colors)),
-        axis.title = element_text(size = 12, face = &quot;bold&quot;),
-        axis.title.y = element_text(color = &quot;black&quot;),
-        legend.title = element_text(size = 10, face = &quot;bold&quot;),
+        axis.title = element_text(size = 12, face = "bold"),
+        axis.title.y = element_text(color = "black"),
+        legend.title = element_text(size = 10, face = "bold"),
         legend.text = element_text(size = 8),
-        plot.margin = margin(1, 1, 0, 1, &quot;cm&quot;)) +
+        plot.margin = margin(1, 1, 0, 1, "cm")) +
   scale_x_discrete(labels=SampleLabel) +
   scale_y_discrete(limits = rev(class_probabilities_limits), 
     labels = rev(class_probabilities_labels)) +
-    labs(x = &quot;Sample&quot;, y = &quot;Predicted Class\nAdult&quot;)
+    labs(x = "Sample", y = "Predicted Class\nAdult")
 </code></pre></div> <h4 id=add-annotations-for-mutation-rate-purity-and-age>Add annotations for mutation rate, purity, and age<a class=headerlink href=#add-annotations-for-mutation-rate-purity-and-age title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code># Age annotation
 ageFig &lt;- ggplot(cgp_RRBS.noNormals_sample_info) + geom_point(aes(x = Tumor_Sample_Barcode, y = age_updated)) + 
-  geom_hline(yintercept = 2, linetype=&quot;dashed&quot;, color = &quot;dimgray&quot;, cex = 1) + 
-  labs(x = &quot;Sample&quot;) +
+  geom_hline(yintercept = 2, linetype="dashed", color = "dimgray", cex = 1) + 
+  labs(x = "Sample") +
   theme(axis.text = element_text(size = 10),
         axis.text.x = element_text(angle=90, face=SampleLabelStyle),
-        axis.title = element_text(size = 12, face = &quot;bold&quot;),
-        plot.margin = margin(0, 1, 1, 1, &quot;cm&quot;)) + 
+        axis.title = element_text(size = 12, face = "bold"),
+        plot.margin = margin(0, 1, 1, 1, "cm")) + 
   scale_x_discrete(labels=SampleLabel) +
-  scale_y_continuous(name = &quot;Age&quot;, breaks=seq(0,12,2), limits = c(0,13))
+  scale_y_continuous(name = "Age", breaks=seq(0,12,2), limits = c(0,13))
 
 # Purity annotation
 purityFig &lt;- ggplot(data = cgp_RRBS.noNormals_sample_info, mapping = aes(x = Tumor_Sample_Barcode, y = 1, fill = purity)) + 
@@ -113,13 +113,13 @@ purityFig &lt;- ggplot(data = cgp_RRBS.noNormals_sample_info, mapping = aes(x = 
         axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
-        plot.margin = margin(0, 1, 0, 1, &quot;cm&quot;)) +
-  scale_fill_gradient(name = &quot;Purity&quot;,
-                      low = &quot;white&quot;,
-                      high = &quot;seagreen&quot;,
+        plot.margin = margin(0, 1, 0, 1, "cm")) +
+  scale_fill_gradient(name = "Purity",
+                      low = "white",
+                      high = "seagreen",
                       limits = c(0,1)) + 
-  theme(legend.title=element_text(size=9, face = &quot;bold&quot;),legend.text = element_text(size=8),legend.key.height = unit(0.08, &quot;in&quot;),legend.direction = &quot;horizontal&quot;) +
-  guides(fill = guide_colourbar(title.position=&quot;top&quot;, title.hjust = 0.5))
+  theme(legend.title=element_text(size=9, face = "bold"),legend.text = element_text(size=8),legend.key.height = unit(0.08, "in"),legend.direction = "horizontal") +
+  guides(fill = guide_colourbar(title.position="top", title.hjust = 0.5))
 
 # Mutation annotation
 mutationsFig &lt;- ggplot(data = cgp_RRBS.noNormals_sample_info, mapping = aes(x = Tumor_Sample_Barcode, y = 1, fill = adusted_coding_mutrate)) + 
@@ -131,13 +131,13 @@ mutationsFig &lt;- ggplot(data = cgp_RRBS.noNormals_sample_info, mapping = aes(x
         axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
-        plot.margin = margin(0, 1, 0, 1, &quot;cm&quot;)) +
-  scale_fill_gradient(name = &quot;Mutations/Mb&quot;,
-                      low = &quot;white&quot;,
-                      high = &quot;red&quot;,
+        plot.margin = margin(0, 1, 0, 1, "cm")) +
+  scale_fill_gradient(name = "Mutations/Mb",
+                      low = "white",
+                      high = "red",
                       limits = c(0,2.6)) + 
-  theme(legend.title=element_text(size=9, face = &quot;bold&quot;),legend.text = element_text(size=8),legend.key.height = unit(0.08, &quot;in&quot;),legend.direction = &quot;horizontal&quot;) +
-  guides(fill = guide_colourbar(title.position=&quot;top&quot;, title.hjust = 0.5))
+  theme(legend.title=element_text(size=9, face = "bold"),legend.text = element_text(size=8),legend.key.height = unit(0.08, "in"),legend.direction = "horizontal") +
+  guides(fill = guide_colourbar(title.position="top", title.hjust = 0.5))
 </code></pre></div> <h3 id=fig-4>Fig 4<a class=headerlink href=#fig-4 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code>## Combine plots
 library(ggpubr)
 
@@ -146,12 +146,12 @@ theme(axis.title.x=element_blank(),
  axis.text.x=element_blank(),
  axis.ticks.x=element_blank())
 
-cgp_RRBS.noNormals_class_probabilitiesFig.reformatted.w_purity_mutations_age &lt;- ggarrange(cgp_RRBS.noNormals_class_probabilitiesFig.reformatted.combinedVer, purityFig, mutationsFig, ageFig,nrow = 4,ncol = 1, heights = c(3,0.25,0.25,0.5), padding = unit(0,&quot;line&quot;))
+cgp_RRBS.noNormals_class_probabilitiesFig.reformatted.w_purity_mutations_age &lt;- ggarrange(cgp_RRBS.noNormals_class_probabilitiesFig.reformatted.combinedVer, purityFig, mutationsFig, ageFig,nrow = 4,ncol = 1, heights = c(3,0.25,0.25,0.5), padding = unit(0,"line"))
 
 
-pdf(&quot;F4.pdf&quot;,
+pdf("F4.pdf",
     width = 18, height = 12, pointsize = 12,
-    bg = &quot;white&quot;,
+    bg = "white",
     compress = FALSE, useDingbats = FALSE)
 
 cgp_RRBS.noNormals_class_probabilitiesFig.reformatted.w_purity_mutations_age
@@ -183,4 +183,4 @@ dev.off()
 	    }
 	  })
 	})
-	</script> </article> </div> <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script> </div> <button type=button class="md-top md-icon" data-md-component=top hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg> Back to top </button> </main> <!-- Footer --> <footer class=md-footer> <!-- Link to previous and/or next page --> <nav class="md-footer__inner md-grid" aria-label=footer.title> <!-- Link to previous page --> <a href=../S3/ class="md-footer__link md-footer__link--prev" aria-label="Previous: S3 &middot; Suppl Figures" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> S3 &middot; Suppl Figures </div> </div> </a> <!-- Link to next page --> <a href=../S4/ class="md-footer__link md-footer__link--next" aria-label="Next: S4 &middot; Suppl Figure 4" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> S4 &middot; Suppl Figure 4 </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg> </div> </a> </nav> <!-- Further information --> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <!-- Copyright and theme information --> <div class=md-copyright> <div class=md-copyright__highlight> &copy; 2010-2026: <a href=https://verhaaklab.com title=Home>Verhaak Lab</a> | <a href=https://verhaaklab.com/privacy/ >Disclosure</a> </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> <!-- Social links --> <div class=md-social> <a href=https://verhaaklab.com/contact target=_blank rel=noopener title=verhaaklab.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M61.4 64C27.5 64 0 91.5 0 125.4c0 .9 0 1.7.1 2.6H0v256c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V128h-.1c0-.9.1-1.7.1-2.6 0-33.9-27.5-61.4-61.4-61.4zM464 192.3V384c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192.3l154.8 117.4c31.4 23.9 74.9 23.9 106.4 0zM48 125.4c0-7.4 6-13.4 13.4-13.4h389.2c7.4 0 13.4 6 13.4 13.4 0 4.2-2 8.2-5.3 10.7L280.2 271.5c-14.3 10.8-34.1 10.8-48.4 0L53.3 136.1c-3.3-2.5-5.3-6.5-5.3-10.7"/></svg> </a> <a href=https://twitter.com/roelverhaak target=_blank rel=noopener title=twitter.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg> </a> <a href=https://github.com/sbamin target=_blank rel=noopener title=github.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg> </a> <a href=https://twitter.com/sbamin target=_blank rel=noopener title=twitter.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg> </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "navigation.indexes", "navigation.sections", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script> <script src=../../assets/javascripts/bundle.79ae519e.min.js></script> <script src=../../assets/js/extra.js></script> <script src=../../assets/js/mathjax.js></script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js></script> <script src=../../assets/js/tables.js></script> </body> </html>
+	</script> </article> </div> <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script> </div> <button type=button class="md-top md-icon" data-md-component=top hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg> Back to top </button> </main> <!-- Footer --> <footer class=md-footer> <!-- Link to previous and/or next page --> <nav class="md-footer__inner md-grid" aria-label=footer.title> <!-- Link to previous page --> <a href=../S3/ class="md-footer__link md-footer__link--prev" aria-label="Previous: S3 &middot; Suppl Figures" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> S3 &middot; Suppl Figures </div> </div> </a> <!-- Link to next page --> <a href=../S4/ class="md-footer__link md-footer__link--next" aria-label="Next: S4 &middot; Suppl Figure 4" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> S4 &middot; Suppl Figure 4 </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg> </div> </a> </nav> <!-- Further information --> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <!-- Copyright and theme information --> <div class=md-copyright> <div class=md-copyright__highlight> &copy; 2010-2026: <a href=https://verhaaklab.com title=Home>Verhaak Lab</a> | <a href=https://verhaaklab.com/privacy/ >Disclosure</a> </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> <!-- Social links --> <div class=md-social> <a href=https://verhaaklab.com/contact target=_blank rel=noopener title=verhaaklab.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M61.4 64C27.5 64 0 91.5 0 125.4c0 .9 0 1.7.1 2.6H0v256c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V128h-.1c0-.9.1-1.7.1-2.6 0-33.9-27.5-61.4-61.4-61.4zM464 192.3V384c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192.3l154.8 117.4c31.4 23.9 74.9 23.9 106.4 0zM48 125.4c0-7.4 6-13.4 13.4-13.4h389.2c7.4 0 13.4 6 13.4 13.4 0 4.2-2 8.2-5.3 10.7L280.2 271.5c-14.3 10.8-34.1 10.8-48.4 0L53.3 136.1c-3.3-2.5-5.3-6.5-5.3-10.7"/></svg> </a> <a href=https://twitter.com/roelverhaak target=_blank rel=noopener title=twitter.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg> </a> <a href=https://github.com/sbamin target=_blank rel=noopener title=github.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg> </a> <a href=https://twitter.com/sbamin target=_blank rel=noopener title=twitter.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg> </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "navigation.indexes", "navigation.sections", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script> <script src=../../assets/javascripts/bundle.d7400e89.min.js></script> <script src=../../assets/js/extra.js></script> <script src=../../assets/js/mathjax.js></script> <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js></script> <script src=../../assets/js/tables.js></script> </body> </html>
