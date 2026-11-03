@@ -7,17 +7,13 @@ if [[ ! -d "$DOCDIR" || ! -x "$DOCDIR" ]]; then
 	exit 1
 fi
 
-#### Activate CONDA in subshell ####
-## Read https://github.com/conda/conda/issues/7980
-CONDA_BASE=$(conda info --base) && \
-source "${CONDA_BASE}"/etc/profile.d/conda.sh && \
-conda activate ruby
-#### END CONDA SETUP ####
+## activate env
+mkdocs() { pixi run --manifest-path "$HOME"/.config/pixi-global/pixi.toml -e sitebuilder mkdocs "$@"; }
 
 ## strict check
 set -euo pipefail
 
 cd "$DOCDIR" && echo -e "\nWorkdir is $DOCDIR\n"
-mkdocs -q serve
+mkdocs -q serve -a localhost:4000
 
 ## END ##
